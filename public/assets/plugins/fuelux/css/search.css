@@ -1,0 +1,6 @@
+.fuelux .search.disabled .input-group-btn {
+  cursor: not-allowed;
+}
+.fuelux .search input::-ms-clear {
+  display: none;
+}

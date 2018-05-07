@@ -1,0 +1,23 @@
+.fuelux .infinitescroll {
+  overflow-y: auto;
+}
+.fuelux .infinitescroll .infinitescroll-end {
+  clear: both;
+  font-style: italic;
+  padding: 6px;
+  text-align: center;
+}
+.fuelux .infinitescroll .infinitescroll-load {
+  clear: both;
+  padding: 6px;
+}
+.fuelux .infinitescroll .infinitescroll-load button {
+  padding: 5px 12px;
+  width: 100%;
+}
+.fuelux .infinitescroll .infinitescroll-load .loader {
+  font-size: 32px;
+  height: 32px;
+  margin: 0 auto;
+  width: 32px;
+}
