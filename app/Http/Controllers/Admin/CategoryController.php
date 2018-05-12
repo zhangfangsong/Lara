@@ -6,19 +6,24 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\CategoryRequest;
 use App\Models\Category;
+use App\Handlers\Level;
 
 class CategoryController extends Controller
 {
-	public function index()
+	public function index(Level $level)
 	{
-		$all = Category::all();
+		$list = Category::orderBy('sort', 'desc')->get();
+		$list = $level->formatOne($list);
 
-		return view('admin.category.index', ['list'=> $all]);
+		return view('admin.category.index', ['list'=> $list]);
 	}
 
-	public function create()
+	public function create(Level $level)
 	{
-		return view('admin.category.create');
+		$list = Category::orderBy('id', 'asc')->get();
+		$list = $level->formatOne($list);
+
+		return view('admin.category.create', ['list'=> $list]);
 	}
 
 	public function store(CategoryRequest $request)
@@ -36,13 +41,33 @@ class CategoryController extends Controller
 		return redirect()->route('admin.category.index');
 	}
 
-	public function edit(Category $category)
+	public function edit(Category $category, Level $level)
 	{
-		return view('admin.category.edit', ['category'=> $category]);
+		$list = Category::orderBy('id', 'asc')->get();
+		$list = $level->formatOne($list);
+
+		return view('admin.category.create', ['list'=> $list, 'category'=> $category]);
 	}
 
-	public function update(CategoryRequest $request, Category $category)
+	public function update(CategoryRequest $request, Category $category, Level $level)
 	{
+		$data = $request->all();
 
+		$list = Category::all();
+		$childs_id_arr = $level->formatChild($list, $category->id);
+
+		if(in_array($data['pid'], $childs_id_arr)){
+			return redirect()->back()->with('danger', '父级分类不能选取子级作为父级');
+		}
+
+		$category->update($data);
+		return redirect()->back()->with('success', '编辑成功');
+	}
+
+	public function destroy(Category $category)
+	{
+		$category->delete();
+
+		return redirect()->route('admin.category.index')->with('success', '删除成功');
 	}
 }
