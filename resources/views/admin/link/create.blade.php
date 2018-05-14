@@ -3,6 +3,15 @@
 
 @section('title', '链接')
 
+@section('stylesheet')
+    <link href="{{ asset('uploader/webuploader.css') }}" rel="stylesheet" type="text/css" />
+@stop
+
+@section('script')
+    <script src="{{ asset('uploader/webuploader.js') }}"></script>
+    <script src="{{ asset('admin/js/main.js') }}"></script>
+@stop
+
 @section('content')
 	<!-- Page-Title -->
 	<div class="row">
@@ -55,8 +64,11 @@
 
                             <div class="form-group m-b-20">
                                 <label class="col-md-2 control-label">Logo</label>
-                                <div class="col-md-4">
-                                    <input type="text" class="form-control" name="logo" placeholder="请输入Logo" value="{{ $link->logo or old('logo') }}">
+                                <div class="col-md-10">
+                                    <ul class="upload-wraper">
+
+                                    </ul>
+                                    <a href="javascript:void(0)" data-id="logo" data-num="one" class="btn btn-default J-ajax-upload">上传图片</a>
                                 </div>
                             </div>
 

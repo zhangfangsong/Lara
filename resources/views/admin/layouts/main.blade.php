@@ -19,8 +19,16 @@
         <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/icons.css') }}" />
         <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/pages.css') }}" />
         <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/responsive.css') }}" />
+        <link rel="stylesheet" type="text/css" href="{{ asset('admin/css/main.css') }}" />
 
         <script src="{{ asset('assets/js/modernizr.min.js') }}"></script>
+
+        <script type="text/javascript">
+            var Lara = {
+                ImgUploadUrl : "{{ route('admin.upload') }}",
+                ImgUploadSwf : "{{ asset('uploader/Uploader.swf') }}"
+            };
+        </script>
 
     </head>
 

@@ -1,0 +1,25 @@
+.upload-wraper {
+	list-style-type: none;
+	padding-left: 0;
+	margin-top: 5px;
+}
+
+.upload-wraper li {
+	width: 82px;
+	height: 82px;
+	display: inline-block;
+	cursor: pointer;
+	border: 1px solid #E3E3E3;
+	border-radius: 2px;
+}
+
+.upload-wraper li img {
+	width: 80px;
+	height: 80px;
+}
+
+.webuploader-pick {
+	background: transparent;
+	padding: 0px;
+	display: inline;
+}

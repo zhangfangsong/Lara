@@ -33,6 +33,7 @@ Route::group([
 ], function (){
 	Route::get('/', 'IndexController@index')->name('admin.home');
 	Route::get('/logout', 'IndexController@logout')->name('admin.logout');
+	Route::post('/upload', 'IndexController@upload')->name('admin.upload');
 
 	// 分类
 	Route::get('category/index', 'CategoryController@index')->name('admin.category.index');
