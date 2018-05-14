@@ -57,11 +57,11 @@
 
                             <ul class="nav navbar-nav navbar-right pull-right">
                                 <li class="dropdown">
-                                    <a href="" class="dropdown-toggle profile" data-toggle="dropdown" aria-expanded="true"><img src="{{ asset('assets/images/users/avatar-1.jpg') }}" alt="user-img" class="img-circle"> </a>
+                                    <a href="" class="dropdown-toggle profile" data-toggle="dropdown" aria-expanded="true"><img src="{{ Auth::user()->avatar }}" alt="user-img" class="img-circle"> </a>
                                     <ul class="dropdown-menu">
                                         <li><a href="javascript:void(0)"><i class="ti-user m-r-5"></i> 我的资料</a></li>
                                         <li><a href="javascript:void(0)"><i class="ti-settings m-r-5"></i> 设置</a></li>
-                                        <li><a href="javascript:void(0)"><i class="ti-power-off m-r-5"></i> 退出登录</a></li>
+                                        <li><a href="{{ route('admin.logout') }}"><i class="ti-power-off m-r-5"></i> 退出登录</a></li>
                                     </ul>
                                 </li>
                             </ul>
@@ -94,6 +94,7 @@
                                     <li><a href="{{ route('admin.category.index') }}">分类</a></li>
                                     <li><a href="{{ route('admin.tag.index') }}">标签</a></li>
                                     <li><a href="{{ route('admin.page.index') }}">页面</a></li>
+                                    <li><a href="{{ route('admin.link.index') }}">链接</a></li>
                                 </ul>
                             </li>
 

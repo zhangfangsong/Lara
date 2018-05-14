@@ -1,7 +1,7 @@
 
 @extends('admin.layouts.main')
 
-@section('title', '分类')
+@section('title', '链接')
 
 @section('stylesheet')
 	<link href="{{ asset('assets/plugins/bootstrap-table/dist/bootstrap-table.min.css') }}" rel="stylesheet" type="text/css" />
@@ -16,13 +16,13 @@
 	<!-- Page-Title -->
 	<div class="row">
 		<div class="col-sm-12">
-			<h4 class="page-title">分类列表</h4>
+			<h4 class="page-title">链接列表</h4>
 			<ol class="breadcrumb">
 				<li>
 					<a href="#">管理</a>
 				</li>
 				<li>
-					<a href="{{ route('admin.category.index') }}">分类</a>
+					<a href="{{ route('admin.link.index') }}">链接</a>
 				</li>
 				<li class="active">
 					列表
@@ -49,7 +49,7 @@
 	            	</div> -->
 
 	            	<div class="col-sm-4">
-	            		 <a href="{{ route('admin.category.create') }}" class="btn btn-default waves-effect waves-light m-b-30"><i class="md md-add"></i> 新增</a>
+	            		 <a href="{{ route('admin.link.create') }}" class="btn btn-default waves-effect waves-light m-b-30"><i class="md md-add"></i> 新增</a>
 	            	</div>
 				</div>
 
@@ -58,8 +58,9 @@
 						<tr>
 							<th>ID</th>
 							<th>名称</th>
-							<th>描述</th>
-							<th class="text-center">排序</th>
+							<th>链接Url</th>
+							<th>排序</th>
+							<th>新窗口</th>
 							<th class="text-center">状态</th>
 							<th class="text-center">操作</th>
 						</tr>
@@ -70,19 +71,22 @@
 						@foreach($list as $val)
 						<tr>
 							<td>{{ $val->id }}</td>
-							<td>{{ str_repeat('&nbsp;', ($val->level-1)*4).$val->name }}</td>
-							<td>{{ str_limit($val->description, 30) }}</td>
+							<td>{{ $val->name }}</td>
+							<td>{{ $val->url }}</td>
 							<td>{{ $val->sort }}</td>
+							<td>{{ $val->target == 1 ? '是' : '否' }}</td>
 							<td><span class="label label-table {{ $val->status == 1 ? 'label-default' : 'label-warning' }}">{{ $val->status == 1 ? '显示' : '隐藏' }}</span></td>
 							<td>
-								<a href="{{ route('admin.category.edit', $val->id) }}" class="btn btn-default waves-effect waves-light btn-xs m-l-5"><i class="fa fa-pencil"></i></a>
-								<a href="{{ route('admin.category.destroy', $val->id) }}" class="btn btn-danger waves-effect waves-light btn-xs m-l-5"><i class="fa fa-remove"></i></a>
+								<a href="{{ route('admin.link.edit', $val->id) }}" class="btn btn-default waves-effect waves-light btn-xs m-l-5"><i class="fa fa-pencil"></i></a>
+								<a href="{{ route('admin.link.destroy', $val->id) }}" class="btn btn-danger waves-effect waves-light btn-xs m-l-5"><i class="fa fa-remove"></i></a>
 							</td>
 						</tr>
 						@endforeach
 					</tbody>
 					@endif
 				</table>
+
+				@include('admin.shared._page')
 			</div>
 		</div>
 	</div>
