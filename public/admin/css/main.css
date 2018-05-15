@@ -1,3 +1,9 @@
+
+.logo {
+	text-transform: capitalize;
+	font-weight: normal;
+}
+
 .upload-wraper {
 	list-style-type: none;
 	padding-left: 0;

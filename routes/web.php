@@ -66,5 +66,8 @@ Route::group([
 	// 页面
 	Route::get('page/index', 'PageController@index')->name('admin.page.index');
 	Route::get('page/create', 'PageController@create')->name('admin.page.create');
-
+	Route::post('page/store', 'PageController@store')->name('admin.page.store');
+	Route::get('page/edit/{page}', 'PageController@edit')->name('admin.page.edit');
+	Route::patch('page/update/{page}', 'PageController@update')->name('admin.page.update');
+	Route::get('page/destroy/{page}', 'PageController@destroy')->name('admin.page.destroy');
 });

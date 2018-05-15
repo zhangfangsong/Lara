@@ -9,7 +9,7 @@
 
         <link rel="shortcut icon" href="{{ asset('assets/images/favicon_1.ico') }}">
 
-        <title>@yield('title') - WeBlog后台管理</title>
+        <title>@yield('title') - Lara后台管理</title>
 
         @yield('stylesheet')
 
@@ -43,7 +43,7 @@
                 <!-- LOGO -->
                 <div class="topbar-left">
                     <div class="text-center">
-                        <a href="index.html" class="logo"><i class="icon-magnet icon-c-logo"></i><span>We<i class="md md-album"></i>Blog</span></a>
+                        <a href="index.html" class="logo"><i class="icon-magnet icon-c-logo"></i><span>Lara后台</span></a>
                     </div>
                 </div>
 
@@ -64,6 +64,9 @@
 			                </form>
 
                             <ul class="nav navbar-nav navbar-right pull-right">
+                                <li class="hidden-xs">
+                                    <a href="#" class="waves-effect waves-light">{{ Auth::user()->username }}</a>
+                                </li>
                                 <li class="dropdown">
                                     <a href="" class="dropdown-toggle profile" data-toggle="dropdown" aria-expanded="true"><img src="{{ Auth::user()->avatar }}" alt="user-img" class="img-circle"> </a>
                                     <ul class="dropdown-menu">
@@ -135,7 +138,7 @@
                 </div> <!-- content -->
 
                 <footer class="footer text-right">
-                    2018 © WeBlog.
+                    2018 © Lara.
                 </footer>
 
             </div>
