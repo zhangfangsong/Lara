@@ -1,7 +1,12 @@
 
+label {
+	font-weight: normal;
+}
+
 .logo {
 	text-transform: capitalize;
 	font-weight: normal;
+	font-size: 18px;
 }
 
 .upload-wraper {

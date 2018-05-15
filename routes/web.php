@@ -46,6 +46,10 @@ Route::group([
 	// 文章
 	Route::get('article/index', 'ArticleController@index')->name('admin.article.index');
 	Route::get('article/create', 'ArticleController@create')->name('admin.article.create');
+	Route::post('article/store', 'ArticleController@store')->name('admin.article.store');
+	Route::get('article/edit/{article}', 'ArticleController@edit')->name('admin.article.edit');
+	Route::patch('article/update/{article}', 'ArticleController@update')->name('admin.article.update');
+	Route::get('article/destroy/{article}', 'ArticleController@destroy')->name('admin.article.destroy');
 
 	// 标签
 	Route::get('tag/index', 'TagController@index')->name('admin.tag.index');

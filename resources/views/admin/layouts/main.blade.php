@@ -43,7 +43,7 @@
                 <!-- LOGO -->
                 <div class="topbar-left">
                     <div class="text-center">
-                        <a href="index.html" class="logo"><i class="icon-magnet icon-c-logo"></i><span>Lara后台</span></a>
+                        <a href="index.html" class="logo"><i class="icon-magnet icon-c-logo"></i><span>Lara后台管理</span></a>
                     </div>
                 </div>
 
@@ -138,7 +138,7 @@
                 </div> <!-- content -->
 
                 <footer class="footer text-right">
-                    2018 © Lara.
+                    <span class="">2018 © Lara</span>
                 </footer>
 
             </div>
