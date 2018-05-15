@@ -102,7 +102,6 @@
         });
 
     </script>
-    <script src="{{ asset('admin/js/main.js') }}"></script>
 @stop
 
 @section('content')

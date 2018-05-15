@@ -9,6 +9,7 @@ use App\Http\Requests\Admin\ArticleRequest;
 use App\Models\Category;
 use App\Handlers\Level;
 use Auth;
+use App\Models\Tag;
 
 class ArticleController extends Controller
 {
@@ -47,6 +48,17 @@ class ArticleController extends Controller
 
 		$article = Article::create($data);
 
+		if($request->keyword){
+			$tags = explode(',', $request->keyword);
+			foreach($tags as $val){
+				$tag = Tag::getByName($val);
+
+				if(empty($tag)){
+					Tag::add(['name'=> $val]);
+				}
+			}
+		}
+
 		return redirect()->route('admin.article.index')->with('success', '创建成功');
 	}
 
@@ -61,6 +73,17 @@ class ArticleController extends Controller
 	public function update(ArticleRequest $request, Article $article)
 	{
 		$article->update($request->all());
+
+		if($request->keyword){
+			$tags = explode(',', $request->keyword);
+			foreach($tags as $val){
+				$tag = Tag::getByName($val);
+
+				if(empty($tag)){
+					Tag::add(['name'=> $val]);
+				}
+			}
+		}
 
 		return redirect()->back()->with('success', '编辑成功');
 	}

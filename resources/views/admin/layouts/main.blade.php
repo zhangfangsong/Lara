@@ -70,8 +70,8 @@
                                 <li class="dropdown">
                                     <a href="" class="dropdown-toggle profile" data-toggle="dropdown" aria-expanded="true"><img src="{{ Auth::user()->avatar }}" alt="user-img" class="img-circle"> </a>
                                     <ul class="dropdown-menu">
-                                        <li><a href="javascript:void(0)"><i class="ti-user m-r-5"></i> 我的资料</a></li>
-                                        <li><a href="javascript:void(0)"><i class="ti-settings m-r-5"></i> 设置</a></li>
+                                        <li><a href="{{ route('admin.profile') }}"><i class="ti-user m-r-5"></i> 我的资料</a></li>
+                                        <li><a href="{{ route('admin.repass') }}"><i class="ti-settings m-r-5"></i> 修改密码</a></li>
                                         <li><a href="{{ route('admin.logout') }}"><i class="ti-power-off m-r-5"></i> 退出登录</a></li>
                                     </ul>
                                 </li>
@@ -92,28 +92,30 @@
                     <div id="sidebar-menu">
                         <ul>
                             <li class="has_sub">
-                                <a href="javascript:void(0)" class="waves-effect "><i class="ti-home"></i> <span> 仪表盘 </span> </a>
+                                <a href="javascript:void(0)" class="waves-effect "><i class="ti-home"></i> <span> 控制台 </span> </a>
                                 <ul class="list-unstyled">
-                                    <li class="active"><a href="{{ route('admin.home') }}">仪表盘</a></li>
+                                    <li class="{{ active_class(if_route('admin.home')) }}"><a href="{{ route('admin.home') }}">仪表盘</a></li>
+                                    <li class="{{ active_class(if_route('admin.profile')) }}"><a href="{{ route('admin.profile') }}"> 我的资料 </a></li>
+                                    <li class="{{ active_class(if_route('admin.repass')) }}"><a href="{{ route('admin.repass') }}"> 修改密码 </a></li>
                                 </ul>
                             </li>
 
                             <li class="has_sub">
                                 <a href="javascript:void(0)" class="waves-effect"><i class="ti-paint-bucket"></i> <span> 管理 </span> </a>
                                 <ul class="list-unstyled">
-                                    <li><a href="{{ route('admin.article.index') }}">文章</a></li>
-                                    <li><a href="{{ route('admin.category.index') }}">分类</a></li>
-                                    <li><a href="{{ route('admin.tag.index') }}">标签</a></li>
-                                    <li><a href="{{ route('admin.page.index') }}">页面</a></li>
-                                    <li><a href="{{ route('admin.link.index') }}">链接</a></li>
+                                    <li class="{{ active_class(if_route_pattern('admin.article.*')) }}"><a href="{{ route('admin.article.index') }}">文章</a></li>
+                                    <li class="{{ active_class(if_route_pattern('admin.category.*')) }}"><a href="{{ route('admin.category.index') }}">分类</a></li>
+                                    <li class="{{ active_class(if_route_pattern('admin.tag.*')) }}"><a href="{{ route('admin.tag.index') }}">标签</a></li>
+                                    <li class="{{ active_class(if_route_pattern('admin.page.*')) }}"><a href="{{ route('admin.page.index') }}">页面</a></li>
+                                    <li class="{{ active_class(if_route_pattern('admin.link.*')) }}"><a href="{{ route('admin.link.index') }}">链接</a></li>
                                 </ul>
                             </li>
 
                             <li class="has_sub">
                                 <a href="javascript:void(0)" class="waves-effect"><i class="ti-user"></i><span> 设置 </span></a>
                                 <ul class="list-unstyled">
-                                    <li><a href="crm-dashboard.html"> 全局 </a></li>
-                                    <li><a href="crm-contact.html"> 上传 </a></li>
+                                    <li><a href=""> 全局 </a></li>
+                                    <li><a href=""> 上传 </a></li>
                                 </ul>
                             </li>
 
@@ -174,6 +176,13 @@
 
         <script src="{{ asset('assets/js/jquery.core.js') }}"></script>
         <script src="{{ asset('assets/js/jquery.app.js') }}"></script>
+
+        <script type="text/javascript">
+            $(function (){
+                $('#sidebar-menu ul.list-unstyled li.active').parent('ul').siblings('a').addClass('subdrop');
+                $('#sidebar-menu ul.list-unstyled li.active').parent('ul').css('display', 'block');
+            });
+        </script>
 
         @yield('script')
 

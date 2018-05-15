@@ -22,9 +22,6 @@ Route::post('signup', 'UsersController@store')->name('signup');
 Route::get('login', 'LoginController@create')->name('login');
 Route::post('login', 'LoginController@store')->name('login');
 
-Route::get('/home', function (){
-	return view('layouts.main');
-});
 
 Route::group([
 	'prefix' => 'admin',
@@ -34,6 +31,11 @@ Route::group([
 	Route::get('/', 'IndexController@index')->name('admin.home');
 	Route::get('logout', 'IndexController@logout')->name('admin.logout');
 	Route::post('upload', 'IndexController@upload')->name('admin.upload');
+
+	Route::get('profile', 'IndexController@profile')->name('admin.profile');
+	Route::post('profile', 'IndexController@profileUpdate')->name('admin.profile');
+	Route::get('repass', 'IndexController@repass')->name('admin.repass');
+	Route::post('repass', 'IndexController@repassUpdate')->name('admin.repass');
 
 	// 分类
 	Route::get('category/index', 'CategoryController@index')->name('admin.category.index');
