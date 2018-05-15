@@ -11,8 +11,8 @@
 @section('script')
     <script src="{{ asset('uploader/webuploader.js') }}"></script>
     <script src="{{ asset('quill/quill.js') }}"></script>
-    <script src="{{ asset('admin/js/editor.js') }}"></script>
-    <script src="{{ asset('admin/js/main.js') }}"></script>
+    <script src="{{ asset('backend/js/editor.js') }}"></script>
+    <script src="{{ asset('backend/js/main.js') }}"></script>
 
     <script type="text/javascript">
 

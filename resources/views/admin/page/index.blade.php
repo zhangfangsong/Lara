@@ -39,15 +39,6 @@
 
 			<div class="card-box">
 				<div class="row">
-					<!-- <div class="col-sm-4">
-	            		<form role="form" action="">
-	                        <div class="form-group contact-search m-b-30">
-	                        	<input name="name" type="text" id="search" class="form-control" placeholder="Search...">
-	                            <button type="submit" class="btn btn-white"><i class="fa fa-search"></i></button>
-	                        </div>
-	                    </form>
-	            	</div> -->
-
 	            	<div class="col-sm-4">
 	            		 <a href="{{ route('admin.page.create') }}" class="btn btn-default waves-effect waves-light m-b-30"><i class="md md-add"></i> 新增</a>
 	            	</div>
@@ -73,7 +64,7 @@
 							<td>{{ $val->title }}</td>
 							<td>{{ $val->alias }}</td>
 							<td>{{ $val->description }}</td>
-							<td>{{ $val->created_at }}</td>
+							<td>{{ $val->created_at->diffForHumans() }}</td>
 							<td>
 								<a href="{{ route('admin.page.edit', $val->id) }}" class="btn btn-default waves-effect waves-light btn-xs m-l-5"><i class="fa fa-pencil"></i></a>
 								<a href="{{ route('admin.page.destroy', $val->id) }}" class="btn btn-danger waves-effect waves-light btn-xs m-l-5"><i class="fa fa-remove"></i></a>

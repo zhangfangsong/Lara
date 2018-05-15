@@ -9,7 +9,7 @@
 
 @section('script')
     <script src="{{ asset('uploader/webuploader.js') }}"></script>
-    <script src="{{ asset('admin/js/main.js') }}"></script>
+    <script src="{{ asset('backend/js/main.js') }}"></script>
 @stop
 
 @section('content')

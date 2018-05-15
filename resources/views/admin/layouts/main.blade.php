@@ -19,7 +19,7 @@
         <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/icons.css') }}" />
         <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/pages.css') }}" />
         <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/responsive.css') }}" />
-        <link rel="stylesheet" type="text/css" href="{{ asset('admin/css/main.css') }}" />
+        <link rel="stylesheet" type="text/css" href="{{ asset('backend/css/main.css') }}" />
 
         <script src="{{ asset('assets/js/modernizr.min.js') }}"></script>
 
@@ -92,14 +92,14 @@
                     <div id="sidebar-menu">
                         <ul>
                             <li class="has_sub">
-                                <a href="#" class="waves-effect "><i class="ti-home"></i> <span> 仪表盘 </span> </a>
+                                <a href="javascript:void(0)" class="waves-effect "><i class="ti-home"></i> <span> 仪表盘 </span> </a>
                                 <ul class="list-unstyled">
                                     <li class="active"><a href="{{ route('admin.home') }}">仪表盘</a></li>
                                 </ul>
                             </li>
 
                             <li class="has_sub">
-                                <a href="#" class="waves-effect"><i class="ti-paint-bucket"></i> <span> 管理 </span> </a>
+                                <a href="javascript:void(0)" class="waves-effect"><i class="ti-paint-bucket"></i> <span> 管理 </span> </a>
                                 <ul class="list-unstyled">
                                     <li><a href="{{ route('admin.article.index') }}">文章</a></li>
                                     <li><a href="{{ route('admin.category.index') }}">分类</a></li>
@@ -110,7 +110,7 @@
                             </li>
 
                             <li class="has_sub">
-                                <a href="#" class="waves-effect"><i class="ti-user"></i><span> 设置 </span></a>
+                                <a href="javascript:void(0)" class="waves-effect"><i class="ti-user"></i><span> 设置 </span></a>
                                 <ul class="list-unstyled">
                                     <li><a href="crm-dashboard.html"> 全局 </a></li>
                                     <li><a href="crm-contact.html"> 上传 </a></li>
