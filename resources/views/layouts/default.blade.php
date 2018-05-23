@@ -8,7 +8,7 @@
 
 		<link rel="shortcut icon" href="{{ asset('assets/images/favicon_1.ico') }}">
 
-		<title>@yield('title') - Weblog</title>
+		<title>@yield('title') - Lara</title>
 
 		<link rel="stylesheet" type="text/css" href="{{ asset('assets/css/bootstrap.min.css') }}" />
         <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/core.css') }}" />

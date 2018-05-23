@@ -12,7 +12,7 @@
 
     	<div class=" card-box">
             <div class="panel-heading">
-                <h3 class="text-center"> 登录 <strong class="text-custom">Weblog</strong> </h3>
+                <h3 class="text-center"> 登录 <strong class="text-custom">Lara</strong> </h3>
             </div>
 
             <div class="panel-body">
