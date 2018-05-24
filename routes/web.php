@@ -15,8 +15,8 @@
 Route::get('/', 'IndexController@index')->name('home');
 
 // 注册
-Route::get('signup', 'UsersController@create')->name('signup');
-Route::post('signup', 'UsersController@store')->name('signup');
+Route::get('signup', 'UserController@create')->name('signup');
+Route::post('signup', 'UserController@store')->name('signup');
 
 // 登录
 Route::get('login', 'LoginController@create')->name('login');
@@ -81,10 +81,14 @@ Route::group([
 	Route::get('page/destroy/{page}', 'PageController@destroy')->name('admin.page.destroy');
 
 	// 用户
-	Route::get('user/index', 'UsersController@index')->name('admin.user.index');
-	Route::get('user/create', 'UsersController@create')->name('admin.user.create');
-	Route::post('user/store', 'UsersController@store')->name('admin.user.store');
-	Route::get('user/edit/{user}', 'UsersController@edit')->name('admin.user.edit');
-	Route::patch('user/update/{user}', 'UsersController@update')->name('admin.user.update');
-	Route::get('user/destroy/{user}', 'UsersController@destroy')->name('admin.user.destroy');
+	Route::get('user/index', 'UserController@index')->name('admin.user.index');
+	Route::get('user/create', 'UserController@create')->name('admin.user.create');
+	Route::post('user/store', 'UserController@store')->name('admin.user.store');
+	Route::get('user/edit/{user}', 'UserController@edit')->name('admin.user.edit');
+	Route::patch('user/update/{user}', 'UserController@update')->name('admin.user.update');
+	Route::get('user/destroy/{user}', 'UserController@destroy')->name('admin.user.destroy');
+
+	// 评论
+	Route::get('comment/index', 'CommentController@index')->name('admin.comment.index');
+
 });
