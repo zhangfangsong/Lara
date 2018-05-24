@@ -15,7 +15,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'username', 'email', 'password', 'avatar', 'description',
+        'username', 'email', 'password', 'avatar', 'description', 'status', 'role_id',
     ];
 
     /**
@@ -26,4 +26,34 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    public static function add($info)
+    {
+        if(!is_array($info) || empty($info)){
+            return false;
+        }
+
+        $data = [
+            'username' => '',
+            'email' => '',
+            'password' => '',
+            'avatar' => '',
+            'description' => '',
+            'remember_token' => '',
+            'status' => 0,
+            'role_id' => 0
+        ];
+
+        foreach($info as $key => $val){
+            if(isset($data[$key])){
+                $data[$key] = $val;
+            }
+        }
+
+        if(isset($data['password'])){
+            $data['password'] = bcrypt($data['password']);
+        }
+
+        return self::create($data);
+    }
 }

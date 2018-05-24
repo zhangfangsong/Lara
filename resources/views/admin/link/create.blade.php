@@ -66,7 +66,9 @@
                                 <label class="col-md-2 control-label">Logo</label>
                                 <div class="col-md-10">
                                     <ul class="upload-wraper">
-
+                                        @if(isset($link->logo) && $link->logo)
+                                            <li><img src="{{ $link->logo }}" alt=""><input type="hidden" name="logo" value="{{ $link->logo }}"></li>
+                                        @endif
                                     </ul>
                                     <a href="javascript:void(0)" data-id="logo" data-num="one" class="btn btn-default J-ajax-upload">上传图片</a>
                                 </div>

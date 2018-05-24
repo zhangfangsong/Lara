@@ -34,3 +34,8 @@ label {
 	padding: 0px;
 	display: inline;
 }
+
+.J-ajax-upload {
+	position: relative;
+	top: -5px;
+}

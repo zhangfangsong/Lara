@@ -79,4 +79,12 @@ Route::group([
 	Route::get('page/edit/{page}', 'PageController@edit')->name('admin.page.edit');
 	Route::patch('page/update/{page}', 'PageController@update')->name('admin.page.update');
 	Route::get('page/destroy/{page}', 'PageController@destroy')->name('admin.page.destroy');
+
+	// 用户
+	Route::get('user/index', 'UsersController@index')->name('admin.user.index');
+	Route::get('user/create', 'UsersController@create')->name('admin.user.create');
+	Route::post('user/store', 'UsersController@store')->name('admin.user.store');
+	Route::get('user/edit/{user}', 'UsersController@edit')->name('admin.user.edit');
+	Route::patch('user/update/{user}', 'UsersController@update')->name('admin.user.update');
+	Route::get('user/destroy/{user}', 'UsersController@destroy')->name('admin.user.destroy');
 });
