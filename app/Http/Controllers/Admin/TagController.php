@@ -3,11 +3,10 @@
 namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
 use App\Models\Tag;
 use App\Http\Requests\Admin\TagRequest;
 
-class TagController extends Controller
+class TagController extends BaseController
 {
 	public function index()
 	{

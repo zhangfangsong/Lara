@@ -114,8 +114,8 @@
                             <li class="has_sub">
                                 <a href="javascript:void(0)" class="waves-effect"><i class="ti-user"></i><span> 设置 </span></a>
                                 <ul class="list-unstyled">
-                                    <li><a href=""> 全局 </a></li>
-                                    <li><a href=""> 上传 </a></li>
+                                    <li class="{{ active_class(if_route_param('tab', 'main')) }}"><a href="{{ route('admin.config', ['main']) }}"> 全局 </a></li>
+                                    <li class="{{ active_class(if_route_param('tab', 'upload')) }}"><a href="{{ route('admin.config', ['upload']) }}"> 上传 </a></li>
                                 </ul>
                             </li>
 

@@ -37,6 +37,9 @@ Route::group([
 	Route::get('repass', 'IndexController@repass')->name('admin.repass');
 	Route::post('repass', 'IndexController@repassUpdate')->name('admin.repass');
 
+	Route::get('config/{tab}', 'ConfigController@index')->name('admin.config');
+	Route::post('config/{tab}', 'ConfigController@store')->name('admin.config');
+
 	// 分类
 	Route::get('category/index', 'CategoryController@index')->name('admin.category.index');
 	Route::get('category/create', 'CategoryController@create')->name('admin.category.create');

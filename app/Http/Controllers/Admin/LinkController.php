@@ -3,11 +3,10 @@
 namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
 use App\Models\Link;
 use App\Http\Requests\Admin\LinkRequest;
 
-class LinkController extends Controller
+class LinkController extends BaseController
 {
 	public function index()
 	{

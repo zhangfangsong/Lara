@@ -3,11 +3,10 @@
 namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
 use App\Models\Page;
 use App\Http\Requests\Admin\PageRequest;
 
-class PageController extends Controller
+class PageController extends BaseController
 {
 	public function index()
 	{

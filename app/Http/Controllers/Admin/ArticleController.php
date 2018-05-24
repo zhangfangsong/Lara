@@ -3,7 +3,6 @@
 namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
 use App\Models\Article;
 use App\Http\Requests\Admin\ArticleRequest;
 use App\Models\Category;
@@ -11,7 +10,7 @@ use App\Handlers\Level;
 use Auth;
 use App\Models\Tag;
 
-class ArticleController extends Controller
+class ArticleController extends BaseController
 {
 	public function index()
 	{

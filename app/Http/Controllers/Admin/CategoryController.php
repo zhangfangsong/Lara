@@ -3,12 +3,11 @@
 namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\CategoryRequest;
 use App\Models\Category;
 use App\Handlers\Level;
 
-class CategoryController extends Controller
+class CategoryController extends BaseController
 {
 	public function index(Level $level)
 	{
