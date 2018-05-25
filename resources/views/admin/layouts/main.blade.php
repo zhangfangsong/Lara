@@ -105,6 +105,7 @@
                                     <li class="{{ active_class(if_route_pattern('admin.article.*')) }}"><a href="{{ route('admin.article.index') }}">文章</a></li>
                                     <li class="{{ active_class(if_route_pattern('admin.category.*')) }}"><a href="{{ route('admin.category.index') }}">分类</a></li>
                                     <li class="{{ active_class(if_route_pattern('admin.user.*')) }}"><a href="{{ route('admin.user.index') }}">用户</a></li>
+                                    <li class="{{ active_class(if_route_pattern('admin.role.*')) }}"><a href="{{ route('admin.role.index') }}">角色</a></li>
                                     <li class="{{ active_class(if_route_pattern('admin.comment.*')) }}"><a href="{{ route('admin.comment.index') }}">评论</a></li>
                                     <li class="{{ active_class(if_route_pattern('admin.tag.*')) }}"><a href="{{ route('admin.tag.index') }}">标签</a></li>
                                     <li class="{{ active_class(if_route_pattern('admin.page.*')) }}"><a href="{{ route('admin.page.index') }}">页面</a></li>

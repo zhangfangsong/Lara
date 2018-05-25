@@ -88,6 +88,14 @@ Route::group([
 	Route::patch('user/update/{user}', 'UserController@update')->name('admin.user.update');
 	Route::get('user/destroy/{user}', 'UserController@destroy')->name('admin.user.destroy');
 
+	// 角色
+	Route::get('role/index', 'RoleController@index')->name('admin.role.index');
+	Route::get('role/create', 'RoleController@create')->name('admin.role.create');
+	Route::post('role/store', 'RoleController@store')->name('admin.role.store');
+	Route::get('role/edit/{role}', 'RoleController@edit')->name('admin.role.edit');
+	Route::patch('role/update/{role}', 'RoleController@update')->name('admin.role.update');
+	Route::get('role/destroy/{role}', 'RoleController@destroy')->name('admin.role.destroy');
+
 	// 评论
 	Route::get('comment/index', 'CommentController@index')->name('admin.comment.index');
 

@@ -1,8 +1,9 @@
 <?php
 
 use Illuminate\Database\Seeder;
+use App\Models\Role;
 
-class DatabaseSeeder extends Seeder
+class RolesTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -11,8 +12,7 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-    	$this->call([
-    		RolesTableSeeder::class,
-    	]);
+    	$roles = factory(Role::class)->times(1)->make();
+    	Role::insert($roles->toArray());
     }
 }
