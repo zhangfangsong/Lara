@@ -37,6 +37,11 @@ class User extends Authenticatable
         return $this->hasMany(Comment::class, 'at_id');
     }
 
+    public function role()
+    {
+        return $this->belongsTo(Role::class);
+    }
+
     public static function add($info)
     {
         if(!is_array($info) || empty($info)){
@@ -51,7 +56,7 @@ class User extends Authenticatable
             'description' => '',
             'remember_token' => '',
             'status' => 0,
-            'role_id' => 0
+            'role_id' => 2
         ];
 
         foreach($info as $key => $val){

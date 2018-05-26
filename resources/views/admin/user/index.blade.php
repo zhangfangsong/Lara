@@ -68,7 +68,7 @@
 							</td>
 							<td>{{ $val->username }}</td>
 							<td>{{ $val->email }}</td>
-							<td>{{ $val->role_id == 1 ? '管理员' : '注册用户' }}</td>
+							<td><span class="label label-table label-default">{{ $val->role->name }}</span></td>
 							<td>{{ $val->created_at->diffForHumans() }}</td>
 							<td><span class="label label-table {{ $val->status == 1 ? 'label-default' : 'label-warning' }}">{{ $val->status == 1 ? '正常' : '禁用' }}</span></td>
 							<td>

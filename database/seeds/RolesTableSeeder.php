@@ -12,7 +12,19 @@ class RolesTableSeeder extends Seeder
      */
     public function run()
     {
-    	$roles = factory(Role::class)->times(1)->make();
-    	Role::insert($roles->toArray());
+    	$roles = [
+            [
+                'name' => '创始人',
+                'nodes' => 'all',
+                'description' => '网站创始人',
+            ],
+            [
+                'name' => '注册用户',
+                'nodes' => '',
+                'description' => '注册用户',
+            ],
+        ];
+
+    	Role::insert($roles);
     }
 }

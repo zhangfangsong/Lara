@@ -14,19 +14,20 @@
 // 首页
 Route::get('/', 'IndexController@index')->name('home');
 
-// 注册
-Route::get('signup', 'UserController@create')->name('signup');
-Route::post('signup', 'UserController@store')->name('signup');
+Route::group([
+	'middleware' => 'guest',
+], function (){
+	Route::get('signup', 'UserController@create')->name('signup');
+	Route::post('signup', 'UserController@store')->name('signup');
 
-// 登录
-Route::get('login', 'LoginController@create')->name('login');
-Route::post('login', 'LoginController@store')->name('login');
-
+	Route::get('login', 'LoginController@create')->name('login');
+	Route::post('login', 'LoginController@store')->name('login');
+});
 
 Route::group([
 	'prefix' => 'admin',
 	'namespace' => 'Admin',
-	'middleware' => 'auth',
+	'middleware' => ['auth', 'privilege'],
 ], function (){
 	Route::get('/', 'IndexController@index')->name('admin.home');
 	Route::get('logout', 'IndexController@logout')->name('admin.logout');

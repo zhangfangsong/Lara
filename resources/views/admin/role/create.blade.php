@@ -31,7 +31,7 @@
                 <form class="form-horizontal" role="form" action="{{ route('admin.role.store') }}" method="POST">
             @endif
             	{{ csrf_field() }}
-                <input type="hidden" name="nodes" value="0">
+                <input type="hidden" name="nodes" value="">
 
                 <div class="row">
                     <div class="col-lg-12">

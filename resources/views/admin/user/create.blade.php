@@ -92,8 +92,9 @@
                                 <label class="col-md-2 control-label">角色</label>
                                 <div class="col-md-2">
                                     <select class="form-control" name="role_id">
-                                       <option @if(isset($user->role_id) && $user->role_id == 0) selected @endif value="0">注册用户</option>
-                                       <option @if(isset($user->role_id) && $user->role_id == 1) selected @endif value="1">管理员</option>
+                                       @foreach($roles as $val)
+                                       <option @if(isset($user->role_id) && $user->role_id == $val->id) selected @endif value="{{ $val->id }}">{{ $val->name }}</option>
+                                       @endforeach
                                     </select>
                                 </div>
                             </div>

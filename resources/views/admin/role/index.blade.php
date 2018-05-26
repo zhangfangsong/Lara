@@ -60,12 +60,12 @@
 						@foreach($list as $val)
 						<tr>
 							<td>{{ $val->id }}</td>
-							<td>{{ $val->name }}</td>
+							<td><span class="label label-table label-default">{{ $val->name }}</span></td>
 							<td>{{ $val->description }}</td>
 							<td>{{ $val->nodes }}</td>
 							<td>
-								<a href="{{ route('admin.role.edit', $val->id) }}" class="btn btn-default waves-effect waves-light btn-xs m-l-5"><i class="fa fa-pencil"></i></a>
-								<a href="{{ route('admin.role.destroy', $val->id) }}" class="btn btn-danger waves-effect waves-light btn-xs m-l-5"><i class="fa fa-remove"></i></a>
+								<a href="{{ route('admin.role.edit', $val->id) }}" class="btn btn-default waves-effect waves-light btn-xs m-l-5 {{ in_array($val->id, [1,2]) ? 'disabled' : '' }}"><i class="fa fa-pencil"></i></a>
+								<a href="{{ route('admin.role.destroy', $val->id) }}" class="btn btn-danger waves-effect waves-light btn-xs m-l-5 {{ in_array($val->id, [1,2]) ? 'disabled' : '' }}"><i class="fa fa-remove"></i></a>
 							</td>
 						</tr>
 						@endforeach

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use App\Models\User;
 use App\Http\Requests\Admin\UserRequest;
+use App\Models\Role;
 
 class UserController extends BaseController
 {
@@ -16,7 +17,8 @@ class UserController extends BaseController
 
 	public function create()
 	{
-		return view('admin.user.create');
+		$roles = Role::all();
+		return view('admin.user.create', ['roles'=> $roles]);
 	}
 
 	public function store(UserRequest $request)
@@ -28,7 +30,8 @@ class UserController extends BaseController
 
 	public function edit(User $user)
 	{
-		return view('admin.user.create', ['user'=> $user]);
+		$roles = Role::all();
+		return view('admin.user.create', ['user'=> $user, 'roles'=> $roles]);
 	}
 
 	public function update(UserRequest $request, User $user)
