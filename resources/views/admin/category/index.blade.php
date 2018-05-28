@@ -58,7 +58,7 @@
 						<tr>
 							<th>ID</th>
 							<th>名称</th>
-							<th>链接</th>
+							<th data-width="25%">链接</th>
 							<th class="text-center">排序</th>
 							<th class="text-center">状态</th>
 							<th class="text-center">操作</th>
@@ -71,7 +71,7 @@
 						<tr>
 							<td>{{ $val->id }}</td>
 							<td>{{ str_repeat('&nbsp;', ($val->level-1)*4).$val->name }}</td>
-							<td>{{ $val->getLinkUrl() }}</td>
+							<td width="120">{{ $val->getLinkUrl() }}</td>
 							<td>{{ $val->sort }}</td>
 							<td><span class="label label-table {{ $val->status == 1 ? 'label-default' : 'label-warning' }}">{{ $val->status == 1 ? '显示' : '隐藏' }}</span></td>
 							<td>
