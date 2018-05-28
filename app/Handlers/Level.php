@@ -9,7 +9,7 @@ class Level {
 
 		foreach($array as $val){
 			if($val[$parent] == $pid){
-				$val['level'] = $level + 1;
+				$val->level = $level + 1;
 				$arr[] = $val;
 				$arr = array_merge($arr,$this->formatOne($array,$val[$primary],$separator,$level+1,$primary,$parent));
 			}
@@ -26,7 +26,7 @@ class Level {
 			if($val['pid'] == $pid){
 				$child = $this->formatMulti($array,$val['id']);
 				if($child){
-					$val['child'] = $child;
+					$val->child = $child;
 				}
 				$arr[] = $val;
 			}

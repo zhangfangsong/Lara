@@ -25,7 +25,7 @@ class BaseController extends Controller
 
 		$navs = Category::orderBy('sort', 'desc')->get();
 		$level = new Level;
-		$navs = $level->formatOne($navs);
+		$navs = $level->formatMulti($navs);
 
 		$hot_articles = Article::getHot();
 

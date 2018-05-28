@@ -1,7 +1,8 @@
 
 @extends('layouts.main')
-@section('title', '首页')
+@section('title', $category->name)
 
 @section('content')
 	@include('index._article', ['list'=> $list])
+	@include('shared._page', ['list'=> $list])
 @stop
