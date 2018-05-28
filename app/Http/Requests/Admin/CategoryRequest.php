@@ -25,6 +25,7 @@ class CategoryRequest extends FormRequest
     {
         return [
             'name' => 'required|max:50',
+            'url' => 'nullable|url',
             'pid' => 'required|numeric',
             'sort' => 'required|numeric',
         ];
@@ -36,6 +37,7 @@ class CategoryRequest extends FormRequest
             'name' => '分类名称',
             'pid' => '父级分类',
             'sort' => '分类排序',
+            'url' => '分类链接',
         ];
     }
 }

@@ -61,6 +61,13 @@
                             </div>
 
                             <div class="form-group m-b-20">
+                                <label class="col-md-2 control-label">链接</label>
+                                <div class="col-md-2">
+                                    <input type="text" class="form-control" name="url" placeholder="请输入分类链接" value="{{ $category->url or old('url') }}">
+                                </div>
+                            </div>
+
+                            <div class="form-group m-b-20">
                                 <label class="col-md-2 control-label">描述</label>
                                 <div class="col-md-6">
                                 	<textarea name="description" class="form-control" rows="3" placeholder="请输入分类描述">{{ $category->description or old('description') }}</textarea>

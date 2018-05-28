@@ -16,4 +16,13 @@ class Category extends Model
 	{
 		return $this->hasMany(Article::class);
 	}
+
+	public function getLinkUrl()
+	{
+		if(!empty($this->url)){
+			return $this->url;
+		}
+
+		return route('category', $this->id);
+	}
 }

@@ -29,6 +29,7 @@ class CategoryController extends BaseController
 	{
 		$category = Category::create([
 			'name' => $request->name,
+			'url' => $request->url,
 			'pid' => $request->pid,
 			'description' => $request->description,
 			'status' => $request->status,

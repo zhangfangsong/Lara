@@ -39,3 +39,7 @@ label {
 	position: relative;
 	top: -5px;
 }
+
+.m-w-100 {
+	max-width: 100px;
+}
