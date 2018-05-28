@@ -64,8 +64,13 @@
 
                             <ul class="nav navbar-nav navbar-right pull-right">
                                 <li class="hidden-xs">
-                                    <a href="#" class="waves-effect waves-light">{{ Auth::user()->username }}</a>
+                                    <a href="{{ route('home') }}" class="waves-effect waves-light">网站</a>
                                 </li>
+
+                                <li class="hidden-xs">
+                                    <a href="{{ route('admin.profile') }}" class="waves-effect waves-light">{{ Auth::user()->username }}</a>
+                                </li>
+
                                 <li class="dropdown">
                                     <a href="" class="dropdown-toggle profile" data-toggle="dropdown" aria-expanded="true"><img src="{{ Auth::user()->avatar }}" alt="user-img" class="img-circle"> </a>
                                     <ul class="dropdown-menu">

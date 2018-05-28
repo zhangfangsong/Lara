@@ -34,4 +34,10 @@ class Tag extends Model
 
 		return self::create($data);
 	}
+
+	public static function getHot($limit = 20)
+	{
+		return self::where('status', 1)->orderBy('views', 'desc')->limit($limit)->get();
+	}
+
 }

@@ -11,4 +11,9 @@ class Link extends Model
 	];
 
 	public $timestamps = false;
+
+	public static function getAll()
+	{
+		return self::where('status', 1)->orderBy('sort', 'desc')->get();
+	}
 }

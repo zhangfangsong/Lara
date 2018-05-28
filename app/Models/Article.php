@@ -19,4 +19,20 @@ class Article extends Model
 	{
 		return $this->hasMany(Comment::class);
 	}
+
+	public function getLinkUrl()
+	{
+		return route('article', $this->id);
+	}
+
+	public static function getRecent($limit = 10)
+	{
+		return self::where('status', 1)->orderBy('id', 'desc')->limit($limit)->get();
+	}
+
+	public static function getHot($limit = 10)
+	{
+		return self::where('status', 1)->orderBy('views', 'desc')->limit($limit)->get();
+	}
+
 }

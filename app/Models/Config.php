@@ -17,7 +17,7 @@ class Config extends Model
 
 	protected static $expire_at = 120;
 
-	public static function getAll($tab)
+	public static function getAll($tab = '')
 	{
 		$list = Cache::remember(self::$cache_key, self::$expire_at, function (){
 			return self::all();
