@@ -6,6 +6,9 @@ use Illuminate\Http\Request;
 use App\Models\Article;
 use App\Models\Category;
 use App\Handlers\Level;
+use App\Http\Requests\CommentRequest;
+use App\Models\Comment;
+use Auth;
 
 class IndexController extends BaseController
 {
@@ -32,6 +35,21 @@ class IndexController extends BaseController
 	public function article(Article $article)
 	{
 		return view('index.article', ['article'=> $article]);
+	}
+
+	public function comment(Article $article, CommentRequest $request)
+	{
+		$comment = Comment::create([
+			'user_id' => Auth::user()->id,
+			'article_id' => $article->id,
+			'content' => $request->content,
+			'at_id' => 0,
+			'ip' => $request->getClientIp(),
+			'status' => 1,
+			'is_new' => 1,
+		]);
+
+		return redirect()->back()->with('success', '评论成功');
 	}
 
 	public function search(Request $request)

@@ -29,6 +29,12 @@ Route::group([
 });
 
 Route::group([
+	'middleware' => 'auth',
+], function (){
+	Route::post('{article}/comment', 'IndexController@comment')->name('comment');
+});
+
+Route::group([
 	'prefix' => 'admin',
 	'namespace' => 'Admin',
 	'middleware' => ['auth', 'privilege'],
