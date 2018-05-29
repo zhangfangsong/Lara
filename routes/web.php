@@ -13,8 +13,10 @@
 
 // 首页
 Route::get('/', 'IndexController@index')->name('home');
-Route::get('/cate/{category}.html', 'IndexController@category')->name('category');
-Route::get('/{article}.html', 'IndexController@article')->name('article');
+Route::get('cate/{category}.html', 'IndexController@category')->name('category');
+Route::get('{article}.html', 'IndexController@article')->name('article');
+Route::get('tag/{tag}.html', 'IndexController@search')->name('tag');
+Route::get('time/{time}.html', 'IndexController@search')->name('time');
 
 Route::group([
 	'middleware' => 'guest',

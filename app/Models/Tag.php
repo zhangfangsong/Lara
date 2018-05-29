@@ -40,4 +40,15 @@ class Tag extends Model
 		return self::where('status', 1)->orderBy('views', 'desc')->limit($limit)->get();
 	}
 
+	public function getLinkUrl()
+	{
+		return route('tag', $this->name);
+	}
+
+	public function getFontSize()
+	{
+		$size = (1200 + $this->views)/100;
+		return $size > 30 ? 30 : $size;
+	}
+
 }

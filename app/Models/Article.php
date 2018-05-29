@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use App\Handlers\Level;
+use DB;
 
 class Article extends Model
 {
@@ -16,7 +17,7 @@ class Article extends Model
 		return $this->belongsTo(Category::class);
 	}
 
-	public function comments()
+	public function comment()
 	{
 		return $this->hasMany(Comment::class);
 	}
@@ -24,6 +25,11 @@ class Article extends Model
 	public function getLinkUrl()
 	{
 		return route('article', $this->id);
+	}
+
+	public function getTimeUrl()
+	{
+		return route('time', $this->created_at->toDateString());
 	}
 
 	public static function getRecent($limit = 10)
@@ -34,6 +40,12 @@ class Article extends Model
 	public static function getHot($limit = 10)
 	{
 		return self::where('status', 1)->orderBy('views', 'desc')->limit($limit)->get();
+	}
+
+	public static function getFile()
+	{
+		$files = DB::table('articles')->select(DB::raw('count(*) as num, substring(created_at, 1, 7) as pub_date'))->groupBy('pub_date')->orderBy('pub_date', 'desc')->get();
+		return $files;
 	}
 
 	public function getPrev()
@@ -58,6 +70,15 @@ class Article extends Model
 		}
 
 		return '没有了';
+	}
+
+	public function getTags()
+	{
+		if($this->keyword){
+			return explode(',', $this->keyword);
+		}
+
+		return [];
 	}
 
 	public function getChildArr($category_id)

@@ -17,13 +17,6 @@ class IndexController extends BaseController
 	public function index()
 	{
 		$list = Article::getRecent();
-		if($list->count()){
-			foreach($list as $key => $val){
-				if($val->keyword){
-					$list[$key]->keyword = explode(',', $val->keyword);
-				}
-			}
-		}
 		return view('index.index', ['list'=> $list]);
 	}
 
@@ -32,20 +25,17 @@ class IndexController extends BaseController
 		$categorys = Category::all();
 		$childs_id_arr = $level->formatChild($categorys, $category->id);
 		$list = Article::where('status', 1)->whereIn('category_id', $childs_id_arr)->orderBy('id', 'desc')->paginate(10);
-		if($list->count()){
-			foreach($list as $key => $val){
-				if($val->keyword){
-					$list[$key]->keyword = explode(',', $val->keyword);
-				}
-			}
-		}
 
 		return view('index.category', ['list'=>$list, 'category'=>$category]);
 	}
 
 	public function article(Article $article)
 	{
-		dd($article->comments);
 		return view('index.article', ['article'=> $article]);
+	}
+
+	public function search(Request $request)
+	{
+		dd($request->tag);
 	}
 }

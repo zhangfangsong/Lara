@@ -43,9 +43,9 @@
 				<li><a href="{{ $val->getLinkUrl() }}">{{ $val->name }}</a>
 					<ul class="sub-menu">
 						@if(isset($val->child))
-						@foreach($val->child as $v)
-						<li><a href="{{ $v->getLinkUrl() }}">{{ $v->name }}</a></li>
-						@endforeach
+							@foreach($val->child as $v)
+								<li><a href="{{ $v->getLinkUrl() }}">{{ $v->name }}</a></li>
+							@endforeach
 						@endif
 					</ul>
 				</li>
@@ -104,7 +104,7 @@
 				<h3 class="widget-title">文章归档</h3>
 				<ul>
 					@foreach($files as $val)
-					<li><a href="" title="">2018</a>&nbsp;<font style="color:#7a7a7a;">(20)</font></li>
+						<li><a href="{{ route('time', $val->pub_date) }}" title="{{ $val->pub_date }}">{{ date('Y年m月', strtotime($val->pub_date)) }}</a>&nbsp;<font style="color:#7a7a7a;">({{ $val->num }})</font></li>
 					@endforeach
 				</ul>
 			</aside>
@@ -123,20 +123,19 @@
 				<ul>
 					<li class="cat-item cat-item-2">
 						@foreach($tags as $val)
-						<a href="" title="{{ $val->name }}" style="font-size:12px;text-decoration:none;">{{ $val->name }}</a> &nbsp;
+						<a href="{{ $val->getLinkUrl() }}" title="{{ $val->name }}" style="font-size:{{ $val->getFontSize()  }}px;text-decoration:none;">{{ $val->name }}</a> &nbsp;
 						@endforeach
 					</li>
 				</ul>
 			</aside>
 		</div>
-
 	</div>
 
 	<footer id="colophon" role="contentinfo">
 		<div class="site-info">
 			<span>友情链接：</span>
 			@foreach($links as $val)
-			<a href="{{ $val->url }}" target="_blank">{{ $val->name }}</a>
+			<a href="{{ $val->url }}" {{ $val->target ? 'target="_blank"' : '' }}>{{ $val->name }}</a>
 			@endforeach
 		</div>
 	</footer>

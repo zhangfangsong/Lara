@@ -31,9 +31,9 @@ class BaseController extends Controller
 
 		$comments = Comment::getRecent();
 
-		$files = [];
+		$files = Article::getFile();
 
-		$tags = Tag::getHot();
+		$tags = Tag::getHot()->shuffle();
 
 		$links = Link::getAll();
 
