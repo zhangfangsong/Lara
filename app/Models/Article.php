@@ -81,6 +81,36 @@ class Article extends Model
 		return [];
 	}
 
+	public static function getSearch($request)
+	{
+		$tag = $request->tag;
+		$time = $request->time;
+		$keyword = $request->keyword;
+
+		$map = [
+			'status' => 1,
+		];
+
+		$search = '';
+
+		if($tag){
+			$map[] = ['keyword', 'like', "%$tag%"];
+			$search = $tag;
+		}
+		if($keyword){
+			$map[] = ['title', 'like', "%$keyword%"];
+			$search = $keyword;
+		}
+		if($time){
+			$map[] = ['created_at', 'like', "$time%"];
+			$search = $time;
+		}
+
+		$list = self::where($map)->orderBy('id', 'desc')->paginate(10);
+
+		return ['list'=> $list, 'search'=> $search];
+	}
+
 	public function getChildArr($category_id)
 	{
 		static $childs_id_arr = [];

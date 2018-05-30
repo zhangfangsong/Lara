@@ -5,11 +5,12 @@
 		<h1 class="entry-title"><a href="{{ $val->getLinkUrl() }}" title="{{ $val->title }}" rel="bookmark">{{ $val->title }}</a></h1>
 	</header>
 
+	{{--
 	@if($val->thumb)
 		<div class="entry-content">
 			<img src="{{ $val->thumb }}" alt="{{ $val->title }}">
 		</div>
-	@endif
+	@endif --}}
 
 	<div class="entry-content">{{ $val->description }}</div>
 

@@ -17,6 +17,7 @@ Route::get('cate/{category}.html', 'IndexController@category')->name('category')
 Route::get('{article}.html', 'IndexController@article')->name('article');
 Route::get('tag/{tag}.html', 'IndexController@search')->name('tag');
 Route::get('time/{time}.html', 'IndexController@search')->name('time');
+Route::get('search/{keyword}.html', 'IndexController@search')->name('search');
 
 Route::group([
 	'middleware' => 'guest',

@@ -13,9 +13,6 @@
 	<title>@yield('title', '首页') - {{ $cfg->title }}</title>
 	<meta name="keywords" content="{{ $cfg->keyword }}"/>
 	<meta name="description" content="{{ $cfg->description }}" />
-	<!--[if lt IE 9]>
-	<script src="{{ asset('front/js/html5.js') }}" type="text/javascript"></script>
-	<![endif]-->
 	<link rel="stylesheet" id="twentytwelve-style-css" href="{{ asset('front/css/index.css') }}" type="text/css" media="all" />
 	<!--[if lt IE 9]>
 	<link rel="stylesheet" id="twentytwelve-ie-css"  href="{{ asset('front/css/ie.css') }}" type="text/css" media="all" />
@@ -24,6 +21,12 @@
 	<style type="text/css" id="custom-background-css">
 		body.custom-background {background-color: #e6e6e6; }
 	</style>
+
+	<!--[if lt IE 9]>
+	<script src="{{ asset('front/js/html5.js') }}" type="text/javascript"></script>
+	<![endif]-->
+	<script type="text/javascript" src="{{ asset('front/js/jquery.js') }}"></script>
+	<script type="text/javascript" src="{{ asset('front/js/nav.js') }}"></script>
 </head>
 
 <body class="home blog custom-background custom-font-enabled single-author">
@@ -67,15 +70,14 @@
 					<div>
 						<label class="screen-reader-text" for="s">搜索：</label>
 						<input onfocus="if(this.value=='搜索神马的最有爱了'){this.value='';}" onblur="if(this.value==''){this.value='搜索神马的最有爱了';}" type="text" value="搜索神马的最有爱了" name="keywords" id="s" style="color:#aaa;"/>
-						<input type="submit" id="searchsubmit" value="搜索" />
+						<input type="submit" class="btn btn-default" id="searchsubmit" value="搜索" />
 					</div>
 				</form>
 
-				<script type="text/javascript" src="{{ asset('front/js/jquery.js') }}"></script>
 				<script type="text/javascript">
 					$(function (){
 						$("#searchsubmit").click(function (){
-							location.href = "/search/"+$("#s").val()+'.html';
+							location.href = "{{ route('home') }}" + "/search/"+$("#s").val()+'.html';
 							return false;
 						});
 					});
@@ -148,8 +150,6 @@
 	</footer>
 
 </div>
-
-<script type="text/javascript" src="{{ asset('front/js/nav.js') }}"></script>
 
 </body>
 </html>

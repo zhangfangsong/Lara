@@ -34,6 +34,7 @@ class IndexController extends BaseController
 
 	public function article(Article $article)
 	{
+		Article::where('id', $article->id)->increment('views');
 		return view('index.article', ['article'=> $article]);
 	}
 
@@ -54,6 +55,7 @@ class IndexController extends BaseController
 
 	public function search(Request $request)
 	{
-		dd($request->tag);
+		$data = Article::getSearch($request);
+		return view('index.search', $data);
 	}
 }
