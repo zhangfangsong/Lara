@@ -632,7 +632,7 @@ footer[role="contentinfo"] {
 	clear: both;
 	font-size: 12px;
 	font-size: 0.857142857rem;
-	
+
 	margin-top: 24px;
 	margin-top: 1.714285714rem;
 	margin-left: auto;
@@ -909,7 +909,7 @@ img.aligncenter {
 .site-content article {
 	border-bottom: 4px double #ededed;
 	margin-bottom: 72px;
-	margin-bottom: 1.142857143rem;
+	margin-bottom: 3.142857143rem;
 	padding-bottom: 24px;
 	padding-bottom: 1.714285714rem;
 	word-wrap: break-word;

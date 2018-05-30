@@ -38,10 +38,17 @@ Route::group([
 Route::group([
 	'prefix' => 'admin',
 	'namespace' => 'Admin',
+	'middleware' => 'auth',
+], function (){
+	Route::get('logout', 'IndexController@logout')->name('admin.logout');
+});
+
+Route::group([
+	'prefix' => 'admin',
+	'namespace' => 'Admin',
 	'middleware' => ['auth', 'privilege'],
 ], function (){
 	Route::get('/', 'IndexController@index')->name('admin.home');
-	Route::get('logout', 'IndexController@logout')->name('admin.logout');
 	Route::post('upload', 'IndexController@upload')->name('admin.upload');
 
 	Route::get('profile', 'IndexController@profile')->name('admin.profile');
