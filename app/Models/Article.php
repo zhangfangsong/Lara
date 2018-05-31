@@ -54,7 +54,7 @@ class Article extends Model
 		$article = self::where('status', 1)->where('id','<',$this->id)->whereIn('category_id', $category_ids)->orderBy('id','desc')->first();
 
 		if($article){
-			return '<a href="'.$this->getLinkUrl().'">'.$this->title.'</a>';
+			return '<a href="'.$article->getLinkUrl().'">'.e($article->title).'</a>';
 		}
 
 		return '没有了';
@@ -66,7 +66,7 @@ class Article extends Model
 		$article = self::where('status', 1)->where('id','>',$this->id)->whereIn('category_id', $category_ids)->orderBy('id','asc')->first();
 
 		if($article){
-			return '<a href="'.$this->getLinkUrl().'">'.$this->title.'</a>';
+			return '<a href="'.$article->getLinkUrl().'">'.e($article->title).'</a>';
 		}
 
 		return '没有了';

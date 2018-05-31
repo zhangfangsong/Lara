@@ -1,10 +1,10 @@
 <?php
 
 use Illuminate\Database\Seeder;
-use App\Models\Role;
+use App\Models\Config;
 use App\Handlers\Install;
 
-class RolesTableSeeder extends Seeder
+class ConfigsTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -13,8 +13,7 @@ class RolesTableSeeder extends Seeder
      */
     public function run()
     {
-    	$roles = Install::getData('role');
-
-    	Role::insert($roles);
+    	$configs = Install::getData('config');
+    	Config::insert($configs);
     }
 }

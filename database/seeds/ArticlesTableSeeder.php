@@ -1,10 +1,10 @@
 <?php
 
 use Illuminate\Database\Seeder;
-use App\Models\Role;
+use App\Models\Article;
 use App\Handlers\Install;
 
-class RolesTableSeeder extends Seeder
+class ArticlesTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -13,8 +13,7 @@ class RolesTableSeeder extends Seeder
      */
     public function run()
     {
-    	$roles = Install::getData('role');
-
-    	Role::insert($roles);
+    	$articles = Install::getData('article');
+    	Article::insert($articles);
     }
 }
