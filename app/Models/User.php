@@ -55,7 +55,7 @@ class User extends Authenticatable
             'avatar' => '',
             'description' => '',
             'remember_token' => '',
-            'status' => 0,
+            'status' => 1,
             'role_id' => 2
         ];
 

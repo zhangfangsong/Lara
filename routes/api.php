@@ -13,4 +13,14 @@ use Illuminate\Http\Request;
 |
 */
 
+$api = app('Dingo\Api\Routing\Router');
+
 Route::get('install/{model}', 'Install\IndexController@index')->name('install');
+
+$api->version('v1', [
+	'namespace' => 'App\Http\Controllers\Api',
+], function ($api){
+	$api->get('index', 'IndexController@index')->name('api.home');
+	$api->post('users', 'UserController@store')->name('api.signup');
+});
+
