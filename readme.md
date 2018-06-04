@@ -19,9 +19,13 @@
 效果：
 
 ![登录页][3]
+
 ![首页][4]
+
 ![文章列表 - 后台][5]
+
 ![新增文章 - 后台][6]
+
 ![编辑文章 - 后台][7]
   
   **后续开发计划**
@@ -32,7 +36,7 @@
   [1]: https://github.com/zhangfangsong/Lara
   [2]: http://lara.zfsphp.com/
   [3]: http://www.zfsphp.com/uploads/20180530/82f05c12aab2f666fa197593aa52c57c.png
-  [4]: http://www.zfsphp.com/uploads/20180601/202827190089b60a12a39ebb72b1e746.png
+  [4]: http://www.zfsphp.com/uploads/20180603/0d5f3474f6b5d265737092ff10e8876b.jpg
   [5]: http://www.zfsphp.com/uploads/20180530/e769e25687b60ef26daae951d1a89160.png
   [6]: http://www.zfsphp.com/uploads/20180530/d234555ab108ae8882912eea8d7a562b.png
   [7]: http://www.zfsphp.com/uploads/20180530/c880b4f47a680466a1b253e3d8394f73.png
