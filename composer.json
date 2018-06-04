@@ -6,6 +6,7 @@
     "type": "project",
     "require": {
         "php": ">=7.0.0",
+        "dingo/api": "2.0.0-alpha2",
         "doctrine/dbal": "^2.7",
         "fideloper/proxy": "~3.3",
         "guzzlehttp/guzzle": "~6.3",
@@ -13,7 +14,7 @@
         "laravel/framework": "5.5.*",
         "laravel/tinker": "~1.0",
         "overtrue/laravel-lang": "~3.0",
-        "dingo/api":"2.0.0-alpha2"
+        "tymon/jwt-auth": "1.0.0-rc.2"
     },
     "require-dev": {
         "filp/whoops": "~2.0",

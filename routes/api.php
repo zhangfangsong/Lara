@@ -26,8 +26,14 @@ $api->version('v1', [
 		'expires' => config('api.rate_limits.sign.expires'),
 	], function ($api){
 		$api->get('index', 'IndexController@index')->name('api.home');
+		// 注册
 		$api->post('users', 'UserController@store')->name('api.signup');
+		// 登录
+		$api->post('login', 'LoginController@store')->name('api.login');
 
+		// 刷新,删除
+		$api->put('refresh', 'UserController@update')->name('api.refresh');
+		$api->delete('logout', 'UserController@destroy')->name('api.logout');
 	});
 });
 
