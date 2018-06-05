@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\User;
 use App\Http\Requests\Api\UserRequest;
 use Auth;
+use App\Transformers\UserTransformer;
 
 class UserController extends BaseController
 {
@@ -17,7 +18,12 @@ class UserController extends BaseController
 			'password' => $request->password
 		]);
 
-		return $this->response->created();
+		return $this->response->item($user, new UserTransformer())
+		->setMeta([
+			'access_token' => Auth::guard('api')->fromUser($user),
+			'token_type' => 'Bearer',
+			'expires_in' => Auth::guard('api')->factory()->getTTL() * 60,
+		])->setStatusCode(201);
 	}
 
 	public function update()
@@ -30,6 +36,11 @@ class UserController extends BaseController
 	{
 		Auth::guard('api')->logout();
 		return $this->response->noContent();
+	}
+
+	public function me()
+	{
+		return $this->response->item($this->user(), new UserTransformer());
 	}
 
 	protected function responseWithToken($token)

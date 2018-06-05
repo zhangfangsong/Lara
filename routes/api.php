@@ -2,23 +2,13 @@
 
 use Illuminate\Http\Request;
 
-/*
-|--------------------------------------------------------------------------
-| API Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register API routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| is assigned the "api" middleware group. Enjoy building your API!
-|
-*/
-
 $api = app('Dingo\Api\Routing\Router');
 
 Route::get('install/{model}', 'Install\IndexController@index')->name('install');
 
 $api->version('v1', [
 	'namespace' => 'App\Http\Controllers\Api',
+	'middleware' => 'serializer:array',
 ], function ($api){
 	$api->group([
 		'middleware' => 'api.throttle',
@@ -31,9 +21,13 @@ $api->version('v1', [
 		// 登录
 		$api->post('login', 'LoginController@store')->name('api.login');
 
-		// 刷新,删除
-		$api->put('refresh', 'UserController@update')->name('api.refresh');
-		$api->delete('logout', 'UserController@destroy')->name('api.logout');
+		$api->group(['middleware'=>'api.auth'], function ($api){
+			$api->put('refresh', 'UserController@update')->name('api.refresh');
+			$api->delete('logout', 'UserController@destroy')->name('api.logout');
+			$api->get('user', 'UserController@me')->name('api.user.show');
+
+		});
+
 	});
 });
 
