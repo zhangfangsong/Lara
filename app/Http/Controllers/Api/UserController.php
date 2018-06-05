@@ -26,7 +26,7 @@ class UserController extends BaseController
 		])->setStatusCode(201);
 	}
 
-	public function update()
+	public function refresh()
 	{
 		$token = Auth::guard('api')->refresh();
 		return $this->responseWithToken($token);
@@ -41,6 +41,15 @@ class UserController extends BaseController
 	public function me()
 	{
 		return $this->response->item($this->user(), new UserTransformer());
+	}
+
+	public function update(UserRequest $request)
+	{
+		$user = $this->user();
+		$data = $request->only(['username', 'email', 'description', 'avatar']);
+		$user->update($data);
+
+		return $this->response->item($user, new UserTransformer());
 	}
 
 	protected function responseWithToken($token)

@@ -22,10 +22,13 @@ $api->version('v1', [
 		$api->post('login', 'LoginController@store')->name('api.login');
 
 		$api->group(['middleware'=>'api.auth'], function ($api){
-			$api->put('refresh', 'UserController@update')->name('api.refresh');
+			$api->put('refresh', 'UserController@refresh')->name('api.refresh');
 			$api->delete('logout', 'UserController@destroy')->name('api.logout');
-			$api->get('user', 'UserController@me')->name('api.user.show');
 
+			$api->get('user', 'UserController@me')->name('api.user.show');
+			$api->patch('user', 'UserController@update')->name('api.user.update');
+
+			$api->post('images', 'ImageController@store')->name('api.images.store');
 		});
 
 	});
