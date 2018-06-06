@@ -21,6 +21,8 @@ $api->version('v1', [
 		// 登录
 		$api->post('login', 'LoginController@store')->name('api.login');
 
+		$api->get('categories', 'CategoryController@index')->name('api.categories.index');
+
 		$api->group(['middleware'=>'api.auth'], function ($api){
 			$api->put('refresh', 'UserController@refresh')->name('api.refresh');
 			$api->delete('logout', 'UserController@destroy')->name('api.logout');

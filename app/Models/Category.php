@@ -25,4 +25,9 @@ class Category extends Model
 
 		return route('category', $this->id);
 	}
+
+	public static function getAppCategory()
+	{
+		return self::where(['status'=> 1, 'pid'=> 0])->orderBy('sort', 'desc')->get();
+	}
 }

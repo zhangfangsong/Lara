@@ -23,7 +23,7 @@ class BaseController extends Controller
 	{
 		$cfg = (object)Config::getAll();
 
-		$navs = Category::orderBy('sort', 'desc')->get();
+		$navs = Category::where('status', 1)->orderBy('sort', 'desc')->get();
 		$level = new Level;
 		$navs = $level->formatMulti($navs);
 
