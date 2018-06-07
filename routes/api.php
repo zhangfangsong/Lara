@@ -8,7 +8,7 @@ Route::get('install/{model}', 'Install\IndexController@index')->name('install');
 
 $api->version('v1', [
 	'namespace' => 'App\Http\Controllers\Api',
-	'middleware' => 'serializer:array',
+	'middleware' => ['serializer:array', 'bindings'],
 ], function ($api){
 	$api->group([
 		'middleware' => 'api.throttle',
@@ -22,6 +22,8 @@ $api->version('v1', [
 		$api->post('login', 'LoginController@store')->name('api.login');
 
 		$api->get('categories', 'CategoryController@index')->name('api.categories.index');
+		$api->get('articles', 'ArticleController@index')->name('api.articles.index');
+		$api->get('article/{article}', 'ArticleController@show')->name('api.articles.show');
 
 		$api->group(['middleware'=>'api.auth'], function ($api){
 			$api->put('refresh', 'UserController@refresh')->name('api.refresh');
@@ -29,6 +31,8 @@ $api->version('v1', [
 
 			$api->get('user', 'UserController@me')->name('api.user.show');
 			$api->patch('user', 'UserController@update')->name('api.user.update');
+
+			$api->get('articles/{user}', 'ArticleController@my')->name('api.articles.my');
 
 			$api->post('images', 'ImageController@store')->name('api.images.store');
 		});

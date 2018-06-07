@@ -33,6 +33,11 @@ class User extends Authenticatable implements JWTSubject
         return $this->hasMany(Comment::class);
     }
 
+    public function articles()
+    {
+        return $this->hasMany(Article::class);
+    }
+
     public function atComments()
     {
         return $this->hasMany(Comment::class, 'at_id');
