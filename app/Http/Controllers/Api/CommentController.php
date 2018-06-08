@@ -10,6 +10,12 @@ use App\Transformers\CommentTransformer;
 
 class CommentController extends BaseController
 {
+	public function index(Article $article)
+	{
+		$comments = $article->comment()->paginate(10);
+		return $this->response->paginator($comments, new CommentTransformer());
+	}
+
 	public function store(CommentRequest $request, Article $article, Comment $comment)
 	{
 		$comment->content = $request->content;
