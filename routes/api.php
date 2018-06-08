@@ -33,6 +33,8 @@ $api->version('v1', [
 			$api->patch('user', 'UserController@update')->name('api.user.update');
 
 			$api->get('articles/{user}', 'ArticleController@my')->name('api.articles.my');
+			$api->post('article/{article}/comments', 'CommentController@store')->name('api.comments.store');
+			$api->delete('article/{article}/comments/{comment}', 'CommentController@destroy')->name('api.comments.destroy');
 
 			$api->post('images', 'ImageController@store')->name('api.images.store');
 		});

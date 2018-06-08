@@ -2,7 +2,7 @@
 
 namespace App\Http\Requests\Api;
 
-class ImageRequest extends FormRequest
+class CommentRequest extends FormRequest
 {
     /**
      * Get the validation rules that apply to the request.
@@ -12,14 +12,14 @@ class ImageRequest extends FormRequest
     public function rules()
     {
         return [
-            'image' => 'required|mimes:jpg,jpeg,png,gif|dimensions:min_width=200,min_height=200',
+            'content' => 'required|min:2',
         ];
     }
 
-    public function messages()
+    public function attributes()
     {
         return [
-            'image.dimensions' => '请上传200*200以上的图片',
+            'content' => '评论内容',
         ];
     }
 }
