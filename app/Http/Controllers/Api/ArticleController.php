@@ -17,13 +17,55 @@ class ArticleController extends BaseController
 			'status' => 1
 		];
 
+		$limit = $request->limit;
+		$article_id = $request->aid;
+
+		if(!$limit){
+			$limit = 3;
+		}
+		if($article_id){
+			$map[] = ['id', '<', $article_id];
+		}
+
 		if($category_id = $request->category_id){
 			$categorys = Category::all();
 			$childs_id_arr = $level->formatChild($categorys, $category_id);
-			$articles = Article::where($map)->whereIn('category_id', $childs_id_arr)->orderBy('id', 'desc')->paginate(5);
+			$articles = Article::where($map)->whereIn('category_id', $childs_id_arr)->orderBy('id', 'desc')->limit($limit)->get();
 		}else{
-			$articles = Article::where($map)->orderBy('id', 'desc')->paginate(5);
+			$articles = Article::where($map)->orderBy('id', 'desc')->limit($limit)->get();
 		}
+
+		return $this->response->collection($articles, new ArticleTransformer());
+	}
+
+	public function pulldown(Request $request)
+	{
+		$map = [
+			'status' => 1
+		];
+		$article_id = $request->aid;
+
+		if($article_id){
+			$map[] = ['id', '>', $article_id];
+		}
+
+		$articles = Article::where($map)->orderBy('id', 'asc')->get();
+
+		return $this->response->collection($articles, new ArticleTransformer());
+	}
+
+	public function search(Request $request)
+	{
+		$map = [
+			'status' => 1
+		];
+
+		$limit = $request->limit;
+		if(!$limit){
+			$limit = 3;
+		}
+
+		$articles = Article::where($map)->orderBy('id', 'desc')->paginate($limit);
 
 		return $this->response->paginator($articles, new ArticleTransformer());
 	}

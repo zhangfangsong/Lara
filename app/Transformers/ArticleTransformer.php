@@ -28,8 +28,8 @@ class ArticleTransformer extends TransformerAbstract
 			'views' => $article->views,
 			'comments' => $article->comments,
 			'thumb' => $article->thumb,
-			'created_at' => $article->created_at->toDateTimeString(),
-			'updated_at' => $article->updated_at->toDateTimeString(),
+			'created_at' => $article->created_at->toDateString(),
+			'updated_at' => $article->updated_at->toDateString(),
 		];
 
 		if($this->show_content){

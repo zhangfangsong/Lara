@@ -23,6 +23,9 @@ $api->version('v1', [
 
 		$api->get('categories', 'CategoryController@index')->name('api.categories.index');
 		$api->get('articles', 'ArticleController@index')->name('api.articles.index');
+		$api->get('search', 'ArticleController@search')->name('api.articles.search');
+		$api->get('tags', 'TagController@index')->name('api.tags.index');
+		$api->get('pulldown', 'ArticleController@pulldown')->name('api.articles.pulldown');
 		$api->get('article/{article}', 'ArticleController@show')->name('api.articles.show');
 		$api->get('article/{article}/comments', 'CommentController@index')->name('api.comments.index');
 
