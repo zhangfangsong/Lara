@@ -54,7 +54,7 @@ class ArticleController extends BaseController
 		return $this->response->collection($articles, new ArticleTransformer());
 	}
 
-	public function search(Request $request)
+	public function search(Request $request, Level $level)
 	{
 		$map = [
 			'status' => 1
@@ -65,7 +65,13 @@ class ArticleController extends BaseController
 			$limit = 3;
 		}
 
-		$articles = Article::where($map)->orderBy('id', 'desc')->paginate($limit);
+		if($category_id = $request->catid){
+			$categorys = Category::all();
+			$childs_id_arr = $level->formatChild($categorys, $category_id);
+			$articles = Article::where($map)->whereIn('category_id', $childs_id_arr)->orderBy('id', 'desc')->paginate($limit);
+		}else{
+			$articles = Article::where($map)->orderBy('id', 'desc')->paginate($limit);
+		}
 
 		return $this->response->paginator($articles, new ArticleTransformer());
 	}
