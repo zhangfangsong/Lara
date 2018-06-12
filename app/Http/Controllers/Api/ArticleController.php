@@ -61,8 +61,17 @@ class ArticleController extends BaseController
 		];
 
 		$limit = $request->limit;
+		$tag = $request->tag;
+		$keyword = $request->keyword;
+
 		if(!$limit){
 			$limit = 3;
+		}
+		if($tag){
+			$map[] = ['keyword', 'like', '%'.$tag.'%'];
+		}
+		if($keyword){
+			$map[] = ['title', 'like', '%'.$keyword.'%'];
 		}
 
 		if($category_id = $request->catid){
