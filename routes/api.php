@@ -42,7 +42,7 @@ $api->version('v1', [
 			$api->post('article/{article}/comments', 'CommentController@store')->name('api.comments.store');
 			$api->delete('article/{article}/comments/{comment}', 'CommentController@destroy')->name('api.comments.destroy');
 
-			$api->post('article/{article}/collections', 'CollectionController@store')->name('api.collections.store');
+			$api->get('article/{article}/collections', 'CollectionController@store')->name('api.collections.store');
 
 			$api->post('images', 'ImageController@store')->name('api.images.store');
 		});
