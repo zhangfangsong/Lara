@@ -35,10 +35,14 @@ $api->version('v1', [
 
 			$api->get('user', 'UserController@me')->name('api.user.show');
 			$api->patch('user', 'UserController@update')->name('api.user.update');
+			$api->get('collections', 'CollectionController@index')->name('api.collection.index');
+			$api->get('articleIds', 'CollectionController@articleIds')->name('api.collection.articleIds');
 
 			$api->get('articles/{user}', 'ArticleController@my')->name('api.articles.my');
 			$api->post('article/{article}/comments', 'CommentController@store')->name('api.comments.store');
 			$api->delete('article/{article}/comments/{comment}', 'CommentController@destroy')->name('api.comments.destroy');
+
+			$api->post('article/{article}/collections', 'CollectionController@store')->name('api.collections.store');
 
 			$api->post('images', 'ImageController@store')->name('api.images.store');
 		});

@@ -48,6 +48,11 @@ class User extends Authenticatable implements JWTSubject
         return $this->belongsTo(Role::class);
     }
 
+    public function collections()
+    {
+        return $this->belongsToMany(Article::class, 'collections');
+    }
+
     public function isAuthorOf($model)
     {
         return $this->id == $model->user_id;

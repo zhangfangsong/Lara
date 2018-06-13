@@ -7,6 +7,7 @@ use App\Models\User;
 use App\Http\Requests\Api\UserRequest;
 use Auth;
 use App\Transformers\UserTransformer;
+use App\Transformers\ArticleTransformer;
 
 class UserController extends BaseController
 {
