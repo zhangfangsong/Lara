@@ -69,7 +69,7 @@
 				<form role="search" id="searchform" action="" method="post">
 					<div>
 						<label class="screen-reader-text" for="s">搜索：</label>
-						<input onfocus="if(this.value=='搜索神马的最有爱了'){this.value='';}" onblur="if(this.value==''){this.value='搜索神马的最有爱了';}" type="text" value="搜索神马的最有爱了" name="keywords" id="s" style="color:#aaa;"/>
+						<input placeholder="搜索" type="text" name="keywords" id="s"/>
 						<input type="submit" class="btn btn-default" id="searchsubmit" value="搜索" />
 					</div>
 				</form>
@@ -121,7 +121,7 @@
 			</aside>
 
 			<aside id="categories-2" class="widget widget_categories">
-				<h3 class="widget-title">热门标签(<font style="font-weight:normal;">字体越大表示标签越热门额</font>^-^)</h3>
+				<h3 class="widget-title">热门标签</h3>
 				<ul>
 					<li class="cat-item cat-item-2">
 						@foreach($tags as $val)

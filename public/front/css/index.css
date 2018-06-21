@@ -152,11 +152,13 @@ article.format-status footer.entry-meta {
 button,
 input,
 textarea {
-	border: 1px solid #ccc;
+	border: 1px solid #E3E3E3;
+	color: #565656;
 	border-radius: 3px;
 	font-family: inherit;
 	padding: 6px;
 	padding: 0.428571429rem;
+	background-color: #fff;
 }
 button,
 input {
@@ -187,23 +189,16 @@ input[type="button"],
 input[type="reset"],
 article.post-password-required input[type=submit],
 li.bypostauthor cite span {
-	padding: 6px 10px;
-	padding: 0.428571429rem 0.714285714rem;
-	font-size: 11px;
-	font-size: 0.785714286rem;
-	/*line-height: 1.428571429;*/
+	padding: 8px 12px;
+	font-size: 12px;
 	font-weight: normal;
-	color: #7c7c7c;
-	background-color: #e6e6e6;
-	background-repeat: repeat-x;
-	background-image: -moz-linear-gradient(top, #f4f4f4, #e6e6e6);
-	background-image: -ms-linear-gradient(top, #f4f4f4, #e6e6e6);
-	background-image: -webkit-linear-gradient(top, #f4f4f4, #e6e6e6);
-	background-image: -o-linear-gradient(top, #f4f4f4, #e6e6e6);
-	background-image: linear-gradient(top, #f4f4f4, #e6e6e6);
-	border: 1px solid #d2d2d2;
+	color: #fff;
+	background-color: #5fbeaa;
+	border: 1px solid #5fbeaa;
 	border-radius: 3px;
-	box-shadow: 0 1px 2px rgba(64, 64, 64, 0.1);
+}
+#searchsubmit {
+	padding: 8px 15px;
 }
 .menu-toggle,
 button,
@@ -222,14 +217,8 @@ input[type="submit"]:hover,
 input[type="button"]:hover,
 input[type="reset"]:hover,
 article.post-password-required input[type=submit]:hover {
-	color: #5e5e5e;
-	background-color: #ebebeb;
-	background-repeat: repeat-x;
-	background-image: -moz-linear-gradient(top, #f9f9f9, #ebebeb);
-	background-image: -ms-linear-gradient(top, #f9f9f9, #ebebeb);
-	background-image: -webkit-linear-gradient(top, #f9f9f9, #ebebeb);
-	background-image: -o-linear-gradient(top, #f9f9f9, #ebebeb);
-	background-image: linear-gradient(top, #f9f9f9, #ebebeb);
+	background-color: #5fbeaa;
+	border: 1px solid #5fbeaa;
 }
 .menu-toggle:active,
 .menu-toggle.toggled-on,
@@ -595,6 +584,7 @@ section[role="banner"] {
 }
 .widget-area .widget h3 {
 	margin-bottom:15px;
+	font-size: 15px;
 }
 .widget-area .widget p,
 .widget-area .widget li,
@@ -624,6 +614,10 @@ section[role="banner"] {
 }
 .widget-area #s {
 	width: 53.66666666666%; /* define a width to avoid dropping a wider submit button */
+	border: 1px solid #E3E3E3;
+	color: #565656;
+	padding: 7px 12px;
+	height: 18px;
 }
 
 /* Footer */
@@ -1239,6 +1233,7 @@ a.comment-edit-link:hover {
 #respond form {
 	margin: 24px 0;
 	margin: 1.714285714rem 0;
+	margin-top: 0px;
 }
 #respond form p {
 	margin: 11px 0;

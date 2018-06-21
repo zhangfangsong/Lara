@@ -39,7 +39,9 @@
 			<h3 id="reply-title">发表评论 <small><a rel="nofollow" id="cancel-comment-reply-link" href="" style="display:none;">取消回复</a></small></h3>
 			<form action="{{ route('comment', $article->id) }}" method="post" id="commentform">
 				{{ csrf_field() }}
-				<p class="comment-form-comment"><label for="comment">评论</label><textarea id="body" name="content" cols="45" rows="8" aria-required="true">{{ old('content') or ''}}</textarea></p>
+				<p class="comment-form-comment">
+					<textarea id="body" name="content" cols="45" rows="4" aria-required="true">{{ old('content') or ''}}</textarea>
+				</p>
 				<p class="form-submit">
 					<input type="submit" id="submit" value="发表评论" />
 				</p>
