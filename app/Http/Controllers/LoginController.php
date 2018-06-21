@@ -22,7 +22,7 @@ class LoginController extends BaseController
 		if(Auth::attempt($data, $request->has('remember'))){
 			session()->flash('success', Auth::user()->username.',欢迎回来');
 
-			return redirect()->route('admin.home');
+			return redirect()->intended(route('admin.home'));
 		}else{
 			session()->flash('danger', '用户名或密码错误');
 

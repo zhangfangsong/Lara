@@ -36,7 +36,8 @@
 		@endif
 
 		<div id="respond">
-			<h3 id="reply-title">发表评论 <small><a rel="nofollow" id="cancel-comment-reply-link" href="" style="display:none;">取消回复</a></small></h3>
+			<h3 id="reply-title">发表评论 @if(!Auth::check()) <input type="submit" value="登录" onclick="location.href = '{{ route("login") }}';">@endif</h3>
+			@if(Auth::check())
 			<form action="{{ route('comment', $article->id) }}" method="post" id="commentform">
 				{{ csrf_field() }}
 				<p class="comment-form-comment">
@@ -46,6 +47,7 @@
 					<input type="submit" id="submit" value="发表评论" />
 				</p>
 			</form>
+			@endif
 		</div>
 	</div>
 @stop
