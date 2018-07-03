@@ -8,7 +8,7 @@
 			<h1 class="entry-title"><a href="{{ $article->getLinkUrl() }}" title="{{ $article->title }}" rel="bookmark">{{ $article->title }}</a></h1>
 		</header>
 
-		<div class="entry-content">{!! $article->content !!}</div>
+		<div class="entry-content ql-editor">{!! $article->content !!}</div>
 
 		@include('index._tag', ['val'=> $article])
 	</article>

@@ -811,16 +811,32 @@ article.sticky .featured-post {
 	margin-bottom: 0;
 }
 
-.entry-content pre,
-.comment-content pre {
-	color: #666;
-	font-size: 12px;
-	font-size: 0.857142857rem;
-	line-height: 1.514285714;
-	margin: 24px 0;
-	margin: 0.514285714rem 0;
-	overflow: auto;
-	padding: 0.8rem 0 0.8rem 0.8rem;
+.ql-editor code,
+.ql-editor pre {
+	background-color: #f0f0f0;
+	border-radius: 3px;
+}
+
+.ql-editor pre {
+	white-space: pre-wrap;
+	margin-bottom: 5px;
+	margin-top: 5px;
+	padding: 5px 10px;
+}
+
+.ql-editor code {
+	font-size: 85%;
+	padding: 2px 4px;
+}
+
+.ql-editor pre.ql-syntax {
+	background-color: #23241f;
+	color: #f8f8f2;
+	overflow: visible;
+}
+
+.ql-editor img {
+	max-width: 100%;
 }
 
 .entry-content abbr,
