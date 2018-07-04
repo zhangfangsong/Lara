@@ -1,4 +1,4 @@
-﻿Lara是一款基于Laravel框架5.5版本开发的个人博客系统,它灵活轻巧,简单易用并易于扩展,适合搭建个人博客或作为企业CMS使用。
+﻿**Lara**是一款基于**Laravel**框架5.5版本开发的个人博客系统，它灵活轻巧，简单易用并易于扩展，适合搭建个人博客或作为企业 CMS 使用。
 
 [项目地址][1] 欢迎star ^_^
 
@@ -30,13 +30,13 @@
   
   **后续开发计划**
   
-接下来会完善博客的功能,bug修复以及基于MUI开发博客系统的APP。
+接下来会完善博客的功能，bug修复以及基于MUI开发博客系统的APP。
 
 
   [1]: https://github.com/zhangfangsong/Lara
   [2]: http://lara.zfsphp.com/
   [3]: http://www.zfsphp.com/uploads/20180530/82f05c12aab2f666fa197593aa52c57c.png
-  [4]: http://www.zfsphp.com/uploads/20180603/0d5f3474f6b5d265737092ff10e8876b.jpg
+  [4]: http://www.zfsphp.com/uploads/20180704/47d4a4ae3a1c22e757cef55b1b3eccce.png
   [5]: http://www.zfsphp.com/uploads/20180530/e769e25687b60ef26daae951d1a89160.png
   [6]: http://www.zfsphp.com/uploads/20180530/d234555ab108ae8882912eea8d7a562b.png
   [7]: http://www.zfsphp.com/uploads/20180530/c880b4f47a680466a1b253e3d8394f73.png
