@@ -48,7 +48,7 @@
 					<thead>
 						<tr>
 							<th class="w80">ID</th>
-							<th class="text-center">用户</th>
+							<th>用户</th>
 							<th>内容</th>
 							<th>文章</th>
 							<th>时间</th>

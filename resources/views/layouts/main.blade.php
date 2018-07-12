@@ -35,7 +35,16 @@
 
 	<header id="masthead" class="site-header" role="banner">
 		<hgroup>
-			<h1 class="site-title"><a href="{{ route('home') }}" title="{{ $cfg->name }}" rel="home">{{ $cfg->name }}</a></h1>
+			<h1 class="site-title">
+				<a href="{{ route('home') }}" title="{{ $cfg->name }}" rel="home">{{ $cfg->name }}</a>
+				@auth
+				@if(Auth::user()->role_id == 1)
+					<input type="button" class="btn-default" value="管理" title="{{ Auth::user()->username }}" onclick="location.href = '{{ route('admin.home') }}';">
+				@else
+					<input type="button" class="btn-default" value="退出" title="{{ Auth::user()->username }}" onclick="location.href = '{{ route('admin.logout') }}';">
+				@endif
+				@endauth
+			</h1>
 			<h2 class="site-description">{{ $cfg->description }}</h2>
 		</hgroup>
 

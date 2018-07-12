@@ -509,6 +509,7 @@ a:hover {
 .site-header h1,
 .site-header h2 {
 	text-align: center;
+	position: relative;
 }
 .site-header h1 a,
 .site-header h2 a {
@@ -516,6 +517,13 @@ a:hover {
 	display: inline-block;
 	text-decoration: none;
 }
+.site-header h1 input {
+	position: absolute;
+	right: 4.35%;
+	top: 10px;
+	padding: 8px 15px;
+}
+
 .site-header h1 a:hover,
 .site-header h2 a:hover {
 	color: #21759b;

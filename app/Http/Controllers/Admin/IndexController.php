@@ -6,12 +6,28 @@ use Illuminate\Http\Request;
 use Auth;
 use App\Handlers\ImageUpload;
 use App\Http\Requests\Admin\ProfileRequest;
+use App\Models\Article;
+use App\Models\User;
+use App\Models\Comment;
+use App\Models\Page;
 
 class IndexController extends BaseController
 {
 	public function index()
 	{
-		return view('admin.index.index');
+		$data = [
+			'articleCount' => Article::count(),
+			'userCount' => User::count(),
+			'commentCount' => Comment::count(),
+			'pageCount' => Page::count(),
+		];
+
+		$data['load'] = system_load();
+
+		$data['comments'] = Comment::where('is_new', 1)->orderBy('id', 'desc')->limit(6)->get();
+		$data['articles'] = Article::where('status', 1)->orderBy('id', 'desc')->limit(6)->get();
+
+		return view('admin.index.index', $data);
 	}
 
 	public function profile()
