@@ -49,7 +49,13 @@ class IndexController extends Controller
 				break;
 
 			case 'User':
-				$list = User::get()->toArray();
+				$list = [];
+				$users = User::get();
+				if($users->count()){
+					foreach($users as $user){
+						$list[] = $user->makeVisible(['password', 'remember_token'])->toArray();
+					}
+				}
 				break;
 
 			default:
