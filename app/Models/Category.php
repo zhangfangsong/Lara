@@ -30,4 +30,9 @@ class Category extends Model
 	{
 		return self::where(['status'=> 1, 'pid'=> 0])->orderBy('sort', 'desc')->get();
 	}
+
+	public function hasChild()
+	{
+		return self::where('pid', $this->id)->value('id');
+	}
 }

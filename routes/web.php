@@ -115,6 +115,14 @@ Route::group([
 	Route::patch('role/update/{role}', 'RoleController@update')->name('admin.role.update');
 	Route::get('role/destroy/{role}', 'RoleController@destroy')->name('admin.role.destroy');
 
+	// 节点
+	Route::get('node/index', 'NodeController@index')->name('admin.node.index');
+	Route::get('node/create', 'NodeController@create')->name('admin.node.create');
+	Route::post('node/store', 'NodeController@store')->name('admin.node.store');
+	Route::get('node/edit/{node}', 'NodeController@edit')->name('admin.node.edit');
+	Route::patch('node/update/{node}', 'NodeController@update')->name('admin.node.update');
+	Route::get('node/destroy/{node}', 'NodeController@destroy')->name('admin.node.destroy');
+
 	// 评论
 	Route::get('comment/index', 'CommentController@index')->name('admin.comment.index');
 	Route::get('comment/edit/{comment}', 'CommentController@edit')->name('admin.comment.edit');

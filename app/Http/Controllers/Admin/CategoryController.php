@@ -66,6 +66,10 @@ class CategoryController extends BaseController
 
 	public function destroy(Category $category)
 	{
+		if($category->hasChild()){
+			return redirect()->back()->with('danger', '请先删除子级分类');
+		}
+
 		$category->delete();
 
 		return redirect()->route('admin.category.index')->with('success', '删除成功');
