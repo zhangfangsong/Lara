@@ -113,6 +113,8 @@ Route::group([
 	Route::post('role/store', 'RoleController@store')->name('admin.role.store');
 	Route::get('role/edit/{role}', 'RoleController@edit')->name('admin.role.edit');
 	Route::patch('role/update/{role}', 'RoleController@update')->name('admin.role.update');
+	Route::get('role/nodes/{role}', 'RoleController@nodes')->name('admin.role.nodes');
+	Route::patch('role/assign/{role}', 'RoleController@assign')->name('admin.role.assign');
 	Route::get('role/destroy/{role}', 'RoleController@destroy')->name('admin.role.destroy');
 
 	// 节点

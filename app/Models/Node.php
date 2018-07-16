@@ -14,4 +14,9 @@ class Node extends Model
 	{
 		return self::where('pid', $this->id)->value('id');
 	}
+
+	public function users()
+	{
+		return $this->belongsToMany(Role::class);
+	}
 }

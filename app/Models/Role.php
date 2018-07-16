@@ -12,4 +12,8 @@ class Role extends Model
 
 	public $timestamps = false;
 
+	public function node()
+	{
+		return $this->belongsToMany(Node::class);
+	}
 }
