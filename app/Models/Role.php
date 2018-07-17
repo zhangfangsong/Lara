@@ -16,4 +16,15 @@ class Role extends Model
 	{
 		return $this->belongsToMany(Node::class);
 	}
+
+	public function getNodes()
+	{
+		$nodes = $this->node;
+		$data = [];
+		foreach($nodes as $node){
+			$data[] = $node->name;
+		}
+
+		return $data;
+	}
 }

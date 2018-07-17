@@ -16,8 +16,8 @@ class checkPrivilege
      */
     public function handle($request, Closure $next)
     {
-        if(Auth::user()->role_id != 1){
-            return redirect()->route('home')->with('error', '你的权限不足');
+        if(!Auth::user()->hasRight()){
+            return redirect()->back()->with('error', '你的权限不足');
         }
         return $next($request);
     }
