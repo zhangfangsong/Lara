@@ -50,7 +50,7 @@
 							<th>ID</th>
 							<th>名称</th>
 							<th>描述</th>
-							<th>权限</th>
+							<th class="text-center">权限</th>
 							<th class="text-center">操作</th>
 						</tr>
 					</thead>
@@ -62,8 +62,11 @@
 							<td>{{ $val->id }}</td>
 							<td><span class="label label-table label-default">{{ $val->name }}</span></td>
 							<td>{{ $val->description }}</td>
-							<td>{{ $val->nodes }}</td>
 							<td>
+								<button type="button" class="btn btn-default btn-xs" data-toggle="tooltip" data-placement="right" title="Tooltip on left" data-original-title="Tooltip on right">查看</button>
+							</td>
+							<td>
+								<a href="{{ route('admin.role.nodes', $val->id) }}" class="btn btn-info waves-effect waves-light btn-xs m-l-5 {{ in_array($val->id, [1]) ? 'disabled' : '' }}"><i class="fa fa-user-plus"></i></a>
 								<a href="{{ route('admin.role.edit', $val->id) }}" class="btn btn-default waves-effect waves-light btn-xs m-l-5 {{ in_array($val->id, [1,2]) ? 'disabled' : '' }}"><i class="fa fa-pencil"></i></a>
 								<a href="{{ route('admin.role.destroy', $val->id) }}" class="btn btn-danger waves-effect waves-light btn-xs m-l-5 {{ in_array($val->id, [1,2]) ? 'disabled' : '' }}"><i class="fa fa-remove"></i></a>
 							</td>
