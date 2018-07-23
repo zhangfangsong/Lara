@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use App\Models\Comment;
+use App\Http\Requests\CommentRequest;
+use Auth;
 
 class CommentController extends BaseController
 {
@@ -18,9 +20,19 @@ class CommentController extends BaseController
 		return view('admin.comment.create', ['comment'=> $comment]);
 	}
 
-	public function store(Request $request, Comment $comment)
+	public function reply(CommentRequest $request, Comment $comment)
 	{
+		$comment = Comment::create([
+			'user_id' => Auth::id(),
+			'article_id' => $comment->article_id,
+			'content' => $request->content,
+			'at_id' => $comment->user->id,
+			'ip' => $request->getClientIp(),
+			'status' => 1,
+			'is_new' => 0,
+		]);
 
+		return redirect()->back()->with('success', '回复成功');
 	}
 
 	public function state(Comment $comment)

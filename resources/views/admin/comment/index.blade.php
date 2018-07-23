@@ -40,7 +40,7 @@
 			<div class="card-box">
 				<div class="row">
 	            	<div class="col-sm-4">
-	            		 <a href="{{ route('admin.user.create') }}" class="btn btn-default waves-effect waves-light m-b-30"><i class="md md-add"></i> 新增</a>
+	            		 <a href="" class="btn btn-default waves-effect waves-light m-b-30"><i class="fa fa-search"></i> 搜索</a>
 	            	</div>
 				</div>
 
@@ -70,8 +70,8 @@
 							<td>{{ $val->created_at->diffForHumans() }}</td>
 							<td><span class="label label-table {{ $val->status == 1 ? 'label-default' : 'label-warning' }}">{{ $val->status == 1 ? '显示' : '隐藏' }}</span></td>
 							<td>
-								<a href="{{ route('admin.user.edit', $val->id) }}" class="btn btn-default waves-effect waves-light btn-xs m-l-5"><i class="fa fa-eye"></i></a>
-								<a href="{{ route('admin.user.destroy', $val->id) }}" class="btn btn-danger waves-effect waves-light btn-xs m-l-5"><i class="fa fa-remove"></i></a>
+								<a href="{{ route('admin.comment.edit', $val->id) }}" class="btn btn-default waves-effect waves-light btn-xs m-l-5"><i class="fa fa-eye"></i></a>
+								<a href="{{ route('admin.comment.destroy', $val->id) }}" class="btn btn-danger waves-effect waves-light btn-xs m-l-5"><i class="fa fa-remove"></i></a>
 							</td>
 						</tr>
 						@endforeach

@@ -128,5 +128,6 @@ Route::group([
 	// 评论
 	Route::get('comment/index', 'CommentController@index')->name('admin.comment.index');
 	Route::get('comment/edit/{comment}', 'CommentController@edit')->name('admin.comment.edit');
+	Route::patch('comment/reply/{comment}', 'CommentController@reply')->name('admin.comment.reply');
 	Route::get('comment/destroy/{comment}', 'CommentController@destroy')->name('admin.comment.destroy');
 });

@@ -64,10 +64,6 @@
 
                             <ul class="nav navbar-nav navbar-right pull-right">
                                 <li class="hidden-xs">
-                                    <a href="{{ route('home') }}" class="waves-effect waves-light">网站</a>
-                                </li>
-
-                                <li class="hidden-xs">
                                     <a href="{{ route('admin.profile') }}" class="waves-effect waves-light">{{ Auth::user()->username }}</a>
                                 </li>
 
