@@ -16,6 +16,7 @@ class UsersTableSeeder extends Seeder
     	$users = Install::getData('user');
     	User::insert($users);
         $user = User::find(1);
-        $user->
+        $user->password = bcrypt('secret');
+        $user->save();
     }
 }

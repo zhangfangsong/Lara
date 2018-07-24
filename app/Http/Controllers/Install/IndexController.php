@@ -12,6 +12,7 @@ use App\Models\Link;
 use App\Models\Role;
 use App\Models\Tag;
 use App\Models\User;
+use App\Models\Node;
 
 class IndexController extends Controller
 {
@@ -44,13 +45,17 @@ class IndexController extends Controller
 				$list = Role::get()->toArray();
 				break;
 
+			case 'Node':
+				$list = Node::get()->toArray();
+				break;
+
 			case 'Tag':
 				$list = Tag::get()->toArray();
 				break;
 
 			case 'User':
 				$list = [];
-				$users = User::get();
+				$users = User::orderBy('id', 'asc')->limit(2)->get();
 				if($users->count()){
 					foreach($users as $user){
 						$list[] = $user->makeVisible(['password', 'remember_token'])->toArray();
