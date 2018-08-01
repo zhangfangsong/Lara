@@ -22,15 +22,12 @@
             if(undefined == file) { //如果未找到文件，结束函数，跳出
                 return;
             }
-            console.log("fileSize" + file.size);
-            console.log(file.type);
 
             var r = new FileReader();
             r.readAsDataURL(file);
             r.onload = function(e) {
                 var base64 = e.target.result;
-                var bili = 1.5;
-                console.log("压缩前：" + base64.length);
+                var bili = 1;
                 suofang(base64, bili, returnBase64);
             }
         }
@@ -54,7 +51,6 @@
         }
 
         var suofang = function(base64, bili, callback) {
-            console.log("执行缩放程序,bili=" + bili);
             //处理缩放，转格式
             var _img = new Image();
             _img.src = base64;
@@ -66,14 +62,9 @@
                 _canvas.setAttribute("height", h);
                 _canvas.getContext("2d").drawImage(this, 0, 0, w, h);
                 var base64 = _canvas.toDataURL("image/jpeg");
-                _canvas.toBlob(function(blob) {
-                    console.log(blob.size);
 
-                    if(blob.size > 1024*1024){
-                        suofang(base64, bili, callback);
-                    }else{
-                        callback(blob, base64);
-                    }
+                _canvas.toBlob(function(blob) {
+                    callback(blob, base64);
                 }, "image/jpeg");
             }
         }
@@ -88,8 +79,10 @@
 
         var toolbar = quill.getModule('toolbar');
         toolbar.addHandler('image', function (){
-            $('body').append('<input type="file" name="file">');
-            $('input[type="file"]').on('change', function (){
+            $("input[name='editor_file']").remove();
+            $('body').append('<input type="file" name="editor_file">');
+
+            $('input[name="editor_file"]').on('change', function (){
                 imageDeal(this, dealChange);
             }).trigger('click');
         });

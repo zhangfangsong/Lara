@@ -36,6 +36,12 @@
 	</div>
 
 	<div class="row">
+		<div class="col-lg-12">
+			@include('shared._errors')
+		</div>
+	</div>
+
+	<div class="row">
 	    <div class="col-md-6 col-lg-3">
 	        <div class="widget-bg-color-icon card-box fadeInDown animated">
 	            <div class="bg-icon bg-icon-info pull-left">

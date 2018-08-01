@@ -91,6 +91,6 @@ class ArticleController extends BaseController
 	{
 		$article->delete();
 
-		return redirect()->route('admin.article.index')->with('success', '删除成功');
+		return redirect()->back()->with('success', '删除成功');
 	}
 }
