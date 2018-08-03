@@ -168,7 +168,7 @@
 
                             <div class="form-group m-b-20">
                                 <label class="col-md-2 control-label">标签</label>
-                                <div class="col-md-2">
+                                <div class="col-md-4">
                                     <input type="text" class="form-control" name="keyword" placeholder="请输入标签" value="{{ $article->keyword or old('keyword') }}">
                                 </div>
                             </div>

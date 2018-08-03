@@ -455,13 +455,13 @@ a:hover {
 }
 .page a:hover {
 	color:#fff;
-	background:#333d46;
-	border:1px solid #333d46;
+	background:#5fbeaa;
+	border:1px solid #5fbeaa;
 }
 .page li.active span {
 	color:#fff;
-	background:#333d46;
-	border:1px solid #333d46;
+	background:#5fbeaa;
+	border:1px solid #5fbeaa;
 }
 /* Assistive text */
 .assistive-text,
@@ -833,14 +833,17 @@ article.sticky .featured-post {
 }
 
 .ql-editor code {
-	font-size: 85%;
-	padding: 2px 4px;
+	font-size: 14px;
+	padding: 1px 4px;
+	background: #fff !important;
+	color: #333;
 }
 
 .ql-editor pre.ql-syntax {
-	background-color: #23241f;
-	color: #f8f8f2;
+	background-color: #5fbeaa;
+	color: #fff;
 	overflow: visible;
+	font-size: 100%;
 }
 
 .ql-editor img {

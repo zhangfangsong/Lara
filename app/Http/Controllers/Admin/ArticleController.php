@@ -14,7 +14,7 @@ class ArticleController extends BaseController
 {
 	public function index()
 	{
-		$list = Article::paginate(20);
+		$list = Article::paginate(10);
 
 		return view('admin.article.index', ['list'=> $list]);
 	}

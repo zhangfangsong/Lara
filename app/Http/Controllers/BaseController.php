@@ -33,7 +33,7 @@ class BaseController extends Controller
 
 		$files = Article::getFile();
 
-		$tags = Tag::getHot()->shuffle();
+		$tags = Tag::getHot(80)->shuffle();
 
 		$links = Link::getAll();
 
