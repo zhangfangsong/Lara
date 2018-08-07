@@ -624,7 +624,6 @@
   border-radius: 3px;
 }
 .ql-snow .ql-editor pre {
-  white-space: pre-wrap;
   margin-bottom: 5px;
   margin-top: 5px;
   padding: 5px 10px;
@@ -638,7 +637,7 @@
 .ql-snow .ql-editor pre.ql-syntax {
   background-color: #5fbeaa;
   color: #fff;
-  overflow: visible;
+  overflow: scroll;
   font-size: 14px;
 }
 .ql-snow .ql-editor img {
