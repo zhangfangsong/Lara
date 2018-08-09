@@ -10,7 +10,7 @@ class PageController extends BaseController
 {
 	public function index()
 	{
-		$list = Page::paginate(20);
+		$list = Page::orderBy('id','desc')->paginate(10);
 
 		return view('admin.page.index', ['list'=> $list]);
 	}

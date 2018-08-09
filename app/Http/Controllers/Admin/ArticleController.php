@@ -14,7 +14,7 @@ class ArticleController extends BaseController
 {
 	public function index()
 	{
-		$list = Article::paginate(10);
+		$list = Article::orderBy('id', 'desc')->paginate(10);
 
 		return view('admin.article.index', ['list'=> $list]);
 	}

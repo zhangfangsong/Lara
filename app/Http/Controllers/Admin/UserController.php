@@ -11,7 +11,7 @@ class UserController extends BaseController
 {
 	public function index()
 	{
-		$list = User::where('status', '<>', 2)->paginate(20);
+		$list = User::where('status', '<>', 2)->orderBy('id', 'desc')->paginate(20);
 		return view('admin.user.index', ['list'=> $list]);
 	}
 

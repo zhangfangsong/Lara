@@ -97,19 +97,28 @@
 				<h3 class="widget-title">热门文章</h3>
 				<ul>
 					@foreach($hot_articles as $val)
-					<li><font style="color:#7a7a7a;">[{{ $loop->iteration }}]</font>&nbsp;<a href="{{ $val->getLinkUrl() }}" title="{{ $val->title }}">{{ $val->title }}</a></li>
+					<li><font style="color:#7a7a7a;">[{{ $loop->index }}]</font>&nbsp;<a href="{{ $val->getLinkUrl() }}" title="{{ $val->title }}">{{ $val->title }}</a></li>
 					@endforeach
 				</ul>
 			</aside>
 
-			<aside id="recent-comments-2" class="widget widget_recent_comments">
+			<aside class="widget widget_recent_entries">
+				<h3 class="widget-title">最近更新</h3>
+				<ul>
+					@foreach($recent_articles as $val)
+					<li><font style="color:#7a7a7a;">[{{ $loop->index }}]</font>&nbsp;<a href="{{ $val->getLinkUrl() }}" title="{{ $val->title }}">{{ $val->title }}</a></li>
+					@endforeach
+				</ul>
+			</aside>
+
+			{{-- <aside id="recent-comments-2" class="widget widget_recent_comments">
 				<h3 class="widget-title">近期评论</h3>
 				<ul id="recentcomments">
 					@foreach($comments as $val)
 					<li class="recentcomments">{{ $val->user->username }} 发表在《<a href="{{ $val->article->getLinkUrl() }}" title="{{ $val->article->title }}">{{ $val->article->title }}</a>》</li>
 					@endforeach
 				</ul>
-			</aside>
+			</aside> --}}
 
 			<aside id="archives-2" class="widget widget_archive">
 				<h3 class="widget-title">文章归档</h3>

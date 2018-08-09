@@ -28,8 +28,9 @@ class BaseController extends Controller
 		$navs = $level->formatMulti($navs);
 
 		$hot_articles = Article::getHot();
+		$recent_articles = Article::getRecent();
 
-		$comments = Comment::getRecent();
+		// $comments = Comment::getRecent();
 
 		$files = Article::getFile();
 
@@ -37,6 +38,6 @@ class BaseController extends Controller
 
 		$links = Link::getAll();
 
-		View()->share(['cfg'=> $cfg, 'navs'=> $navs, 'hot_articles'=> $hot_articles, 'comments'=> $comments, 'files'=> $files, 'tags'=> $tags, 'links'=> $links]);
+		View()->share(['cfg'=> $cfg, 'navs'=> $navs, 'hot_articles'=> $hot_articles, 'recent_articles'=> $recent_articles, 'files'=> $files, 'tags'=> $tags, 'links'=> $links]);
 	}
 }

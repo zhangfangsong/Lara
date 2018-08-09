@@ -10,7 +10,7 @@ class TagController extends BaseController
 {
 	public function index()
 	{
-		$list = Tag::paginate(20);
+		$list = Tag::orderBy('id', 'desc')->paginate(20);
 		return view('admin.tag.index', ['list'=>$list]);
 	}
 
