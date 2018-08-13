@@ -847,6 +847,7 @@ article.sticky .featured-post {
 
 .ql-editor img {
 	max-width: 100%;
+	height: auto !important;
 }
 
 .entry-content abbr,
