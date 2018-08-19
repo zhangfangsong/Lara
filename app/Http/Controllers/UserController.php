@@ -15,10 +15,10 @@ class UserController extends BaseController
 
 	public function store(UserRequest $request)
 	{
-		$user = User::create([
+		$user = User::add([
 			'username' => $request->username,
 			'email' => $request->email,
-			'password' => bcrypt($request->password)
+			'password' => $request->password
 		]);
 
 		session()->flash('success', '注册成功,您将在这里开启一段新的旅程');
