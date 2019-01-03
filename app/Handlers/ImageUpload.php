@@ -6,13 +6,13 @@ class ImageUpload
 {
 	protected $allow_ext = ['jpg', 'jpeg', 'gif', 'png'];
 
-	public function upload($file, $folder, $prefix, $max_width = false)
+	public function upload($file, $folder, $max_width = false)
 	{
-		$folder = 'uploads/images/'.$folder.'/'.date('Ym/d').'/';
+		$folder = 'uploads/images/'.$folder.'/'.date('Ym').'/';
 		$upload_path = public_path().'/'.$folder;
 
 		$extension = strtolower($file->getClientOriginalExtension()) ?: 'png';
-		$filename = $prefix.'_'.time().'_'.str_random(10).'.'.$extension;
+		$filename  = time().'.'.$extension;
 
 		if(!in_array($extension, $this->allow_ext)){
 			return [

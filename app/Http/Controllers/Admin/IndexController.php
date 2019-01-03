@@ -67,7 +67,7 @@ class IndexController extends BaseController
 	public function upload(Request $request, ImageUpload $upload)
 	{
 		if($request->file){
-			$result = $upload->upload($request->file, 'link', 'ln');
+			$result = $upload->upload($request->file, 'link');
 			return $result;
 		}
 	}

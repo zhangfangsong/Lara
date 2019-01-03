@@ -6,6 +6,7 @@ use Tymon\JWTAuth\Contracts\JWTSubject;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Route;
+use App\Handlers\App;
 
 class User extends Authenticatable implements JWTSubject
 {
@@ -84,6 +85,10 @@ class User extends Authenticatable implements JWTSubject
 
         if(isset($data['password'])){
             $data['password'] = bcrypt($data['password']);
+        }
+
+        if(empty($data['avatar']) && $data['email']){
+            $data['avatar'] = app(App::class)->getAvatarByEmail($data['email']);
         }
 
         return self::create($data);
