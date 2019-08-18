@@ -1,30 +1,36 @@
 <?php
 
+/**
+ * 文章控制器
+ * User: zfs
+ * Date: 2019/8/17
+ * Time: 22:34
+ */
+
 namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
-use App\Models\Article;
+use App\Models\Post;
 use App\Http\Requests\Admin\ArticleRequest;
 use App\Models\Category;
 use App\Handlers\Level;
 use Auth;
 use App\Models\Tag;
 
-class ArticleController extends BaseController
+class PostController extends BaseController
 {
 	public function index()
 	{
-		$list = Article::orderBy('id', 'desc')->paginate(10);
-
-		return view('admin.article.index', ['list'=> $list]);
+		$list = Post::orderBy('id', 'desc')->paginate(10);
+		return view('admin.post.index', ['list'=> $list]);
 	}
-
+	
 	public function create(Level $level)
 	{
 		$list = Category::orderBy('sort', 'desc')->get();
 		$list = $level->formatOne($list);
 
-		return view('admin.article.create', ['list'=> $list]);
+		return view('admin.post.create', ['list'=> $list]);
 	}
 
 	public function store(ArticleRequest $request)
@@ -45,7 +51,7 @@ class ArticleController extends BaseController
 			$data['thumb'] = $request->thumb;
 		}
 
-		$article = Article::create($data);
+		$article = Post::create($data);
 
 		if($request->keyword){
 			$tags = explode(',', $request->keyword);
@@ -58,15 +64,15 @@ class ArticleController extends BaseController
 			}
 		}
 
-		return redirect()->route('admin.article.index')->with('success', '创建成功');
+		return redirect()->route('admin.post.index')->with('success', '创建成功');
 	}
 
-	public function edit(Article $article, Level $level)
+	public function edit(Post $post, Level $level)
 	{
 		$list = Category::orderBy('sort', 'desc')->get();
 		$list = $level->formatOne($list);
 
-		return view('admin.article.create', ['list'=> $list, 'article'=> $article]);
+		return view('admin.post.create', ['list'=> $list, 'post'=> $post]);
 	}
 
 	public function update(ArticleRequest $request, Article $article)

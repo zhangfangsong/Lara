@@ -103,7 +103,7 @@
                             <li class="has_sub">
                                 <a href="javascript:void(0)" class="waves-effect"><i class="ti-paint-bucket"></i> <span> 管理 </span> </a>
                                 <ul class="list-unstyled">
-                                    <li class="{{ active_class(if_route_pattern('admin.article.*')) }}"><a href="{{ route('admin.article.index') }}">文章</a></li>
+                                    <li class="{{ active_class(if_route_pattern('admin.article.*')) }}"><a href="{{ route('admin.post.index') }}">文章</a></li>
                                     <li class="{{ active_class(if_route_pattern('admin.category.*')) }}"><a href="{{ route('admin.category.index') }}">分类</a></li>
                                     <li class="{{ active_class(if_route_pattern('admin.user.*')) }}"><a href="{{ route('admin.user.index') }}">用户</a></li>
                                     <li class="{{ active_class(if_route_pattern('admin.role.*')) }}"><a href="{{ route('admin.role.index') }}">角色</a></li>
@@ -118,11 +118,11 @@
                             <li class="has_sub">
                                 <a href="javascript:void(0)" class="waves-effect"><i class="ti-user"></i><span> 设置 </span></a>
                                 <ul class="list-unstyled">
-                                    <li class="{{ active_class(if_route_param('tab', 'main')) }}"><a href="{{ route('admin.config', ['main']) }}"> 全局 </a></li>
-                                    <li class="{{ active_class(if_route_param('tab', 'upload')) }}"><a href="{{ route('admin.config', ['upload']) }}"> 上传 </a></li>
+                                    <li class="{{ active_class(if_route_param('tab', 'main')) }}"><a href="{{ route('admin.setting', ['main']) }}"> 全局 </a></li>
+                                    <li class="{{ active_class(if_route_param('tab', 'upload')) }}"><a href="{{ route('admin.setting', ['upload']) }}"> 上传 </a></li>
                                 </ul>
                             </li>
-
+                            
                         </ul>
                         <div class="clearfix"></div>
                     </div>

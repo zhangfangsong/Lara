@@ -1,5 +1,12 @@
 <?php
 
+/**
+ * 评论控制器
+ * User: zfs
+ * Date: 2019/8/17
+ * Time: 22:34
+ */
+
 namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
@@ -14,7 +21,7 @@ class CommentController extends BaseController
 		$list = Comment::orderBy('id', 'desc')->paginate(20);
 		return view('admin.comment.index', ['list'=>$list]);
 	}
-
+	
 	public function edit(Comment $comment)
 	{
 		return view('admin.comment.create', ['comment'=> $comment]);

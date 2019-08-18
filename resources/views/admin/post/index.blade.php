@@ -22,7 +22,7 @@
 					<a href="#">管理</a>
 				</li>
 				<li>
-					<a href="{{ route('admin.article.index') }}">文章</a>
+					<a href="{{ route('admin.post.index') }}">文章</a>
 				</li>
 				<li class="active">
 					列表
@@ -40,7 +40,7 @@
 			<div class="card-box">
 				<div class="row">
 	            	<div class="col-sm-4">
-	            		 <a href="{{ route('admin.article.create') }}" class="btn btn-default waves-effect waves-light m-b-30"><i class="md md-add"></i> 新增</a>
+	            		 <a href="{{ route('admin.post.create') }}" class="btn btn-default waves-effect waves-light m-b-30"><i class="md md-add"></i> 新增</a>
 	            	</div>
 				</div>
 
@@ -72,8 +72,8 @@
 							<td>{{ $val->created_at->diffForHumans() }}</td>
 							<td><span class="label label-table {{ $val->status == 1 ? 'label-default' : 'label-warning' }}">{{ $val->status == 1 ? '显示' : '隐藏' }}</span></td>
 							<td>
-								<a href="{{ route('admin.article.edit', $val->id) }}" class="btn btn-default waves-effect waves-light btn-xs m-l-5"><i class="fa fa-pencil"></i></a>
-								<a href="{{ route('admin.article.destroy', $val->id) }}" class="btn btn-danger waves-effect waves-light btn-xs m-l-5"><i class="fa fa-remove"></i></a>
+								<a href="{{ route('admin.post.edit', $val->id) }}" class="btn btn-default waves-effect waves-light btn-xs m-l-5"><i class="fa fa-pencil"></i></a>
+								<a href="{{ route('admin.post.destroy', $val->id) }}" class="btn btn-danger waves-effect waves-light btn-xs m-l-5"><i class="fa fa-remove"></i></a>
 							</td>
 						</tr>
 						@endforeach

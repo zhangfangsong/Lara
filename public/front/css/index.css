@@ -1418,13 +1418,12 @@ img#wpstats {
 	}
 	.site {
 		margin: 0 auto;
-		max-width: 960px;
-		max-width: 81.971428571rem;
+		max-width: 100%;
 		overflow: hidden;
 	}
 	.site-content {
 		float: left;
-		width: 65.104166667%;
+		width: 73.104166667%;
 	}
 	body.template-front-page .site-content,
 	body.single-attachment .site-content,
@@ -1433,7 +1432,7 @@ img#wpstats {
 	}
 	.widget-area {
 		float: right;
-		width: 26.041666667%;
+		width: 23.041666667%;
 	}
 	.site-header h1,
 	.site-header h2 {
@@ -1579,10 +1578,6 @@ img#wpstats {
 	body .site {
 		padding: 0 40px;
 		padding: 0 2.857142857rem;
-		margin-top: 48px;
-		margin-top: 3.428571429rem;
-		margin-bottom: 48px;
-		margin-bottom: 3.428571429rem;
 		box-shadow: 0 2px 6px rgba(100, 100, 100, 0.3);
 	}
 	body.custom-background-empty {

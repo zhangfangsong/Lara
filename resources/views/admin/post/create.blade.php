@@ -101,16 +101,16 @@
 	<!-- Page-Title -->
 	<div class="row">
 		<div class="col-sm-12">
-			<h4 class="page-title">{{ isset($article) ? '编辑' : '新增' }}文章</h4>
+			<h4 class="page-title">{{ isset($post) ? '编辑' : '新增' }}文章</h4>
 			<ol class="breadcrumb">
 				<li>
 					<a href="#">管理</a>
 				</li>
 	            <li>
-					<a href="{{ route('admin.article.index') }}">文章</a>
+					<a href="{{ route('admin.post.index') }}">文章</a>
 				</li>
 				<li class="active">
-				    {{ isset($article) ? '编辑' : '新增' }}
+				    {{ isset($post) ? '编辑' : '新增' }}
 				</li>
 			</ol>
 		</div>
@@ -118,11 +118,11 @@
 
 	<div class="row">
 	    <div class="col-sm-12">
-            @if(isset($article))
-                <form class="form-horizontal" role="form" action="{{ route('admin.article.update', $article->id) }}" method="POST">
+            @if(isset($post))
+                <form class="form-horizontal" role="form" action="{{ route('admin.post.update', $post->id) }}" method="POST">
                 {{ method_field('PATCH') }}
             @else
-                <form class="form-horizontal" role="form" action="{{ route('admin.article.store') }}" method="POST">
+                <form class="form-horizontal" role="form" action="{{ route('admin.post.store') }}" method="POST">
             @endif
             	{{ csrf_field() }}
                 <div class="row">
@@ -136,7 +136,7 @@
                             <div class="form-group m-b-20">
                                 <label class="col-md-2 control-label">标题</label>
                                 <div class="col-md-4">
-                                	<input type="text" class="form-control" name="title" placeholder="请输入标题" value="{{ $article->title or old('title') }}">
+                                	<input type="text" class="form-control" name="title" placeholder="请输入标题" value="{{ $post->title or old('title') }}">
                                 </div>
                             </div>
 
@@ -147,7 +147,7 @@
                                        <option value=''>请选择</option>
                                        @if(count($list))
                                             @foreach($list as $val)
-                                                <option @if(isset($article) && $article->category_id == $val->id )selected @endif value="{{ $val->id }}">{{ str_repeat('&nbsp;', ($val->level-1)*4).$val->name }}</option>
+                                                <option @if(isset($post) && $post->category_id == $val->id )selected @endif value="{{ $val->id }}">{{ str_repeat('&nbsp;', ($val->level-1)*4).$val->name }}</option>
                                             @endforeach
                                        @endif
                                     </select>
@@ -158,8 +158,8 @@
                                 <label class="col-md-2 control-label">封面</label>
                                 <div class="col-md-10">
                                     <ul class="upload-wraper">
-                                        @if(isset($article->thumb) && $article->thumb)
-                                            <li><img src="{{ $article->thumb }}" alt=""><input type="hidden" name="thumb" value="{{ $article->thumb }}"></li>
+                                        @if(isset($post->thumb) && $post->thumb)
+                                            <li><img src="{{ $post->thumb }}" alt=""><input type="hidden" name="thumb" value="{{ $post->thumb }}"></li>
                                         @endif
                                     </ul>
                                     <a href="javascript:void(0)" data-id="thumb" data-num="one" class="btn btn-default J-ajax-upload">上传图片</a>
@@ -169,7 +169,7 @@
                             <div class="form-group m-b-20">
                                 <label class="col-md-2 control-label">标签</label>
                                 <div class="col-md-4">
-                                    <input type="text" class="form-control" name="keyword" placeholder="请输入标签" value="{{ $article->keyword or old('keyword') }}">
+                                    <input type="text" class="form-control" name="keyword" placeholder="请输入标签" value="{{ $post->keyword or old('keyword') }}">
                                 </div>
                             </div>
 
@@ -177,21 +177,21 @@
                                 <label class="col-md-2 control-label">内容</label>
                                 <div class="col-md-10">
                                     <input type="hidden" name="content" value="">
-                                    <div id="content" style="height: 400px;">{!! $article->content or '' !!}</div>
+                                    <div id="content" style="height: 400px;">{!! $post->content or '' !!}</div>
                                 </div>
                             </div>
 
                             <div class="form-group m-b-20">
                                 <label class="col-md-2 control-label">描述</label>
                                 <div class="col-md-6">
-                                    <textarea name="description" class="form-control" rows="3" placeholder="请输入描述">{{ $article->description or old('description') }}</textarea>
+                                    <textarea name="description" class="form-control" rows="3" placeholder="请输入描述">{{ $post->description or old('description') }}</textarea>
                                 </div>
                             </div>
 
                             <div class="form-group m-b-20">
                                 <label class="col-md-2 control-label">浏览量</label>
                                 <div class="col-md-2">
-                                    <input type="text" class="form-control" name="views" placeholder="浏览量" value="{{ $article->views or old('views') }}">
+                                    <input type="text" class="form-control" name="views" placeholder="浏览量" value="{{ $post->views or old('views') }}">
                                 </div>
                             </div>
 
@@ -200,11 +200,11 @@
 
                                 <div class="col-md-6">
                                     <div class="radio radio-inline">
-                                        <input type="radio" id="inlineRadio1" value="1" {{ isset($article->status) && $article->status == 1 ? 'checked' : '' }} name="status" checked>
+                                        <input type="radio" id="inlineRadio1" value="1" {{ isset($post->status) && $post->status == 1 ? 'checked' : '' }} name="status" checked>
                                         <label for="inlineRadio1"> 显示 </label>
                                     </div>
                                     <div class="radio radio-inline">
-                                        <input type="radio" id="inlineRadio2" value="0" {{ isset($article->status) && $article->status == 0 ? 'checked' : '' }} name="status">
+                                        <input type="radio" id="inlineRadio2" value="0" {{ isset($post->status) && $post->status == 0 ? 'checked' : '' }} name="status">
                                         <label for="inlineRadio2"> 隐藏 </label>
                                     </div>
                                 </div>

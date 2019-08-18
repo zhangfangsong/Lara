@@ -7,19 +7,19 @@ use Illuminate\Database\Eloquent\Model;
 class Comment extends Model
 {
 	protected $fillable = [
-		'article_id', 'user_id', 'content', 'at_id', 'ip', 'status', 'is_new',
+		'post_id', 'user_id', 'content', 'at_id', 'ip', 'status', 'is_new',
 	];
 
-	public function article()
+	public function post()
 	{
-		return $this->belongsTo(Article::class);
+		return $this->belongsTo(Post::class);
 	}
-
+	
 	public function user()
 	{
 		return $this->belongsTo(User::class);
 	}
-
+	
 	public function atUser()
 	{
 		return $this->belongsTo(User::class, 'at_id');

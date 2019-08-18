@@ -1,5 +1,12 @@
 <?php
 
+/**
+ * 注册控制器
+ * User: zfs
+ * Date: 2019/8/17
+ * Time: 22:34
+ */
+
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;

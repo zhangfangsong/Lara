@@ -13,7 +13,7 @@
 					<a href="#">设置</a>
 				</li>
 	            <li>
-					<a href="{{ route('admin.config', $tab) }}">{{ $title }}</a>
+					<a href="{{ route('admin.setting', $tab) }}">{{ $title }}</a>
 				</li>
 				<li class="active">
 					编辑
@@ -21,10 +21,10 @@
 			</ol>
 		</div>
 	</div>
-
+    
 	<div class="row">
 	    <div class="col-sm-12">
-            <form class="form-horizontal" role="form" action="{{ route('admin.config', $tab) }}" method="POST">
+            <form class="form-horizontal" role="form" action="{{ route('admin.setting', $tab) }}" method="POST">
             	{{ csrf_field() }}
                 <div class="row">
                     <div class="col-lg-12">

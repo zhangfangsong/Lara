@@ -1,11 +1,18 @@
 <?php
 
+/**
+ * 系统配置模型
+ * User: zfs
+ * Date: 2019/8/17
+ * Time: 22:34
+ */
+
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Cache;
 
-class Config extends Model
+class Setting extends Model
 {
 	protected $fillable = [
 		'name', 'value', 'type', 'tab', 'sort'
@@ -37,10 +44,10 @@ class Config extends Model
 				$config[$val['name']] = $val['value'];
 			}
 		}
-
+		
 		return $config;
 	}
-
+	
 	public static function addOrUpdate($info, $tab)
 	{
 		if(!is_array($info) || empty($info)){

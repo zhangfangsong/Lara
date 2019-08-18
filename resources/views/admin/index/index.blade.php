@@ -123,7 +123,7 @@
 			</div>
 
 	    </div>
-
+	    
 	    <div class="col-lg-8">
 	        <div class="card-box">
 				<h4 class="text-dark header-title m-t-0 p-b-10">最新评论</h4>
@@ -198,8 +198,8 @@
 							<td>{{ $val->created_at->diffForHumans() }}</td>
 							<td><span class="label label-table {{ $val->status == 1 ? 'label-default' : 'label-warning' }}">{{ $val->status == 1 ? '显示' : '隐藏' }}</span></td>
 							<td>
-								<a href="{{ route('admin.article.edit', $val->id) }}" class="btn btn-default waves-effect waves-light btn-xs m-l-5"><i class="fa fa-pencil"></i></a>
-								<a href="{{ route('admin.article.destroy', $val->id) }}" class="btn btn-danger waves-effect waves-light btn-xs m-l-5"><i class="fa fa-remove"></i></a>
+								<a href="{{ route('admin.post.edit', $val->id) }}" class="btn btn-default waves-effect waves-light btn-xs m-l-5"><i class="fa fa-pencil"></i></a>
+								<a href="{{ route('admin.post.destroy', $val->id) }}" class="btn btn-danger waves-effect waves-light btn-xs m-l-5"><i class="fa fa-remove"></i></a>
 							</td>
 						</tr>
 						@endforeach

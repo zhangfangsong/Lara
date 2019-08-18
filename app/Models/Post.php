@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 use App\Handlers\Level;
 use DB;
 
-class Article extends Model
+class Post extends Model
 {
 	protected $fillable = [
 		'title', 'content', 'user_id' ,'category_id', 'keyword', 'description', 'status', 'views', 'thumb',
@@ -29,7 +29,7 @@ class Article extends Model
 
 	public function getLinkUrl()
 	{
-		return route('article', $this->id);
+		return route('post', $this->id);
 	}
 
 	public function getTimeUrl()
@@ -41,7 +41,7 @@ class Article extends Model
 	{
 		return self::where('status', 1)->orderBy('id', 'desc')->limit($limit)->get();
 	}
-
+	
 	public static function getHot($limit = 10)
 	{
 		return self::where('status', 1)->orderBy('views', 'desc')->limit($limit)->get();
@@ -49,7 +49,7 @@ class Article extends Model
 
 	public static function getFile()
 	{
-		$files = DB::table('articles')->select(DB::raw('count(*) as num, substring(created_at, 1, 7) as pub_date'))->groupBy('pub_date')->orderBy('pub_date', 'desc')->get();
+		$files = DB::table('posts')->select(DB::raw('count(*) as num, substring(created_at, 1, 7) as pub_date'))->groupBy('pub_date')->orderBy('pub_date', 'desc')->get();
 		return $files;
 	}
 

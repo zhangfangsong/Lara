@@ -66,7 +66,7 @@
 								<img src="{{ $val->user->avatar }}" alt="{{ $val->user->username }}" class="thumb-sm img-circle"> {{ $val->user->username }}
 							</td>
 							<td>{{ $val->content }}</td>
-							<td>{{ $val->article->title }}</td>
+							<td>{{ $val->post->title }}</td>
 							<td>{{ $val->created_at->diffForHumans() }}</td>
 							<td><span class="label label-table {{ $val->status == 1 ? 'label-default' : 'label-warning' }}">{{ $val->status == 1 ? '显示' : '隐藏' }}</span></td>
 							<td>

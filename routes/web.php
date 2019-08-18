@@ -11,13 +11,14 @@
 |
 */
 
-// 首页
+//首页
 Route::get('/', 'IndexController@index')->name('home');
-Route::get('cate/{category}.html', 'IndexController@category')->name('category');
-Route::get('{article}.html', 'IndexController@article')->name('article');
-Route::get('tag/{tag}.html', 'IndexController@search')->name('tag');
-Route::get('time/{time}.html', 'IndexController@search')->name('time');
-Route::get('search/{keyword}.html', 'IndexController@search')->name('search');
+Route::get('cate/{category}', 'IndexController@category')->name('category');
+Route::get('post/{post}', 'IndexController@post')->name('post');
+
+Route::get('tag/{tag}', 'IndexController@search')->name('tag');
+Route::get('time/{time}', 'IndexController@search')->name('time');
+Route::get('search/{keyword}', 'IndexController@search')->name('search');
 
 Route::group([
 	'middleware' => 'guest',
@@ -55,10 +56,10 @@ Route::group([
 	Route::post('profile', 'IndexController@profileUpdate')->name('admin.profile');
 	Route::get('repass', 'IndexController@repass')->name('admin.repass');
 	Route::post('repass', 'IndexController@repassUpdate')->name('admin.repass');
-
-	Route::get('config/{tab}', 'ConfigController@index')->name('admin.config');
-	Route::post('config/{tab}', 'ConfigController@store')->name('admin.config');
-
+	
+	Route::get('setting/{tab}', 'SettingController@index')->name('admin.setting');
+	Route::post('setting/{tab}', 'SettingController@store')->name('admin.setting');
+	
 	// 分类
 	Route::get('category/index', 'CategoryController@index')->name('admin.category.index');
 	Route::get('category/create', 'CategoryController@create')->name('admin.category.create');
@@ -66,15 +67,15 @@ Route::group([
 	Route::get('category/edit/{category}', 'CategoryController@edit')->name('admin.category.edit');
 	Route::patch('category/update/{category}', 'CategoryController@update')->name('admin.category.update');
 	Route::get('category/destroy/{category}', 'CategoryController@destroy')->name('admin.category.destroy');
-
+	
 	// 文章
-	Route::get('article/index', 'ArticleController@index')->name('admin.article.index');
-	Route::get('article/create', 'ArticleController@create')->name('admin.article.create');
-	Route::post('article/store', 'ArticleController@store')->name('admin.article.store');
-	Route::get('article/edit/{article}', 'ArticleController@edit')->name('admin.article.edit');
-	Route::patch('article/update/{article}', 'ArticleController@update')->name('admin.article.update');
-	Route::get('article/destroy/{article}', 'ArticleController@destroy')->name('admin.article.destroy');
-
+	Route::get('post/index', 'PostController@index')->name('admin.post.index');
+	Route::get('post/create', 'PostController@create')->name('admin.post.create');
+	Route::post('post/store', 'PostController@store')->name('admin.post.store');
+	Route::get('post/edit/{post}', 'PostController@edit')->name('admin.post.edit');
+	Route::patch('post/update/{post}', 'PostController@update')->name('admin.post.update');
+	Route::get('post/destroy/{post}', 'PostController@destroy')->name('admin.post.destroy');
+	
 	// 标签
 	Route::get('tag/index', 'TagController@index')->name('admin.tag.index');
 	Route::get('tag/create', 'TagController@create')->name('admin.tag.create');
