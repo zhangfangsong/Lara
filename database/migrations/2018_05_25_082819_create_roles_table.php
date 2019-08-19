@@ -14,13 +14,12 @@ class CreateRolesTable extends Migration
     public function up()
     {
         Schema::create('roles', function (Blueprint $table) {
-            $table->increments('id');
-            $table->string('name');
-            $table->string('nodes')->default('');
-            $table->string('description')->default('');
+            $table->increments('id')->comment('主键');
+            $table->string('name')->index()->comment('角色名');
+            $table->string('description')->default('')->comment('角色描述');
         });
     }
-
+    
     /**
      * Reverse the migrations.
      *

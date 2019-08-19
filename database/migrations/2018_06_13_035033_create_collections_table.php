@@ -14,13 +14,13 @@ class CreateCollectionsTable extends Migration
     public function up()
     {
         Schema::create('collections', function (Blueprint $table) {
-            $table->increments('id');
-            $table->integer('article_id')->unsigned()->index();
-            $table->integer('user_id')->unsigned()->index();
+            $table->increments('id')->comment('主键');
+            $table->integer('post_id')->unsigned()->index()->comment('文章id');
+            $table->integer('user_id')->unsigned()->index()->comment('用户id');
             $table->timestamps();
         });
     }
-
+    
     /**
      * Reverse the migrations.
      *

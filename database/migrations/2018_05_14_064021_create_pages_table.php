@@ -14,12 +14,12 @@ class CreatePagesTable extends Migration
     public function up()
     {
         Schema::create('pages', function (Blueprint $table) {
-            $table->increments('id');
-            $table->string('title');
-            $table->string('alias')->unique();
-            $table->text('content');
-            $table->string('keyword')->default('');
-            $table->string('description')->default('');
+            $table->increments('id')->comment('主键');
+            $table->string('title')->comment('标题');
+            $table->string('alias')->unique()->comment('别名');
+            $table->text('content')->comment('内容');
+            $table->string('keyword')->default('')->comment('关键词');
+            $table->string('description')->default('')->comment('描述');
             $table->timestamps();
         });
     }

@@ -14,13 +14,14 @@ class CreateLinksTable extends Migration
     public function up()
     {
         Schema::create('links', function (Blueprint $table) {
-            $table->increments('id');
-            $table->string('name');
-            $table->string('url');
-            $table->string('logo')->default('');
-            $table->integer('sort')->unsigned()->default(0);
-            $table->integer('status')->unsigned()->default(0);
-            $table->integer('target')->unsigned()->default(0);
+            $table->increments('id')->comment('主键');
+            $table->string('name')->comment('名称');
+            $table->string('url')->comment('链接地址');
+            $table->string('logo')->default('')->comment('链接图片');
+            $table->integer('sort')->unsigned()->index()->default(0)->comment('排序');
+            $table->tinyInteger('status')->unsigned()->index()->default(0)->comment('是否显示');
+            $table->tinyInteger('target')->unsigned()->default(0)->comment('新窗口打开');
+            $table->timestamps();
         });
     }
 

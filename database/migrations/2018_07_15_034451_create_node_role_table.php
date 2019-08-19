@@ -14,13 +14,13 @@ class CreateNodeRoleTable extends Migration
     public function up()
     {
         Schema::create('node_role', function (Blueprint $table) {
-            $table->increments('id');
-            $table->integer('role_id')->unsigned()->index();
-            $table->integer('node_id')->unsigned()->index();
+            $table->increments('id')->comment('主键');
+            $table->integer('role_id')->unsigned()->index()->comment('角色id');
+            $table->integer('node_id')->unsigned()->index()->comment('节点id');
             $table->timestamps();
         });
     }
-
+    
     /**
      * Reverse the migrations.
      *

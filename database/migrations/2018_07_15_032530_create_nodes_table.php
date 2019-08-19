@@ -14,17 +14,16 @@ class CreateNodesTable extends Migration
     public function up()
     {
         Schema::create('nodes', function (Blueprint $table) {
-            $table->increments('id');
-            $table->string('name');
-            $table->string('title');
-            $table->string('description')->default('');
-            $table->string('class_name')->default('');
-            $table->integer('sidebar')->unsigned()->default(0);
-            $table->integer('pid')->unsigned()->default(0);
+            $table->increments('id')->comment('主键');
+            $table->string('alias')->unique()->comment('别名');
+            $table->string('name')->comment('名称');
+            $table->integer('pid')->unsigned()->default(0)->comment('父级id');
+            $table->string('class_name')->default('')->comment('类名');
+            $table->tinyInteger('sidebar')->unsigned()->index()->default(0)->comment('是否侧边栏导航');
             $table->timestamps();
         });
     }
-
+    
     /**
      * Reverse the migrations.
      *

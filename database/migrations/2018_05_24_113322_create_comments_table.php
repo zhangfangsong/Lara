@@ -14,18 +14,17 @@ class CreateCommentsTable extends Migration
     public function up()
     {
         Schema::create('comments', function (Blueprint $table) {
-            $table->increments('id');
-            $table->integer('user_id')->unsigned()->index();
-            $table->integer('post_id')->unsigned()->index();
-            $table->string('content');
-            $table->integer('at_id')->unsigned()->default(0)->index();
-            $table->string('ip');
-            $table->integer('status')->unsigned()->default(1);
-            $table->integer('is_new')->unsigned()->default(1);
+            $table->increments('id')->comment('主键');
+            $table->integer('post_id')->unsigned()->index()->comment('文章id');
+            $table->integer('user_id')->unsigned()->index()->comment('用户id');
+            $table->string('content')->comment('评论内容');
+            $table->integer('at_id')->unsigned()->default(0)->index()->comment('回复评论id');
+            $table->string('ip')->comment('评论ip');
+            $table->tinyInteger('status')->unsigned()->default(0)->comment('是否显示');
             $table->timestamps();
         });
     }
-
+    
     /**
      * Reverse the migrations.
      *

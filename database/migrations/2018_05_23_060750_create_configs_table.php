@@ -13,16 +13,14 @@ class CreateConfigsTable extends Migration
      */
     public function up()
     {
-        Schema::create('configs', function (Blueprint $table) {
-            $table->increments('id');
-            $table->string('name')->index();
-            $table->string('value')->default('');
-            $table->string('type')->default('text');
-            $table->string('tab')->default('main');
-            $table->integer('sort')->default(0);
+        Schema::create('settings', function (Blueprint $table) {
+            $table->increments('id')->comment('主键');
+            $table->string('name')->unique()->comment('键名');
+            $table->string('value', 1500)->default('')->comment('键值');
+            $table->string('type')->index()->default('main')->comment('类别');
         });
     }
-
+    
     /**
      * Reverse the migrations.
      *
@@ -30,6 +28,6 @@ class CreateConfigsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('configs');
+        Schema::dropIfExists('settings');
     }
 }
