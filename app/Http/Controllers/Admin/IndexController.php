@@ -30,7 +30,7 @@ class IndexController extends BaseController
 		];
 		$data['load'] = system_load();
 		
-		$data['comments'] = Comment::where('is_new', 1)->orderBy('id', 'desc')->limit(6)->get();
+		$data['comments'] = Comment::where('read', 0)->orderBy('id', 'desc')->limit(6)->get();
 		$data['articles'] = Post::where('status', 1)->orderBy('id', 'desc')->limit(6)->get();
 		
 		return view('admin.index.index', $data);

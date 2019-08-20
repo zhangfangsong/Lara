@@ -1,5 +1,12 @@
 <?php
 
+/**
+ * 文章模型
+ * User: zfs
+ * Date: 2019/8/17
+ * Time: 22:34
+ */
+
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
@@ -9,9 +16,9 @@ use DB;
 class Post extends Model
 {
 	protected $fillable = [
-		'title', 'content', 'user_id' ,'category_id', 'keyword', 'description', 'status', 'views', 'thumb',
+		'title', 'content', 'user_id' ,'category_id', 'keyword', 'description', 'thumb', 'status', 'views'
 	];
-
+	
 	public function category()
 	{
 		return $this->belongsTo(Category::class);

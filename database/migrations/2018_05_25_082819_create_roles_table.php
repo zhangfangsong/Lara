@@ -17,6 +17,7 @@ class CreateRolesTable extends Migration
             $table->increments('id')->comment('主键');
             $table->string('name')->index()->comment('角色名');
             $table->string('description')->default('')->comment('角色描述');
+            $table->timestamps();
         });
     }
     

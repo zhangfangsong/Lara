@@ -1,5 +1,12 @@
 <?php
 
+/**
+ * 文章分类模型
+ * User: zfs
+ * Date: 2019/8/17
+ * Time: 22:34
+ */
+
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
@@ -7,11 +14,9 @@ use Illuminate\Database\Eloquent\Model;
 class Category extends Model
 {
 	protected $fillable = [
-		'name', 'status', 'sort', 'pid', 'description',
+		'name', 'description', 'url', 'pid', 'status', 'sort'
 	];
-
-	public $timestamps = false;
-
+	
 	public function articles()
 	{
 		return $this->hasMany(Article::class);

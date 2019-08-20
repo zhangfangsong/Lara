@@ -20,7 +20,8 @@ class CreateCommentsTable extends Migration
             $table->string('content')->comment('评论内容');
             $table->integer('at_id')->unsigned()->default(0)->index()->comment('回复评论id');
             $table->string('ip')->comment('评论ip');
-            $table->tinyInteger('status')->unsigned()->default(0)->comment('是否显示');
+            $table->tinyInteger('read')->unsigned()->index()->default(0)->comment('是否已读');
+            $table->tinyInteger('status')->unsigned()->index()->default(0)->comment('是否显示');
             $table->timestamps();
         });
     }

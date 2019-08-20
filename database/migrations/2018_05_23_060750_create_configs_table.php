@@ -18,6 +18,7 @@ class CreateConfigsTable extends Migration
             $table->string('name')->unique()->comment('键名');
             $table->string('value', 1500)->default('')->comment('键值');
             $table->string('type')->index()->default('main')->comment('类别');
+            $table->timestamps();
         });
     }
     

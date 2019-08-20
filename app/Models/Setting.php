@@ -15,9 +15,9 @@ use Cache;
 class Setting extends Model
 {
 	protected $fillable = [
-		'name', 'value', 'type', 'tab', 'sort'
+		'name', 'value', 'type'
 	];
-
+	
 	public $timestamps = false;
 
 	protected static $cache_key = 'lara:configs';
