@@ -10,21 +10,23 @@
 namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
+use App\Http\Requests\Admin\PostRequest;
+use App\Models\Tag;
 use App\Models\Post;
-use App\Http\Requests\Admin\ArticleRequest;
 use App\Models\Category;
 use App\Handlers\Level;
-use Auth;
-use App\Models\Tag;
+use Illuminate\Support\Facades\Auth;
 
 class PostController extends BaseController
 {
+	//文章列表
 	public function index()
 	{
 		$list = Post::orderBy('id', 'desc')->paginate(10);
 		return view('admin.post.index', ['list'=> $list]);
 	}
 	
+	//新增文章界面
 	public function create(Level $level)
 	{
 		$list = Category::orderBy('sort', 'desc')->get();
@@ -33,7 +35,8 @@ class PostController extends BaseController
 		return view('admin.post.create', ['list'=> $list]);
 	}
 
-	public function store(ArticleRequest $request)
+	//新增文章操作
+	public function store(PostRequest $request)
 	{
 		$data = [
 			'title' => $request->title,
@@ -67,6 +70,7 @@ class PostController extends BaseController
 		return redirect()->route('admin.post.index')->with('success', '创建成功');
 	}
 
+	//编辑文章界面
 	public function edit(Post $post, Level $level)
 	{
 		$list = Category::orderBy('sort', 'desc')->get();
@@ -75,9 +79,10 @@ class PostController extends BaseController
 		return view('admin.post.create', ['list'=> $list, 'post'=> $post]);
 	}
 
-	public function update(ArticleRequest $request, Article $article)
+	//编辑文章操作
+	public function update(PostRequest $request, Post $post)
 	{
-		$article->update($request->all());
+		$post->update($request->all());
 
 		if($request->keyword){
 			$tags = explode(',', $request->keyword);
@@ -89,13 +94,14 @@ class PostController extends BaseController
 				}
 			}
 		}
-
+		
 		return redirect()->back()->with('success', '编辑成功');
 	}
 
-	public function destroy(Article $article)
+	//删除文章
+	public function destroy(Post $post)
 	{
-		$article->delete();
+		$post->delete();
 
 		return redirect()->back()->with('success', '删除成功');
 	}

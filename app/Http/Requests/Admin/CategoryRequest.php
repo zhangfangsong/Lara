@@ -1,26 +1,16 @@
 <?php
 
-namespace App\Http\Requests\Admin;
+/**
+ * 分类表单请求
+ * User: zfs
+ * Date: 2019/8/17
+ * Time: 22:34
+ */
 
-use Illuminate\Foundation\Http\FormRequest;
+namespace App\Http\Requests\Admin;
 
 class CategoryRequest extends FormRequest
 {
-    /**
-     * Determine if the user is authorized to make this request.
-     *
-     * @return bool
-     */
-    public function authorize()
-    {
-        return true;
-    }
-
-    /**
-     * Get the validation rules that apply to the request.
-     *
-     * @return array
-     */
     public function rules()
     {
         return [
@@ -30,7 +20,7 @@ class CategoryRequest extends FormRequest
             'sort' => 'required|numeric',
         ];
     }
-
+    
     public function attributes()
     {
         return [

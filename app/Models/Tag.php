@@ -38,7 +38,7 @@ class Tag extends Model
 				$data[$key] = $info[$key];
 			}
 		}
-
+		
 		return self::create($data);
 	}
 
