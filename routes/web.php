@@ -1,17 +1,6 @@
 <?php
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
-
-//首页
+//前台
 Route::get('/', 'IndexController@index')->name('home');
 Route::get('cate/{category}', 'IndexController@category')->name('category');
 Route::get('post/{post}', 'IndexController@post')->name('post');
@@ -25,7 +14,7 @@ Route::group([
 ], function (){
 	Route::get('signup', 'UserController@create')->name('signup');
 	Route::post('signup', 'UserController@store')->name('signup');
-
+	
 	Route::get('login', 'LoginController@create')->name('login');
 	Route::post('login', 'LoginController@store')->name('login');
 });
@@ -33,9 +22,10 @@ Route::group([
 Route::group([
 	'middleware' => 'auth',
 ], function (){
-	Route::post('{article}/comment', 'IndexController@comment')->name('comment');
+	Route::post('{post}/comment', 'IndexController@comment')->name('comment');
 });
 
+//后台
 Route::group([
 	'prefix' => 'admin',
 	'namespace' => 'Admin',

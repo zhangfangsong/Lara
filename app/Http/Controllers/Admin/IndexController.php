@@ -63,13 +63,14 @@ class IndexController extends BaseController
 		$user->save();
 		return redirect()->back()->with('success', '密码修改成功');
 	}
-
+	
+	//退出登录
 	public function logout()
 	{
 		Auth::logout();
 		return redirect()->route('login')->with('success', '您已成功退出登录');
 	}
-
+	
 	public function upload(Request $request, ImageUpload $upload)
 	{
 		if($request->file){

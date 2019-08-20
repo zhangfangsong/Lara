@@ -16,8 +16,8 @@ use App\Models\Post;
 use App\Models\Comment;
 use App\Models\Tag;
 use App\Models\Link;
-use View;
 use App\Handlers\Level;
+use Illuminate\Support\Facades\View;
 
 class BaseController extends Controller
 {
@@ -30,23 +30,27 @@ class BaseController extends Controller
 	//初始化
 	protected function __init()
 	{
+		//系统配置
 		$cfg = (object)Setting::getAll();
-		
+
+		//导航
 		$navs = Category::where('status', 1)->orderBy('sort', 'desc')->get();
 		$level = new Level;
 		$navs = $level->formatMulti($navs);
 
-		$hot_articles = Post::getHot();
-		$recent_articles = Post::getRecent();
+		//热门文章和最新文章
+		$hot_posts = Post::getHot();
+		$recent_posts = Post::getRecent();
 
-		// $comments = Comment::getRecent();
-
+		//归档
 		$files = Post::getFile();
 
+		//标签
 		$tags = Tag::getHot(80)->shuffle();
 
+		//友链
 		$links = Link::getAll();
-
-		View()->share(['cfg'=> $cfg, 'navs'=> $navs, 'hot_articles'=> $hot_articles, 'recent_articles'=> $recent_articles, 'files'=> $files, 'tags'=> $tags, 'links'=> $links]);
+		
+		View()->share(['cfg'=> $cfg, 'navs'=> $navs, 'hot_posts'=> $hot_posts, 'recent_posts'=> $recent_posts, 'files'=> $files, 'tags'=> $tags, 'links'=> $links]);
 	}
 }

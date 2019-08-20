@@ -10,7 +10,7 @@
 
         @include('shared._errors')
 
-    	<div class=" card-box">
+    	<div class="card-box">
             <div class="panel-heading">
                 <h3 class="text-center"> 登录 <strong class="text-custom">{{ $cfg->title }}</strong> </h3>
             </div>
@@ -21,10 +21,10 @@
 
                 <div class="form-group ">
                     <div class="col-xs-12">
-                        <input class="form-control" type="text" name="email" placeholder="邮箱" value="{{ old('email') }}">
+                        <input class="form-control" type="text" name="username" placeholder="用户名/邮箱" value="{{ old('username') }}">
                     </div>
                 </div>
-
+                
                 <div class="form-group">
                     <div class="col-xs-12">
                         <input class="form-control" type="password" name="password" placeholder="密码" value="{{ old('password') }}">

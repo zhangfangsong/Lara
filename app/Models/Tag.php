@@ -42,11 +42,12 @@ class Tag extends Model
 		return self::create($data);
 	}
 
+	//热门标签
 	public static function getHot($limit = 20)
 	{
 		return self::where('status', 1)->orderBy('views', 'desc')->limit($limit)->get();
 	}
-
+	
 	public function getLinkUrl()
 	{
 		return route('tag', $this->name);

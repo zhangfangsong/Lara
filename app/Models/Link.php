@@ -17,6 +17,7 @@ class Link extends Model
 		'name', 'url', 'logo', 'sort', 'status', 'target'
 	];
 	
+	//获取友链
 	public static function getAll()
 	{
 		return self::where('status', 1)->orderBy('sort', 'desc')->get();

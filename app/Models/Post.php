@@ -11,7 +11,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use App\Handlers\Level;
-use DB;
+use Illuminate\Support\Facades\DB;
 
 class Post extends Model
 {
@@ -44,16 +44,19 @@ class Post extends Model
 		return route('time', $this->created_at->toDateString());
 	}
 
+	//最新文章
 	public static function getRecent($limit = 10)
 	{
 		return self::where('status', 1)->orderBy('id', 'desc')->limit($limit)->get();
 	}
 	
+	//热门文章
 	public static function getHot($limit = 10)
 	{
 		return self::where('status', 1)->orderBy('views', 'desc')->limit($limit)->get();
 	}
 
+	//归档
 	public static function getFile()
 	{
 		$files = DB::table('posts')->select(DB::raw('count(*) as num, substring(created_at, 1, 7) as pub_date'))->groupBy('pub_date')->orderBy('pub_date', 'desc')->get();

@@ -10,12 +10,12 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Requests\CommentRequest;
 use App\Models\Post;
 use App\Models\Category;
-use App\Handlers\Level;
-use App\Http\Requests\CommentRequest;
 use App\Models\Comment;
-use Auth;
+use App\Handlers\Level;
+use Illuminate\Support\Facades\Auth;
 
 class IndexController extends BaseController
 {
@@ -43,21 +43,23 @@ class IndexController extends BaseController
 		return view('index.post', ['post'=> $post]);
 	}
 	
-	public function comment(Post $Post, CommentRequest $request)
+	//评论
+	public function comment(Post $post, CommentRequest $request)
 	{
-		$comment = Comment::create([
+		Comment::create([
 			'user_id' => Auth::user()->id,
-			'Post_id' => $Post->id,
+			'post_id' => $post->id,
 			'content' => $request->content,
 			'at_id' => 0,
 			'ip' => $request->getClientIp(),
-			'status' => 1,
-			'is_new' => 1,
+			'read' => 0,
+			'status' => 1
 		]);
 
 		return redirect()->back()->with('success', '评论成功');
 	}
-
+	
+	//搜索
 	public function search(Request $request)
 	{
 		$data = Post::getSearch($request);

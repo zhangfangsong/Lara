@@ -10,9 +10,9 @@
 			<img src="{{ $val->thumb }}" alt="{{ $val->title }}" width="700">
 		</div>
 	@endif
-
+	
 	<div class="entry-content">{{ $val->description }}</div>
-
+	
 	@include('index._tag', ['val'=> $val])
 </article>
 @endforeach

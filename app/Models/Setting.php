@@ -10,21 +10,20 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use Cache;
+use Illuminate\Support\Facades\Cache;
 
 class Setting extends Model
 {
 	protected $fillable = [
 		'name', 'value', 'type'
 	];
-	
-	public $timestamps = false;
 
-	protected static $cache_key = 'lara:configs';
+	protected static $cache_key = 'lara:settings';
 
 	protected static $expire_at = 120;
 
-	public static function getAll($tab = '')
+	//获取系统配置
+	public static function getAll($type = '')
 	{
 		$list = Cache::remember(self::$cache_key, self::$expire_at, function (){
 			return self::all();
@@ -34,47 +33,45 @@ class Setting extends Model
 			return [];
 		}
 
-		$config = [];
+		$settings = [];
 		foreach($list as $key => $val){
-			if($tab){
-				if($val['tab'] == $tab){
-					$config[$val['name']] = $val['value'];
+			if($type){
+				if($val['type'] == $type){
+					$settings[$val['name']] = $val['value'];
 				}
 			}else{
-				$config[$val['name']] = $val['value'];
+				$settings[$val['name']] = $val['value'];
 			}
 		}
 		
-		return $config;
+		return $settings;
 	}
 	
-	public static function addOrUpdate($info, $tab)
+	//更新配置
+	public static function addOrUpdate($info, $type = 'main')
 	{
 		if(!is_array($info) || empty($info)){
 			return false;
 		}
 
 		foreach($info as $key => $val){
-			$map = [
-				'name' => $key
-			];
-			$config = self::where($map)->first();
+			$setting = self::where('name', $key)->first();
 
 			$data = [
 				'name' => $key,
 				'value' => $val
 			];
 
-			if(empty($config)){
-				$data['tab'] = $tab;
+			if(empty($setting)){
+				$data['type'] = $type;
 				self::create($data);
 			}else{
-				self::where($map)->update($data);
+				$setting->update($data);
 			}
 		}
-
+		
 		Cache::forget(self::$cache_key);
-
+		
 		return true;
 	}
 }
