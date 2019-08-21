@@ -194,7 +194,7 @@
 							<td>{{ $val->category->name }}</td>
 							<td>{{ $val->keyword }}</td>
 							<td>{{ $val->views }}</td>
-							<td>{{ $val->comments }}</td>
+							<td>{{ $val->replies }}</td>
 							<td>{{ $val->created_at->diffForHumans() }}</td>
 							<td><span class="label label-table {{ $val->status == 1 ? 'label-default' : 'label-warning' }}">{{ $val->status == 1 ? '显示' : '隐藏' }}</span></td>
 							<td>

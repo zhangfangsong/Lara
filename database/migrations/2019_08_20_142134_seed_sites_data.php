@@ -61,8 +61,13 @@ class SeedSitesData extends Migration
             'name' => '创始人',
             'description' => '网站创始人',
         ]);
+        
+        Role::create([
+            'name' => '注册用户',
+            'description' => '网站注册用户',
+        ]);
     }
-
+    
     //填充友链
     public function seedLinks()
     {
