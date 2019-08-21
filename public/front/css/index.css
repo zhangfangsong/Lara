@@ -1417,13 +1417,13 @@ img#wpstats {
 		width: 80%;
 	}
 	.site {
-		margin: 0 auto;
-		max-width: 100%;
+		margin: 40px auto;
+		max-width: 1200px;
 		overflow: hidden;
 	}
 	.site-content {
 		float: left;
-		width: 73.104166667%;
+		width: 65.104166667%;
 	}
 	body.template-front-page .site-content,
 	body.single-attachment .site-content,
@@ -1432,7 +1432,7 @@ img#wpstats {
 	}
 	.widget-area {
 		float: right;
-		width: 23.041666667%;
+		width: 28.041666667%;
 	}
 	.site-header h1,
 	.site-header h2 {

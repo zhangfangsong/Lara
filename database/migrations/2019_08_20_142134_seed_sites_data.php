@@ -7,6 +7,7 @@ use Illuminate\Database\Migrations\Migration;
 use App\Models\User;
 use App\Models\Role;
 use App\Models\Link;
+use App\Handlers\App;
 use App\Models\Setting;
 use Illuminate\Support\Facades\DB;
 
@@ -17,9 +18,9 @@ class SeedSitesData extends Migration
      *
      * @return void
      */
-    public function up()
+    public function up(App $app)
     {
-        $this->seedUsers();
+        $this->seedUsers($app);
         $this->seedSettings();
         $this->seedRoles();
         $this->seedLinks();
@@ -39,13 +40,15 @@ class SeedSitesData extends Migration
     }
     
     //填充用户
-    public function seedUsers()
+    public function seedUsers($app)
     {
+        $email = 'admin@admin.com';
+        
         User::create([
             'username' => 'admin',
-            'email' => 'admin@admin.com',
+            'email' => $email,
             'password' => bcrypt('123456'),
-            'avatar' => 'http://localhost:8090/uploads/images/link/201908/1566050856.jpg',
+            'avatar' => $app->getAvatarByEmail($email),
             'status' => 1,
             'role_id' => 1
         ]);

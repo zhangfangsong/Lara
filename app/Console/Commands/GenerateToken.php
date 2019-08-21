@@ -1,10 +1,17 @@
 <?php
 
+/**
+ * 给用户创建token
+ * User: zfs
+ * Date: 2019/8/17
+ * Time: 22:34
+ */
+
 namespace App\Console\Commands;
 
 use Illuminate\Console\Command;
 use App\Models\User;
-use Auth;
+use Illuminate\Support\Facades\Auth;
 
 class GenerateToken extends Command
 {

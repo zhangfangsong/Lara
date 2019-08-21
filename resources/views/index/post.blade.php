@@ -19,12 +19,12 @@
 	</nav>
 
 	<div id="comments" class="comments-area">
-		@if(!$post->comment->count())
+		@if(!$post->comments->count())
 			<h2 class="comments-title">《<span>{{ $post->title }}</span>》上暂无评论!</h2>
 		@else
-			<h2 class="comments-title">《<span>{{ $post->title }}</span>》上有&nbsp;{{ $post->comment->count() }}&nbsp;条评论!</h2>
+			<h2 class="comments-title">《<span>{{ $post->title }}</span>》上有&nbsp;{{ $post->comments->count() }}&nbsp;条评论!</h2>
 			<ol class="commentlist" id="commentWraper">
-				@foreach($post->comment as $val)
+				@foreach($post->comments as $val)
 				<li class="comment even thread-even depth-0" id="li-comment-6">
 					<article id="comment-6" class="comment">
 						<header class="comment-meta comment-author vcard"><img src="{{ $val->user->avatar }}" class="photo" height="44" width="44"/><cite class="fn">{{ $val->user->username }} </cite><time datetime="">{{ $val->created_at->diffForHumans() }}</time></header>

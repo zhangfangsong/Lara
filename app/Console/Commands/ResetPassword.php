@@ -1,5 +1,12 @@
 <?php
 
+/**
+ * 重置密码
+ * User: zfs
+ * Date: 2019/8/17
+ * Time: 22:34
+ */
+
 namespace App\Console\Commands;
 
 use Illuminate\Console\Command;
@@ -49,7 +56,7 @@ class ResetPassword extends Command
         if(strlen(trim($password)) < 6){
             return $this->error('密码长度不能少于6位');
         }
-
+        
         $user->password = bcrypt($password);
         $user->save();
         $this->info('密码重置成功');

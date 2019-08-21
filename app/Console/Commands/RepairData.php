@@ -1,10 +1,17 @@
 <?php
 
+/**
+ * 修复数据一致性
+ * User: zfs
+ * Date: 2019/8/17
+ * Time: 22:34
+ */
+
 namespace App\Console\Commands;
 
 use Illuminate\Console\Command;
 use App\Models\User;
-use App\Models\Article;
+use App\Models\Post;
 use App\Handlers\App;
 
 class RepairData extends Command
@@ -48,40 +55,40 @@ class RepairData extends Command
 
     protected function repairArticleComment()
     {
-        $articles = Article::select('id')->get();
+        $posts = Post::select('id')->get();
 
-        if(!$articles->count()){
+        if(!$posts->count()){
             return false;
         }
-        $bar = $this->output->createProgressBar(count($articles));
+        $bar = $this->output->createProgressBar(count($posts));
 
-        foreach($articles as $article){
-            $article->comments = $article->comment()->count();
-            $article->save();
-
+        foreach($posts as $post){
+            $post->replies = $post->comments()->count();
+            $post->save();
+            
             $bar->advance();
         }
-
+        
         $bar->finish();
         $this->info("\n评论数据修复完毕!");
     }
-
+    
     protected function repairUserAvatar($app)
     {
         $users = User::where('avatar', '')->select('id', 'email')->get();
-
+        
         if(!$users->count()){
             return false;
         }
         $bar = $this->output->createProgressBar(count($users));
-
+        
         foreach($users as $user){
             $user->avatar = $app->getAvatarByEmail($user->email);
             $user->save();
-
+            
             $bar->advance();
         }
-
+        
         $bar->finish();
         $this->info("\n用户数据修复完毕!");
     }

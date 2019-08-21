@@ -9,11 +9,11 @@
 @stop
 
 @section('script')
-	<script src="{{ asset('assets/plugins/morris/morris.min.js') }}"></script>
-	<script src="{{ asset('assets/pages/jquery.dashboard.js') }}"></script>
+	<!-- <script src="{{ asset('assets/plugins/morris/morris.min.js') }}"></script>
+	<script src="{{ asset('assets/pages/jquery.dashboard.js') }}"></script> -->
 	<script src="{{ asset('assets/plugins/bootstrap-table/dist/bootstrap-table.min.js') }}"></script>
 	<script src="{{ asset('assets/pages/jquery.bs-table.js') }}"></script>
-
+	
     <script type="text/javascript">
         jQuery(document).ready(function($) {
             $('.counter').counterUp({

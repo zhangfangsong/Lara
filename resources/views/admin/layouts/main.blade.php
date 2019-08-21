@@ -101,8 +101,8 @@
                             </li>
 
                             <li class="has_sub">
-                                <a href="javascript:void(0)" class="waves-effect"><i class="ti-paint-bucket"></i> <span> 管理 </span> </a>
-                                <ul class="list-unstyled">
+                                <a href="javascript:void(0)" class="waves-effect subdrop"><i class="ti-paint-bucket"></i> <span> 管理 </span> </a>
+                                <ul class="list-unstyled" style="display: block;">
                                     <li class="{{ active_class(if_route_pattern('admin.post.*')) }}"><a href="{{ route('admin.post.index') }}">文章</a></li>
                                     <li class="{{ active_class(if_route_pattern('admin.category.*')) }}"><a href="{{ route('admin.category.index') }}">分类</a></li>
                                     <li class="{{ active_class(if_route_pattern('admin.user.*')) }}"><a href="{{ route('admin.user.index') }}">用户</a></li>
@@ -180,13 +180,6 @@
 
         <script src="{{ asset('assets/js/jquery.core.js') }}"></script>
         <script src="{{ asset('assets/js/jquery.app.js') }}"></script>
-
-        <script type="text/javascript">
-            $(function (){
-                $('#sidebar-menu ul.list-unstyled li.active').parent('ul').siblings('a').addClass('subdrop');
-                $('#sidebar-menu ul.list-unstyled li.active').parent('ul').css('display', 'block');
-            });
-        </script>
 
         @yield('script')
 

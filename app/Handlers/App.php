@@ -1,8 +1,15 @@
 <?php
 
+/**
+ * 生成用户头像
+ * User: zfs
+ * Date: 2019/8/17
+ * Time: 22:34
+ */
+
 namespace App\Handlers;
 
-use Storage;
+use Illuminate\Support\Facades\Storage;
 
 class App
 {
