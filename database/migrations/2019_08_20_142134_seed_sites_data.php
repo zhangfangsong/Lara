@@ -18,14 +18,16 @@ class SeedSitesData extends Migration
      *
      * @return void
      */
-    public function up(App $app)
+    public function up()
     {
+        $app = new App;
+        
         $this->seedUsers($app);
         $this->seedSettings();
         $this->seedRoles();
         $this->seedLinks();
     }
-
+    
     /**
      * Reverse the migrations.
      *
