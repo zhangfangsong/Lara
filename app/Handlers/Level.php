@@ -10,6 +10,7 @@
 namespace App\Handlers;
 
 class Level {
+	//格式化一级
 	public function formatOne($array, $pid=0, $separator='&nbsp;', $level=0, $primary='id', $parent='pid')
 	{
 		$arr = array();
@@ -24,7 +25,8 @@ class Level {
 
 		return $arr;
 	}
-
+	
+	//格式化多级
 	public function formatMulti($array, $pid=0)
 	{
 		$arr = array();
@@ -42,6 +44,7 @@ class Level {
 		return $arr;
 	}
 
+	//
 	public function formatParent($array, $id)
 	{
 		$arr = array();
@@ -55,7 +58,8 @@ class Level {
 
 		return $arr;
 	}
-
+	
+	//获取子级分类id
 	public function formatChild($array, $id, $flag=true, $primary='id', $parent='pid')
 	{
 		$arr = array();

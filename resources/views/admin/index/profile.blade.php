@@ -22,7 +22,7 @@
 					<a href="#">控制台</a>
 				</li>
 	            <li>
-					<a href="{{ route('admin.profile') }}">我的资料</a>
+					<a href="{{ route('admin.dashboard.profile') }}">我的资料</a>
 				</li>
 				<li class="active">
 					编辑
@@ -33,7 +33,7 @@
 
 	<div class="row">
 	    <div class="col-sm-12">
-            <form class="form-horizontal" role="form" action="{{ route('admin.profile') }}" method="POST">
+            <form class="form-horizontal" role="form" action="{{ route('admin.dashboard.profile') }}" method="POST">
             	{{ csrf_field() }}
                 <div class="row">
                     <div class="col-lg-12">
@@ -75,7 +75,7 @@
                                     <textarea name="description" class="form-control" rows="3" placeholder="请输入简介">{{ Auth::user()->description }}</textarea>
                                 </div>
                             </div>
-
+                            
                             <div class="form-group m-b-20">
                             	<label class="col-md-2"></label>
                             	<div class="col-md-6">

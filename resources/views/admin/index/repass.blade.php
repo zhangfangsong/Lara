@@ -13,7 +13,7 @@
 					<a href="#">控制台</a>
 				</li>
 	            <li>
-					<a href="{{ route('admin.repass') }}">修改密码</a>
+					<a href="{{ route('admin.dashboard.repass') }}">修改密码</a>
 				</li>
 				<li class="active">
 				    编辑
@@ -21,10 +21,10 @@
 			</ol>
 		</div>
 	</div>
-
+    
 	<div class="row">
 	    <div class="col-sm-12">
-            <form class="form-horizontal" role="form" action="{{ route('admin.repass') }}" method="POST">
+            <form class="form-horizontal" role="form" action="{{ route('admin.dashboard.repass') }}" method="POST">
             	{{ csrf_field() }}
                 <div class="row">
                     <div class="col-lg-12">

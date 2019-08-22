@@ -13,7 +13,7 @@
 					<a href="#">设置</a>
 				</li>
 	            <li>
-					<a href="{{ route('admin.setting', $tab) }}">{{ $title }}</a>
+					<a href="{{ route('admin.setting.index', $tab) }}">{{ $title }}</a>
 				</li>
 				<li class="active">
 					编辑
@@ -24,13 +24,13 @@
     
 	<div class="row">
 	    <div class="col-sm-12">
-            <form class="form-horizontal" role="form" action="{{ route('admin.setting', $tab) }}" method="POST">
+            <form class="form-horizontal" role="form" action="{{ route('admin.setting.index', $tab) }}" method="POST">
             	{{ csrf_field() }}
                 <div class="row">
                     <div class="col-lg-12">
-
+                        
                     	@include('shared._errors')
-
+                        
                         <div class="card-box">
                             <h5 class="text-muted text-uppercase m-t-0 m-b-20"><b>{{ $title }}</b></h5>
                             @if($tab == 'main')

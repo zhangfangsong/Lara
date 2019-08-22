@@ -29,7 +29,7 @@ class Role extends Model
 		foreach($nodes as $node){
 			$data[] = $node->name;
 		}
-
+		
 		return $data;
 	}
 }

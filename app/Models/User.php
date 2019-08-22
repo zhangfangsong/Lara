@@ -12,7 +12,7 @@ namespace App\Models;
 use Tymon\JWTAuth\Contracts\JWTSubject;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
-use Route;
+use Illuminate\Support\Facades\Route;
 use App\Handlers\App;
 
 class User extends Authenticatable implements JWTSubject
@@ -101,6 +101,7 @@ class User extends Authenticatable implements JWTSubject
         return self::create($data);
     }
 
+    //用户权限检测
     public function hasRight()
     {
         if($this->role_id == 1){
@@ -109,10 +110,10 @@ class User extends Authenticatable implements JWTSubject
         if(in_array(Route::currentRouteName(), $this->role->getNodes())){
             return true;
         }
-
+        
         return false;
     }
-
+    
     public function getJWTIdentifier()
     {
         return $this->getKey();

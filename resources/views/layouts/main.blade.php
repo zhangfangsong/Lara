@@ -39,7 +39,7 @@
 				<a href="{{ route('home') }}" title="{{ $cfg->name }}" rel="home">{{ $cfg->name }}</a>
 				@auth
 				@if(Auth::user()->role_id == 1)
-					<input type="button" class="btn-default" value="管理" title="{{ Auth::user()->username }}" onclick="location.href = '{{ route('admin.home') }}';">
+					<input type="button" class="btn-default" value="管理" title="{{ Auth::user()->username }}" onclick="location.href = '{{ route('admin.dashboard.index') }}';">
 				@else
 					<input type="button" class="btn-default" value="退出" title="{{ Auth::user()->username }}" onclick="location.href = '{{ route('admin.logout') }}';">
 				@endif

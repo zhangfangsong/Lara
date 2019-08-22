@@ -1,5 +1,12 @@
 <?php
 
+/**
+ * 返回安装数据
+ * User: zfs
+ * Date: 2019/8/17
+ * Time: 22:34
+ */
+
 namespace App\Handlers;
 
 class Install

@@ -10,7 +10,7 @@
 namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
-use Auth;
+use Illuminate\Support\Facades\Auth;
 use App\Handlers\ImageUpload;
 use App\Http\Requests\Admin\ProfileRequest;
 use App\Models\Post;
@@ -20,10 +20,11 @@ use App\Models\Page;
 
 class IndexController extends BaseController
 {
+	//仪表盘
 	public function index()
 	{
 		$data = [
-			'articleCount' => Post::count(),
+			'postCount' => Post::count(),
 			'userCount' => User::count(),
 			'commentCount' => Comment::count(),
 			'pageCount' => Page::count(),
@@ -31,16 +32,18 @@ class IndexController extends BaseController
 		$data['load'] = system_load();
 		
 		$data['comments'] = Comment::where('read', 0)->orderBy('id', 'desc')->limit(6)->get();
-		$data['articles'] = Post::where('status', 1)->orderBy('id', 'desc')->limit(6)->get();
+		$data['posts'] = Post::where('status', 1)->orderBy('id', 'desc')->limit(6)->get();
 		
 		return view('admin.index.index', $data);
 	}
 	
+	//我的资料
 	public function profile()
 	{
 		return view('admin.index.profile');
 	}
 
+	//保存资料
 	public function profileUpdate(ProfileRequest $request)
 	{
 		$data = $request->all();
@@ -50,11 +53,13 @@ class IndexController extends BaseController
 		return redirect()->back()->with('success', '编辑成功');
 	}
 
+	//修改密码界面
 	public function repass()
 	{
 		return view('admin.index.repass');
 	}
-
+	
+	//修改密码处理
 	public function repassUpdate(ProfileRequest $request)
 	{
 		$user = Auth::user();
@@ -71,6 +76,7 @@ class IndexController extends BaseController
 		return redirect()->route('login')->with('success', '您已成功退出登录');
 	}
 	
+	//图片上传
 	public function upload(Request $request, ImageUpload $upload)
 	{
 		if($request->file){

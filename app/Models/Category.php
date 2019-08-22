@@ -17,11 +17,13 @@ class Category extends Model
 		'name', 'description', 'url', 'pid', 'status', 'sort'
 	];
 	
-	public function articles()
+	//分类文章
+	public function posts()
 	{
-		return $this->hasMany(Article::class);
+		return $this->hasMany(Post::class);
 	}
-
+	
+	//获取分类链接
 	public function getLinkUrl()
 	{
 		if(!empty($this->url)){
@@ -36,6 +38,7 @@ class Category extends Model
 		return self::where(['status'=> 1, 'pid'=> 0])->orderBy('sort', 'desc')->get();
 	}
 
+	//获取子级分类id
 	public function hasChild()
 	{
 		return self::where('pid', $this->id)->value('id');

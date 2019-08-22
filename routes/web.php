@@ -39,16 +39,16 @@ Route::group([
 	'namespace' => 'Admin',
 	'middleware' => ['auth', 'privilege'],
 ], function (){
-	Route::get('/', 'IndexController@index')->name('admin.home');
+	Route::get('/', 'IndexController@index')->name('admin.dashboard.index');
 	Route::post('upload', 'IndexController@upload')->name('admin.upload');
-
-	Route::get('profile', 'IndexController@profile')->name('admin.profile');
-	Route::post('profile', 'IndexController@profileUpdate')->name('admin.profile');
-	Route::get('repass', 'IndexController@repass')->name('admin.repass');
-	Route::post('repass', 'IndexController@repassUpdate')->name('admin.repass');
 	
-	Route::get('setting/{tab}', 'SettingController@index')->name('admin.setting');
-	Route::post('setting/{tab}', 'SettingController@store')->name('admin.setting');
+	Route::get('profile', 'IndexController@profile')->name('admin.dashboard.profile');
+	Route::post('profile', 'IndexController@profileUpdate')->name('admin.dashboard.profile');
+	Route::get('repass', 'IndexController@repass')->name('admin.dashboard.repass');
+	Route::post('repass', 'IndexController@repassUpdate')->name('admin.dashboard.repass');
+	
+	Route::get('setting/{tab}', 'SettingController@index')->name('admin.setting.index');
+	Route::post('setting/{tab}', 'SettingController@store')->name('admin.setting.update');
 	
 	// 分类
 	Route::get('category/index', 'CategoryController@index')->name('admin.category.index');

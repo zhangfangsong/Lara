@@ -42,7 +42,7 @@
                 <!-- LOGO -->
                 <div class="topbar-left">
                     <div class="text-center">
-                        <a href="{{ route('admin.home') }}" class="logo"><i class="icon-magnet icon-c-logo"></i><span>Lara后台管理</span></a>
+                        <a href="{{ route('admin.dashboard.index') }}" class="logo"><i class="icon-magnet icon-c-logo"></i><span>Lara后台管理</span></a>
                     </div>
                 </div>
 
@@ -64,14 +64,14 @@
 
                             <ul class="nav navbar-nav navbar-right pull-right">
                                 <li class="hidden-xs">
-                                    <a href="{{ route('admin.profile') }}" class="waves-effect waves-light">{{ Auth::user()->username }}</a>
+                                    <a href="{{ route('admin.dashboard.profile') }}" class="waves-effect waves-light">{{ Auth::user()->username }}</a>
                                 </li>
-
+                                
                                 <li class="dropdown">
                                     <a href="" class="dropdown-toggle profile" data-toggle="dropdown" aria-expanded="true"><img src="{{ Auth::user()->avatar }}" alt="user-img" class="img-circle"> </a>
                                     <ul class="dropdown-menu">
-                                        <li><a href="{{ route('admin.profile') }}"><i class="ti-user m-r-5"></i> 我的资料</a></li>
-                                        <li><a href="{{ route('admin.repass') }}"><i class="ti-settings m-r-5"></i> 修改密码</a></li>
+                                        <li><a href="{{ route('admin.dashboard.profile') }}"><i class="ti-user m-r-5"></i> 我的资料</a></li>
+                                        <li><a href="{{ route('admin.dashboard.repass') }}"><i class="ti-settings m-r-5"></i> 修改密码</a></li>
                                         <li><a href="{{ route('admin.logout') }}"><i class="ti-power-off m-r-5"></i> 退出登录</a></li>
                                     </ul>
                                 </li>
@@ -94,9 +94,9 @@
                             <li class="has_sub">
                                 <a href="javascript:void(0)" class="waves-effect "><i class="ti-home"></i> <span> 控制台 </span> </a>
                                 <ul class="list-unstyled">
-                                    <li class="{{ active_class(if_route('admin.home')) }}"><a href="{{ route('admin.home') }}">仪表盘</a></li>
-                                    <li class="{{ active_class(if_route('admin.profile')) }}"><a href="{{ route('admin.profile') }}"> 我的资料 </a></li>
-                                    <li class="{{ active_class(if_route('admin.repass')) }}"><a href="{{ route('admin.repass') }}"> 修改密码 </a></li>
+                                    <li class="{{ active_class(if_route('admin.home')) }}"><a href="{{ route('admin.dashboard.index') }}">仪表盘</a></li>
+                                    <li class="{{ active_class(if_route('admin.profile')) }}"><a href="{{ route('admin.dashboard.profile') }}"> 我的资料 </a></li>
+                                    <li class="{{ active_class(if_route('admin.repass')) }}"><a href="{{ route('admin.dashboard.repass') }}"> 修改密码 </a></li>
                                 </ul>
                             </li>
 
@@ -118,8 +118,8 @@
                             <li class="has_sub">
                                 <a href="javascript:void(0)" class="waves-effect"><i class="ti-user"></i><span> 设置 </span></a>
                                 <ul class="list-unstyled">
-                                    <li class="{{ active_class(if_route_param('tab', 'main')) }}"><a href="{{ route('admin.setting', ['main']) }}"> 全局 </a></li>
-                                    <li class="{{ active_class(if_route_param('tab', 'upload')) }}"><a href="{{ route('admin.setting', ['upload']) }}"> 上传 </a></li>
+                                    <li class="{{ active_class(if_route_param('tab', 'main')) }}"><a href="{{ route('admin.setting.index', ['main']) }}"> 全局 </a></li>
+                                    <li class="{{ active_class(if_route_param('tab', 'upload')) }}"><a href="{{ route('admin.setting.index', ['upload']) }}"> 上传 </a></li>
                                 </ul>
                             </li>
                             

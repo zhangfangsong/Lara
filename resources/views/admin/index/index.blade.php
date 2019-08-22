@@ -61,7 +61,7 @@
 	                <i class="md md-add-shopping-cart text-pink"></i>
 	            </div>
 	            <div class="text-right">
-	                <h3 class="text-dark"><b class="counter">{{ $articleCount }}</b></h3>
+	                <h3 class="text-dark"><b class="counter">{{ $postCount }}</b></h3>
 	                <p class="text-muted">文章数</p>
 	            </div>
 	            <div class="clearfix"></div>
@@ -184,10 +184,10 @@
 							<th class="text-center">操作</th>
 						</tr>
 					</thead>
-
-					@if(count($articles))
+					
+					@if(count($posts))
 					<tbody>
-						@foreach($articles as $val)
+						@foreach($posts as $val)
 						<tr>
 							<td>{{ $val->id }}</td>
 							<td title="{{ $val->title }}">{{ str_limit($val->title, 25) }}</td>

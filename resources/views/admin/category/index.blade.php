@@ -39,15 +39,6 @@
 
 			<div class="card-box">
 				<div class="row">
-					<!-- <div class="col-sm-4">
-	            		<form role="form" action="">
-	                        <div class="form-group contact-search m-b-30">
-	                        	<input name="name" type="text" id="search" class="form-control" placeholder="Search...">
-	                            <button type="submit" class="btn btn-white"><i class="fa fa-search"></i></button>
-	                        </div>
-	                    </form>
-	            	</div> -->
-
 	            	<div class="col-sm-4">
 	            		 <a href="{{ route('admin.category.create') }}" class="btn btn-default waves-effect waves-light m-b-30"><i class="md md-add"></i> 新增</a>
 	            	</div>
@@ -70,7 +61,7 @@
 						@foreach($list as $val)
 						<tr>
 							<td>{{ $val->id }}</td>
-							<td>{{ str_repeat('&nbsp;', ($val->level-1)*4).$val->name }}</td>
+							<td>{{ str_repeat('&nbsp;', ($val->level-1)*6).$val->name }}</td>
 							<td width="120">{{ $val->getLinkUrl() }}</td>
 							<td>{{ $val->sort }}</td>
 							<td><span class="label label-table {{ $val->status == 1 ? 'label-default' : 'label-warning' }}">{{ $val->status == 1 ? '显示' : '隐藏' }}</span></td>
