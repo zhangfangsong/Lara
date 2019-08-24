@@ -19,8 +19,8 @@ class LoginController extends BaseController
 	{
 		return view('login.create');
 	}
-
-	//登录处理
+	
+	//登录操作
 	public function store(Request $request)
 	{
 		$data = $this->validate($request, [
@@ -35,7 +35,7 @@ class LoginController extends BaseController
 		if(Auth::attempt($data, $request->has('remember'))){
 			session()->flash('success', Auth::user()->username.',欢迎回来');
 			
-			return redirect()->intended(route('admin.home'));
+			return redirect()->intended(route('admin.dashboard.index'));
 		}else{
 			session()->flash('danger', '用户名或密码错误');
 

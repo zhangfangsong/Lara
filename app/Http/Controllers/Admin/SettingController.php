@@ -11,29 +11,30 @@ namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use App\Models\Setting;
-use App\Http\Requests\Admin\ConfigRequest;
+use App\Http\Requests\Admin\SettingRequest;
 
 class SettingController extends BaseController
 {
+	//编辑配置界面
 	public function index($tab)
 	{
-		$tab_arr = [
+		$tabs = [
 			'main' => '全局设置',
 			'upload' => '上传设置',
 		];
-
-		$title = $tab_arr[$tab];
+		$title = $tabs[$tab];
 		
-		$config = (object)Setting::getAll($tab);
+		$setting = (object)Setting::getAll($tab);
 		
-		return view('admin.setting.index', ['title'=> $title, 'tab'=> $tab, 'config'=> $config]);
+		return view('admin.setting.index', ['title'=> $title, 'tab'=> $tab, 'setting'=> $setting]);
 	}
 	
-	public function store(ConfigRequest $request, $tab)
+	//编辑配置操作
+	public function store(SettingRequest $request, $tab)
 	{
 		$data = $request->except('_token');
 		Setting::addOrUpdate($data, $tab);
-
+		
 		return redirect()->back()->with('success', '编辑成功');
 	}
 }

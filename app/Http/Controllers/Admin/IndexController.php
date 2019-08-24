@@ -53,13 +53,13 @@ class IndexController extends BaseController
 		return redirect()->back()->with('success', '编辑成功');
 	}
 
-	//修改密码界面
+	//编辑密码界面
 	public function repass()
 	{
 		return view('admin.index.repass');
 	}
 	
-	//修改密码处理
+	//编辑密码操作
 	public function repassUpdate(ProfileRequest $request)
 	{
 		$user = Auth::user();

@@ -9,7 +9,7 @@
 
 namespace App\Http\Requests\Admin;
 
-class ConfigRequest extends FormRequest
+class SettingRequest extends FormRequest
 {
     public function rules()
     {

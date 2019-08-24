@@ -94,12 +94,12 @@
                             <li class="has_sub">
                                 <a href="javascript:void(0)" class="waves-effect "><i class="ti-home"></i> <span> 控制台 </span> </a>
                                 <ul class="list-unstyled">
-                                    <li class="{{ active_class(if_route('admin.home')) }}"><a href="{{ route('admin.dashboard.index') }}">仪表盘</a></li>
-                                    <li class="{{ active_class(if_route('admin.profile')) }}"><a href="{{ route('admin.dashboard.profile') }}"> 我的资料 </a></li>
-                                    <li class="{{ active_class(if_route('admin.repass')) }}"><a href="{{ route('admin.dashboard.repass') }}"> 修改密码 </a></li>
+                                    <li class="{{ active_class(if_route('admin.dashboard.index')) }}"><a href="{{ route('admin.dashboard.index') }}">仪表盘</a></li>
+                                    <li class="{{ active_class(if_route('admin.dashboard.profile')) }}"><a href="{{ route('admin.dashboard.profile') }}"> 我的资料 </a></li>
+                                    <li class="{{ active_class(if_route('admin.dashboard.repass')) }}"><a href="{{ route('admin.dashboard.repass') }}"> 修改密码 </a></li>
                                 </ul>
                             </li>
-
+                            
                             <li class="has_sub">
                                 <a href="javascript:void(0)" class="waves-effect subdrop"><i class="ti-paint-bucket"></i> <span> 管理 </span> </a>
                                 <ul class="list-unstyled" style="display: block;">
@@ -140,13 +140,13 @@
                     <div class="container">
                         @yield('content')
                     </div> <!-- container -->
-
+                    
                 </div> <!-- content -->
-
+                
                 <footer class="footer text-right">
-                    <span class="">2018 © Lara</span>
+                    <span class="">2019 © Lara</span>
                 </footer>
-
+                
             </div>
 
         </div>
