@@ -10,8 +10,8 @@
 namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
-use App\Models\Tag;
 use App\Http\Requests\Admin\TagRequest;
+use App\Models\Tag;
 
 class TagController extends BaseController
 {

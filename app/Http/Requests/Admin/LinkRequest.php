@@ -14,16 +14,16 @@ class LinkRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required|max:50',
+            'name' => 'required|max:60',
             'url' => 'required|url',
-            'sort' => 'required|numeric',
+            'sort' => 'numeric',
         ];
     }
     
     public function attributes()
     {
         return [
-            'name' => '名称',
+            'name' => '链接名称',
             'url' => '链接地址',
             'sort' => '排序',
         ];

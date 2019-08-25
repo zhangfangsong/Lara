@@ -77,7 +77,7 @@
                             <div class="form-group m-b-20">
                                 <label class="col-md-2 control-label">排序</label>
                                 <div class="col-md-2">
-                                    <input type="text" class="form-control" name="sort" placeholder="请输入分类排序" value="{{ $link->sort or 0 }}">
+                                    <input type="text" class="form-control" name="sort" placeholder="请输入排序" value="{{ $link->sort or 0 }}">
                                 </div>
                             </div>
 
@@ -110,7 +110,7 @@
                                     </div>
                                 </div>
                             </div>
-
+                            
                             <div class="form-group m-b-20">
                             	<label class="col-md-2"></label>
                             	<div class="col-md-6">

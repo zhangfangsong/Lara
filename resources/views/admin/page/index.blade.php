@@ -74,7 +74,7 @@
 					</tbody>
 					@endif
 				</table>
-
+				
 				@include('admin.shared._page')
 			</div>
 		</div>

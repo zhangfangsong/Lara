@@ -176,7 +176,7 @@
                                     <textarea name="description" class="form-control" rows="3" placeholder="请输入描述">{{ $page->description or old('description') }}</textarea>
                                 </div>
                             </div>
-
+                            
                             <div class="form-group m-b-20">
                             	<label class="col-md-2"></label>
                             	<div class="col-md-6">

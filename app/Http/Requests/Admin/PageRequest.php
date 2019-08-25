@@ -11,15 +11,32 @@ namespace App\Http\Requests\Admin;
 
 class PageRequest extends FormRequest
 {
-    public function rules(Page $page)
+    public function rules()
     {
-        return [
-            'title' => 'required|max:60',
-            'alias' => 'required|max:20|unique:pages',
-            'content' => 'required',
-        ];
+        switch ($this->method()) {
+            case 'POST':
+                return [
+                    'title' => 'required|max:60',
+                    'alias' => 'required|max:30|unique:pages',
+                    'content' => 'required',
+                ];
+                break;
+                
+            case 'PATCH':
+                $id = $this->page->id;
+                
+                return [
+                    'title' => 'required|max:60',
+                    'alias' => 'required|max:30|unique:pages,alias,'.$id.',id',
+                    'content' => 'required',
+                ];
+                break;
+                
+            default:
+                break;
+        }
     }
-
+    
     public function attributes()
     {
         return [
