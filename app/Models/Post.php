@@ -19,26 +19,31 @@ class Post extends Model
 		'title', 'content', 'user_id' ,'category_id', 'keyword', 'description', 'thumb', 'status', 'views'
 	];
 	
+	//所属分类
 	public function category()
 	{
 		return $this->belongsTo(Category::class);
 	}
 	
+	//所属用户
 	public function user()
 	{
 		return $this->belongsTo(User::class);
 	}
 	
+	//文章评论
 	public function comments()
 	{
 		return $this->hasMany(Comment::class);
 	}
 	
+	//文章链接
 	public function getLinkUrl()
 	{
 		return route('post', $this->id);
 	}
 
+	//时间查询链接
 	public function getTimeUrl()
 	{
 		return route('time', $this->created_at->toDateString());
@@ -63,6 +68,7 @@ class Post extends Model
 		return $files;
 	}
 
+	//上一篇
 	public function getPrev()
 	{
 		$category_ids = $this->getChildArr($this->category_id);
@@ -75,6 +81,7 @@ class Post extends Model
 		return '没有了';
 	}
 
+	//下一篇
 	public function getNext()
 	{
 		$category_ids = $this->getChildArr($this->category_id);
@@ -87,6 +94,7 @@ class Post extends Model
 		return '没有了';
 	}
 
+	//文章标签
 	public function getTags()
 	{
 		if($this->keyword){
@@ -96,6 +104,7 @@ class Post extends Model
 		return [];
 	}
 
+	//文章搜索
 	public static function getSearch($request)
 	{
 		$tag = $request->tag;
@@ -125,7 +134,8 @@ class Post extends Model
 
 		return ['list'=> $list, 'search'=> $search];
 	}
-
+	
+	//获取子级分类id数组
 	public function getChildArr($category_id)
 	{
 		static $childs_id_arr = [];

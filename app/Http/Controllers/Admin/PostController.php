@@ -45,19 +45,18 @@ class PostController extends BaseController
 			'user_id' => Auth::id(),
 			'keyword' => $request->keyword,
 			'description' => $request->description,
-			'status' => $request->status,
-			'views' => $request->views,
-			'comments' => 0
+			'status' => $request->status
 		];
+		$data['views'] = (int)$request->input('view', 0);
 
 		if($request->thumb){
 			$data['thumb'] = $request->thumb;
 		}
-
 		$article = Post::create($data);
 
 		if($request->keyword){
 			$tags = explode(',', $request->keyword);
+			
 			foreach($tags as $val){
 				$tag = Tag::getByName($val);
 
@@ -82,10 +81,14 @@ class PostController extends BaseController
 	//编辑文章操作
 	public function update(PostRequest $request, Post $post)
 	{
-		$post->update($request->all());
+		$data = $request->all();
+		$data['views'] = (int)$data['views'];
+
+		$post->update($data);
 
 		if($request->keyword){
 			$tags = explode(',', $request->keyword);
+
 			foreach($tags as $val){
 				$tag = Tag::getByName($val);
 

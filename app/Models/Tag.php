@@ -17,11 +17,13 @@ class Tag extends Model
 		'name', 'views', 'status',
 	];
 
+	//根据标签名获取一条标签
 	public static function getByName($name)
 	{
 		return self::where(['name'=> $name])->first();
 	}
 
+	//新增标签
 	public static function add($info)
 	{
 		if(empty($info)){
@@ -48,15 +50,16 @@ class Tag extends Model
 		return self::where('status', 1)->orderBy('views', 'desc')->limit($limit)->get();
 	}
 	
+	//标签链接
 	public function getLinkUrl()
 	{
 		return route('tag', $this->name);
 	}
 
+	//标签字体大小
 	public function getFontSize()
 	{
 		$size = (1200 + $this->views)/100;
 		return $size > 30 ? 30 : $size;
 	}
-
 }
