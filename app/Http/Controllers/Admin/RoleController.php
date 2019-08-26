@@ -10,40 +10,44 @@
 namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
+use App\Http\Requests\Admin\RoleRequest;
 use App\Models\Role;
 use App\Models\Node;
 use App\Handlers\Level;
-use App\Http\Requests\Admin\RoleRequest;
 
 class RoleController extends BaseController
 {
+	//角色列表
 	public function index()
 	{
 		$list = Role::paginate(20);
 		return view('admin.role.index', ['list'=>$list]);
 	}
 
+	//新增角色界面
 	public function create()
 	{
 		return view('admin.role.create');
 	}
 
+	//新增角色操作
 	public function store(RoleRequest $request)
 	{
-		$role = Role::create([
+		Role::create([
 			'name' => $request->name,
-			'nodes' => $request->nodes,
 			'description' => $request->description
 		]);
 
 		return redirect()->route('admin.role.index')->with('success', '创建成功');
 	}
 
+	//编辑角色界面
 	public function edit(Role $role)
 	{
 		return view('admin.role.create', ['role'=> $role]);
 	}
 
+	//编辑角色操作
 	public function update(RoleRequest $request, Role $role)
 	{
 		$role->update($request->all());
@@ -83,10 +87,12 @@ class RoleController extends BaseController
 
 		return redirect()->back()->with('success', '更新成功');
 	}
-
+	
+	//删除角色
 	public function destroy(Role $role)
 	{
 		$role->delete();
+		
 		return redirect()->route('admin.role.index')->with('success', '删除成功');
 	}
 }

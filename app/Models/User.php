@@ -25,7 +25,7 @@ class User extends Authenticatable implements JWTSubject
      * @var array
      */
     protected $fillable = [
-        'username', 'email', 'password', 'avatar', 'description', 'status', 'role_id',
+        'username', 'email', 'password', 'avatar', 'description', 'status', 'role_id'
     ];
 
     /**
@@ -37,36 +37,37 @@ class User extends Authenticatable implements JWTSubject
         'password', 'remember_token',
     ];
 
+    //用户评论
     public function comments()
     {
         return $this->hasMany(Comment::class);
     }
 
-    public function articles()
+    //用户文章
+    public function posts()
     {
-        return $this->hasMany(Article::class);
+        return $this->hasMany(Post::class);
     }
 
-    public function atComments()
-    {
-        return $this->hasMany(Comment::class, 'at_id');
-    }
-
+    //用户角色
     public function role()
     {
         return $this->belongsTo(Role::class);
     }
 
+    //收藏的文章
     public function collections()
     {
-        return $this->belongsToMany(Article::class, 'collections');
+        return $this->belongsToMany(Post::class, 'collections');
     }
 
+    //是否拥有模型
     public function isAuthorOf($model)
     {
         return $this->id == $model->user_id;
     }
-
+    
+    //新增用户
     public static function add($info)
     {
         if(!is_array($info) || empty($info)){
@@ -79,28 +80,27 @@ class User extends Authenticatable implements JWTSubject
             'password' => '',
             'avatar' => '',
             'description' => '',
-            'remember_token' => '',
             'status' => 1,
             'role_id' => 2
         ];
 
-        foreach($info as $key => $val){
-            if(isset($data[$key])){
-                $data[$key] = $val;
+        foreach($data as $key => $val){
+            if(isset($info[$key])){
+                $data[$key] = $info[$key];
             }
         }
-
-        if(isset($data['password'])){
+        
+        if($data['password']){
             $data['password'] = bcrypt($data['password']);
         }
-
+        
         if(empty($data['avatar']) && $data['email']){
             $data['avatar'] = app(App::class)->getAvatarByEmail($data['email']);
         }
-
+        
         return self::create($data);
     }
-
+    
     //用户权限检测
     public function hasRight()
     {

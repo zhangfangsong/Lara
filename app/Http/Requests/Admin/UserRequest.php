@@ -13,26 +13,36 @@ class UserRequest extends FormRequest
 {
     public function rules()
     {
-        $method = $this->method();
-
-        $rules = [
-            'username' => 'required|max:50',
-            'email' => 'required|email|unique:users|max:255',
-            'password' => 'required|min:6',
-        ];
-
-        if($method == 'PATCH'){
-            $rules['email'] = 'required|email|unique:users,id,'.request()->user->id.'|max:255';
-            $rules['password'] = 'nullable|min:6';
+        switch ($this->method()) {
+            case 'POST':
+                return [
+                    'username' => 'required|max:50|unique:users',
+                    'email' => 'required|email|unique:users|max:255',
+                    'password' => 'required|min:6',
+                ];
+                break;
+            
+            case 'PATCH':
+                $user_id = request()->user->id;
+                
+                return [
+                    'username' => 'required|max:50|unique:users,'.$user_id.',id',
+                    'email' => 'required|email|unique:users,'.$user_id.',id|max:255',
+                    'password' => 'min:6',
+                ];
+                break;
+                
+            default:
+                break;
         }
-
-        return $rules;
     }
     
     public function attributes()
     {
         return [
             'username' => '用户名',
+            'email' => '邮箱',
+            'password' => '密码',
         ];
     }
 }

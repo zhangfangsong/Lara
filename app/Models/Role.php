@@ -17,14 +17,17 @@ class Role extends Model
 		'name', 'description'
 	];
 
-	public function node()
+	//角色节点
+	public function nodes()
 	{
 		return $this->belongsToMany(Node::class);
 	}
-
+	
+	//角色节点名称
 	public function getNodes()
 	{
-		$nodes = $this->node;
+		$nodes = $this->nodes;
+
 		$data = [];
 		foreach($nodes as $node){
 			$data[] = $node->name;
