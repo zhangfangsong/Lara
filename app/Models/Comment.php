@@ -14,27 +14,30 @@ use Illuminate\Database\Eloquent\Model;
 class Comment extends Model
 {
 	protected $fillable = [
-		'post_id', 'user_id', 'content', 'at_id', 'ip', 'status', 'read'
+		'post_id', 'user_id', 'content', 'at_id', 'ip', 'read', 'status',
 	];
 	
+	//所属文章
 	public function post()
 	{
 		return $this->belongsTo(Post::class);
 	}
 	
+	//所属用户
 	public function user()
 	{
 		return $this->belongsTo(User::class);
 	}
-	
-	public function atUser()
-	{
-		return $this->belongsTo(User::class, 'at_id');
-	}
 
+	//回复评论
+	public function atComment()
+	{
+		return $this->hasOne(Comment::class, 'at_id', 'id');
+	}
+	
+	//最新评论
 	public static function getRecent($limit = 10)
 	{
 		return self::where('status', 1)->orderBy('id', 'desc')->limit($limit)->get();
 	}
-
 }

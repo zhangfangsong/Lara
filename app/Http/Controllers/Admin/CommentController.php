@@ -10,50 +10,46 @@
 namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
-use App\Models\Comment;
 use App\Http\Requests\CommentRequest;
-use Auth;
+use App\Models\Comment;
+use Illuminate\Support\Facades\Auth;
 
 class CommentController extends BaseController
 {
+	//评论列表
 	public function index()
 	{
-		$list = Comment::orderBy('id', 'desc')->paginate(20);
+		$list = Comment::where('at_id', 0)->orderBy('id', 'desc')->paginate(20);
 		return view('admin.comment.index', ['list'=>$list]);
 	}
 	
+	//评论详情
 	public function edit(Comment $comment)
 	{
 		return view('admin.comment.create', ['comment'=> $comment]);
 	}
-
+	
+	//评论回复
 	public function reply(CommentRequest $request, Comment $comment)
 	{
-		$comment = Comment::create([
+		Comment::create([
+			'post_id' => $comment->post_id,
 			'user_id' => Auth::id(),
-			'article_id' => $comment->article_id,
 			'content' => $request->content,
-			'at_id' => $comment->user->id,
+			'at_id' => $comment->id,
 			'ip' => $request->getClientIp(),
+			'read' => 1,
 			'status' => 1,
-			'is_new' => 0,
 		]);
 
 		return redirect()->back()->with('success', '回复成功');
 	}
 
-	public function state(Comment $comment)
-	{
-		$status = $comment->status == 1 ? 0 : 1;
-		$title = $status == 1 ? '显示' : '隐藏';
-		$comment->update(['status'=> $status]);
-
-		return redirect()->route()->with('success', $title.'成功');
-	}
-
+	//删除评论
 	public function destroy(Comment $comment)
 	{
 		$comment->delete();
+
 		return redirect()->back()->with('success', '删除成功');
 	}
 }

@@ -38,7 +38,7 @@
                             <div class="form-group m-b-20">
                                 <label class="col-md-2 control-label">文章标题</label>
                                 <div class="col-md-4">
-                                    <p style="position: relative;top: 5px;">{{ $comment->article->title }}</p>
+                                    <p style="position: relative;top: 5px;">{{ $comment->post->title }}</p>
                                 </div>
                             </div>
 
