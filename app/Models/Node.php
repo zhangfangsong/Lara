@@ -17,12 +17,14 @@ class Node extends Model
 		'alias', 'name', 'pid', 'class_name', 'sidebar'
 	];
 	
+	//是否有子级
 	public function hasChild()
 	{
 		return self::where('pid', $this->id)->value('id');
 	}
-
-	public function users()
+	
+	//节点角色
+	public function roles()
 	{
 		return $this->belongsToMany(Role::class);
 	}

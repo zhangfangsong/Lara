@@ -14,18 +14,16 @@ class NodeRequest extends FormRequest
     public function rules()
     {
         return [
-            'title' => 'required|max:20',
-            'alias' => 'required|max:20',
             'name'  => 'required|max:50',
+            'alias' => 'required|max:30',
         ];
     }
     
     public function attributes()
     {
         return [
-            'title' => '节点标题',
-            'alias' => '节点别名',
-            'name'  => '路由名称',
+            'name'  => '节点名称',
+            'alias' => '节点路由',
         ];
     }
 }

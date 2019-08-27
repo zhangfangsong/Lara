@@ -40,23 +40,16 @@
                             <h5 class="text-muted text-uppercase m-t-0 m-b-20"><b>基本信息</b></h5>
 
                             <div class="form-group m-b-20">
-                                <label class="col-md-2 control-label">标题</label>
+                                <label class="col-md-2 control-label">名称</label>
                                 <div class="col-md-4">
-                                	<input type="text" class="form-control" name="title" placeholder="请输入节点标题" value="{{ $node->title or old('title') }}">
-                                </div>
-                            </div>
-
-                            <div class="form-group m-b-20">
-                                <label class="col-md-2 control-label">别名</label>
-                                <div class="col-md-4">
-                                    <input type="text" class="form-control" name="alias" placeholder="请输入节点别名" value="{{ $node->alias or old('alias') }}">
+                                	<input type="text" class="form-control" name="name" placeholder="请输入节点名称" value="{{ $node->name or old('name') }}">
                                 </div>
                             </div>
 
                             <div class="form-group m-b-20">
                                 <label class="col-md-2 control-label">路由</label>
                                 <div class="col-md-4">
-                                    <input type="text" class="form-control" name="name" placeholder="请输入节点路由" value="{{ $node->name or old('name') }}">
+                                    <input type="text" class="form-control" name="alias" placeholder="请输入节点路由" value="{{ $node->alias or old('alias') }}">
                                 </div>
                             </div>
 
@@ -67,7 +60,7 @@
 	                                   <option value="0">顶级节点</option>
                                        @if(count($list))
                                             @foreach($list as $val)
-                                                <option @if(isset($node) && $node->pid == $val->id )selected @endif value="{{ $val->id }}">{{ str_repeat('&nbsp;', ($val->level-1)*4).$val->title }}</option>
+                                                <option @if(isset($node) && $node->pid == $val->id )selected @endif value="{{ $val->id }}">{{ str_repeat('&nbsp;', ($val->level-1)*4).$val->name }}</option>
                                             @endforeach
                                        @endif
 	                                </select>
@@ -82,27 +75,20 @@
                             </div>
 
                             <div class="form-group m-b-20">
-                                <label class="col-md-2 control-label">描述</label>
-                                <div class="col-md-6">
-                                	<textarea name="description" class="form-control" rows="3" placeholder="请输入节点描述">{{ $node->description or old('description') }}</textarea>
-                                </div>
-                            </div>
-
-                            <div class="form-group m-b-20">
                                 <label class="m-b-15 col-md-2 control-label">状态</label>
 
                                 <div class="col-md-6">
                                 	<div class="radio radio-inline">
-	                                    <input type="radio" id="inlineRadio1" value="1" {{ isset($node->sidebar) && $node->sidebar == 1 ? 'checked' : '' }} name="sidebar">
+	                                    <input type="radio" id="inlineRadio1" value="1" {{ isset($node->sidebar) && $node->sidebar == 1 ? 'checked' : '' }} name="sidebar" checked>
 	                                    <label for="inlineRadio1"> 显示 </label>
 	                                </div>
 	                                <div class="radio radio-inline">
-	                                    <input type="radio" id="inlineRadio2" value="0" {{ isset($node->sidebar) && $node->sidebar == 0 ? 'checked' : '' }} name="sidebar" checked>
+	                                    <input type="radio" id="inlineRadio2" value="0" {{ isset($node->sidebar) && $node->sidebar == 0 ? 'checked' : '' }} name="sidebar">
 	                                    <label for="inlineRadio2"> 隐藏 </label>
 	                                </div>
                                 </div>
                             </div>
-
+                            
                             <div class="form-group m-b-20">
                             	<label class="col-md-2"></label>
                             	<div class="col-md-6">
@@ -110,7 +96,7 @@
                      				<button type="submit" class="btn w-sm btn-white waves-effect">取消</button>
                             	</div>
                             </div>
-
+                            
                         </div>
                     </div>
                 </div>

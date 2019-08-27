@@ -39,15 +39,6 @@
 
 			<div class="card-box">
 				<div class="row">
-					<!-- <div class="col-sm-4">
-	            		<form role="form" action="">
-	                        <div class="form-group contact-search m-b-30">
-	                        	<input name="name" type="text" id="search" class="form-control" placeholder="Search...">
-	                            <button type="submit" class="btn btn-white"><i class="fa fa-search"></i></button>
-	                        </div>
-	                    </form>
-	            	</div> -->
-
 	            	<div class="col-sm-4">
 	            		 <a href="{{ route('admin.node.create') }}" class="btn btn-default waves-effect waves-light m-b-30"><i class="md md-add"></i> 新增</a>
 	            	</div>
@@ -57,23 +48,21 @@
 					<thead>
 						<tr>
 							<th>ID</th>
-							<th>标题</th>
-							<th>别名</th>
+							<th>名称</th>
 							<th>路由</th>
 							<th class="text-center">是否显示</th>
 							<th class="text-center">创建时间</th>
 							<th class="text-center">操作</th>
 						</tr>
 					</thead>
-
+					
 					@if(count($list))
 					<tbody>
 						@foreach($list as $val)
 						<tr>
 							<td>{{ $val->id }}</td>
-							<td>{{ str_repeat('&nbsp;', ($val->level-1)*4).$val->title }}</td>
-							<td>{{ $val->alias }}</td>
-							<td width="120">{{ $val->name }}</td>
+							<td>{{ str_repeat('&nbsp;', ($val->level-1)*4).$val->name }}</td>
+							<td width="120">{{ $val->alias }}</td>
 							<td><span class="label label-table {{ $val->sidebar == 1 ? 'label-default' : 'label-warning' }}">{{ $val->sidebar == 1 ? '显示' : '隐藏' }}</span></td>
 							<td>{{ $val->created_at->toDateString() }}</td>
 							<td>

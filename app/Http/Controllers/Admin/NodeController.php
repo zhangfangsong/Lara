@@ -16,6 +16,7 @@ use App\Handlers\Level;
 
 class NodeController extends BaseController
 {
+	//节点列表
 	public function index(Level $level)
 	{
 		$list = Node::all();
@@ -24,30 +25,30 @@ class NodeController extends BaseController
 		return view('admin.node.index', ['list'=>$list]);
 	}
 
+	//新增节点界面
 	public function create(Level $level)
 	{
 		$list = Node::all();
 		$list = $level->formatOne($list);
+		
 		return view('admin.node.create', ['list'=> $list]);
 	}
-
+	
+	//新增节点操作
 	public function store(NodeRequest $request)
 	{
-		$node = Node::create([
-			'title' => $request->title,
-			'alias' => $request->alias,
+		Node::create([
 			'name'  => $request->name,
+			'alias' => $request->alias,
 			'pid' => $request->pid,
-			'description' => $request->description,
 			'class_name' => $request->class_name,
 			'sidebar' => $request->sidebar,
 		]);
 
-		session()->flash('success', '创建成功');
-
-		return redirect()->route('admin.node.index');
+		return redirect()->route('admin.node.index')->with('success', '创建成功');
 	}
 
+	//编辑节点界面
 	public function edit(Node $node, Level $level)
 	{
 		$list = Node::all();
@@ -56,6 +57,7 @@ class NodeController extends BaseController
 		return view('admin.node.create', ['list'=>$list, 'node'=>$node]);
 	}
 
+	//编辑节点操作
 	public function update(NodeRequest $request, Node $node, Level $level)
 	{
 		$data = $request->all();
@@ -70,14 +72,15 @@ class NodeController extends BaseController
 		$node->update($data);
 		return redirect()->back()->with('success', '编辑成功');
 	}
-
+	
+	//删除节点
 	public function destroy(Node $node)
 	{
 		if($node->hasChild()){
 			return redirect()->back()->with('danger', '请先删除子级节点');
 		}
-
 		$node->delete();
+		
 		return redirect()->route('admin.node.index')->with('success', '删除成功');
 	}
 }
