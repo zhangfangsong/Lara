@@ -54,36 +54,31 @@ class RoleController extends BaseController
 		return redirect()->back()->with('success', '编辑成功');
 	}
 
+	//分配权限界面
 	public function nodes(Role $role, Level $level)
 	{
-		$nodes = Node::all();
-		$nodes = $level->formatOne($nodes);
-		$node  = $role->node;
-
+		$list = Node::all();
+		$list = $level->formatMulti($list);
+		
+		$nodes = $role->nodes;
+		
 		$data = [];
-		foreach($node as $val){
+		foreach($nodes as $val){
 			$data[] = $val->id;
 		}
-
-		return view('admin.role.nodes', ['role'=>$role, 'nodes'=>$nodes, 'data'=> $data]);
+		
+		return view('admin.role.nodes', ['role'=>$role, 'list'=>$list, 'data'=> $data]);
 	}
-
+	
+	//分配权限操作
 	public function assign(Request $request, Role $role)
 	{
-		$nodes = $request->input('nodes', []);
+		$nodes = $request->nodes;
 
 		if(empty($nodes)){
 			return redirect()->back()->with('danger', '请选择相应的权限');
 		}
-
-		$date = date('Y-m-d H:i:s');
-		foreach($nodes as $node){
-			$data[$node] = [
-				'created_at' => $date,
-				'updated_at' => $date,
-			];
-		}
-		$role->nodes()->sync($data);
+		$role->nodes()->sync($nodes);
 
 		return redirect()->back()->with('success', '更新成功');
 	}

@@ -46,9 +46,14 @@
                             <div class="form-group m-b-20">
                                 <label class="col-md-2 control-label">权限</label>
                                 <div class="col-md-10">
-                                    @foreach($nodes as $node)
-                                    <p style="position: relative;margin-top: 8px;@if($node->level != 1)display: inline-block;padding-right: 10px;@endif">
-                                        {{ $node->title }} <input type="checkbox" name="nodes[]" @if(in_array($node->id, $data)) checked @endif value="{{ $node->id }}">
+                                    @foreach($list as $node)
+                                    <p style="position: relative;margin-top: 8px;">
+                                        {{ $node->name }} &nbsp;<input type="checkbox" name="nodes[]" @if(in_array($node->id, $data)) checked @endif value="{{ $node->id }}">
+                                        <ul style="list-style-type: none;padding: 0;padding-left: 28px;">
+                                            @foreach($node->child as $val)
+                                            <li>{{ $val->name }} &nbsp;<input type="checkbox" class="nodes" name="nodes[]" @if(in_array($val->id, $data)) checked @endif value="{{ $val->id }}"></li>
+                                            @endforeach
+                                        </ul>
                                     </p>
                                     @endforeach
                                 </div>
