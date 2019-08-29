@@ -61,8 +61,8 @@
 						@foreach($list as $val)
 						<tr>
 							<td>{{ $val->id }}</td>
-							<td>{{ str_repeat('&nbsp;', ($val->level-1)*4).$val->name }}</td>
-							<td width="120">{{ $val->alias }}</td>
+							<td>{{ str_repeat('&nbsp;', ($val->level-1)*4).$val->title }}</td>
+							<td width="120">{{ $val->name }}</td>
 							<td><span class="label label-table {{ $val->sidebar == 1 ? 'label-default' : 'label-warning' }}">{{ $val->sidebar == 1 ? '显示' : '隐藏' }}</span></td>
 							<td>{{ $val->created_at->toDateString() }}</td>
 							<td>

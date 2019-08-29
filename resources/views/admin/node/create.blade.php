@@ -42,17 +42,24 @@
                             <div class="form-group m-b-20">
                                 <label class="col-md-2 control-label">名称</label>
                                 <div class="col-md-4">
-                                	<input type="text" class="form-control" name="name" placeholder="请输入节点名称" value="{{ $node->name or old('name') }}">
+                                    <input type="text" class="form-control" name="title" placeholder="请输入节点名称" value="{{ $node->title or old('title') }}">
+                                </div>
+                            </div>
+                            
+                            <div class="form-group m-b-20">
+                                <label class="col-md-2 control-label">别名</label>
+                                <div class="col-md-4">
+                                	<input type="text" class="form-control" name="alias" placeholder="请输入节点别名" value="{{ $node->alias or old('alias') }}">
                                 </div>
                             </div>
 
                             <div class="form-group m-b-20">
                                 <label class="col-md-2 control-label">路由</label>
                                 <div class="col-md-4">
-                                    <input type="text" class="form-control" name="alias" placeholder="请输入节点路由" value="{{ $node->alias or old('alias') }}">
+                                    <input type="text" class="form-control" name="name" placeholder="请输入节点路由" value="{{ $node->name or old('name') }}">
                                 </div>
                             </div>
-
+                            
                             <div class="form-group m-b-20">
                                 <label class="col-md-2 control-label">父级</label>
                                 <div class="col-md-4">
@@ -60,7 +67,7 @@
 	                                   <option value="0">顶级节点</option>
                                        @if(count($list))
                                             @foreach($list as $val)
-                                                <option @if(isset($node) && $node->pid == $val->id )selected @endif value="{{ $val->id }}">{{ str_repeat('&nbsp;', ($val->level-1)*4).$val->name }}</option>
+                                                <option @if(isset($node) && $node->pid == $val->id )selected @endif value="{{ $val->id }}">{{ str_repeat('&nbsp;', ($val->level-1)*4).$val->title }}</option>
                                             @endforeach
                                        @endif
 	                                </select>

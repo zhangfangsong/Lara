@@ -48,11 +48,13 @@
                                 <div class="col-md-10">
                                     @foreach($list as $node)
                                     <p style="position: relative;margin-top: 8px;">
-                                        {{ $node->name }} &nbsp;<input type="checkbox" name="nodes[]" @if(in_array($node->id, $data)) checked @endif value="{{ $node->id }}">
+                                        {{ $node->title }} &nbsp;<input type="checkbox" name="nodes[]" @if(in_array($node->id, $data)) checked @endif value="{{ $node->id }}">
                                         <ul style="list-style-type: none;padding: 0;padding-left: 28px;">
+                                            @if(isset($node->child))
                                             @foreach($node->child as $val)
-                                            <li>{{ $val->name }} &nbsp;<input type="checkbox" class="nodes" name="nodes[]" @if(in_array($val->id, $data)) checked @endif value="{{ $val->id }}"></li>
+                                            <li>{{ $val->title }} &nbsp;<input type="checkbox" class="nodes" name="nodes[]" @if(in_array($val->id, $data)) checked @endif value="{{ $val->id }}"></li>
                                             @endforeach
+                                            @endif
                                         </ul>
                                     </p>
                                     @endforeach

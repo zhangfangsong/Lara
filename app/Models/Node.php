@@ -14,7 +14,7 @@ use Illuminate\Database\Eloquent\Model;
 class Node extends Model
 {
 	protected $fillable = [
-		'alias', 'name', 'pid', 'class_name', 'sidebar'
+		'title', 'alias', 'name', 'pid', 'class_name', 'sidebar'
 	];
 	
 	//是否有子级

@@ -91,7 +91,7 @@
                     <!--- Divider -->
                     <div id="sidebar-menu">
                         <ul>
-                            <li class="has_sub">
+                            <!-- <li class="has_sub">
                                 <a href="javascript:void(0)" class="waves-effect "><i class="ti-home"></i> <span> 控制台 </span> </a>
                                 <ul class="list-unstyled">
                                     <li class="{{ active_class(if_route('admin.dashboard.index')) }}"><a href="{{ route('admin.dashboard.index') }}">仪表盘</a></li>
@@ -101,28 +101,25 @@
                             </li>
                             
                             <li class="has_sub">
-                                <a href="javascript:void(0)" class="waves-effect subdrop"><i class="ti-paint-bucket"></i> <span> 管理 </span> </a>
-                                <ul class="list-unstyled" style="display: block;">
-                                    <li class="{{ active_class(if_route_pattern('admin.post.*')) }}"><a href="{{ route('admin.post.index') }}">文章</a></li>
-                                    <li class="{{ active_class(if_route_pattern('admin.category.*')) }}"><a href="{{ route('admin.category.index') }}">分类</a></li>
-                                    <li class="{{ active_class(if_route_pattern('admin.user.*')) }}"><a href="{{ route('admin.user.index') }}">用户</a></li>
-                                    <li class="{{ active_class(if_route_pattern('admin.role.*')) }}"><a href="{{ route('admin.role.index') }}">角色</a></li>
-                                    <li class="{{ active_class(if_route_pattern('admin.node.*')) }}"><a href="{{ route('admin.node.index') }}">节点</a></li>
-                                    <li class="{{ active_class(if_route_pattern('admin.comment.*')) }}"><a href="{{ route('admin.comment.index') }}">评论</a></li>
-                                    <li class="{{ active_class(if_route_pattern('admin.tag.*')) }}"><a href="{{ route('admin.tag.index') }}">标签</a></li>
-                                    <li class="{{ active_class(if_route_pattern('admin.page.*')) }}"><a href="{{ route('admin.page.index') }}">页面</a></li>
-                                    <li class="{{ active_class(if_route_pattern('admin.link.*')) }}"><a href="{{ route('admin.link.index') }}">链接</a></li>
-                                </ul>
-                            </li>
-                            
-                            <li class="has_sub">
                                 <a href="javascript:void(0)" class="waves-effect"><i class="ti-user"></i><span> 设置 </span></a>
                                 <ul class="list-unstyled">
                                     <li class="{{ active_class(if_route_param('tab', 'main')) }}"><a href="{{ route('admin.setting.index', ['main']) }}"> 全局 </a></li>
                                     <li class="{{ active_class(if_route_param('tab', 'upload')) }}"><a href="{{ route('admin.setting.index', ['upload']) }}"> 上传 </a></li>
                                 </ul>
+                            </li> -->
+
+                            @foreach($navs as $nav)
+                            <li class="has_sub">
+                                <a href="javascript:void(0)" class="waves-effect @if(in_array($module, explode('.', $nav->name))) subdrop @endif"><i class="{{ $nav->class_name }}"></i> <span> {{ $nav->alias }} </span> </a>
+                                @if($nav->child)
+                                <ul class="list-unstyled">
+                                    @foreach($nav->child as $val)
+                                    <li class="@if($route === $val->name) active @endif"><a href="{{ route($val->name) }}">{{ $val->alias }}</a></li>
+                                    @endforeach
+                                </ul>
+                                @endif
                             </li>
-                            
+                            @endforeach
                         </ul>
                         <div class="clearfix"></div>
                     </div>

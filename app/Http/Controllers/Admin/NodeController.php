@@ -38,13 +38,14 @@ class NodeController extends BaseController
 	public function store(NodeRequest $request)
 	{
 		Node::create([
-			'name'  => $request->name,
+			'title'  => $request->title,
 			'alias' => $request->alias,
+			'name'  => $request->name,
 			'pid' => $request->pid,
 			'class_name' => $request->class_name,
 			'sidebar' => $request->sidebar,
 		]);
-
+		
 		return redirect()->route('admin.node.index')->with('success', '创建成功');
 	}
 
