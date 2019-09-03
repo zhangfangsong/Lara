@@ -91,28 +91,11 @@
                     <!--- Divider -->
                     <div id="sidebar-menu">
                         <ul>
-                            <!-- <li class="has_sub">
-                                <a href="javascript:void(0)" class="waves-effect "><i class="ti-home"></i> <span> 控制台 </span> </a>
-                                <ul class="list-unstyled">
-                                    <li class="{{ active_class(if_route('admin.dashboard.index')) }}"><a href="{{ route('admin.dashboard.index') }}">仪表盘</a></li>
-                                    <li class="{{ active_class(if_route('admin.dashboard.profile')) }}"><a href="{{ route('admin.dashboard.profile') }}"> 我的资料 </a></li>
-                                    <li class="{{ active_class(if_route('admin.dashboard.repass')) }}"><a href="{{ route('admin.dashboard.repass') }}"> 修改密码 </a></li>
-                                </ul>
-                            </li>
-                            
-                            <li class="has_sub">
-                                <a href="javascript:void(0)" class="waves-effect"><i class="ti-user"></i><span> 设置 </span></a>
-                                <ul class="list-unstyled">
-                                    <li class="{{ active_class(if_route_param('tab', 'main')) }}"><a href="{{ route('admin.setting.index', ['main']) }}"> 全局 </a></li>
-                                    <li class="{{ active_class(if_route_param('tab', 'upload')) }}"><a href="{{ route('admin.setting.index', ['upload']) }}"> 上传 </a></li>
-                                </ul>
-                            </li> -->
-
                             @foreach($navs as $nav)
                             <li class="has_sub">
                                 <a href="javascript:void(0)" class="waves-effect @if(in_array($module, explode('.', $nav->name))) subdrop @endif"><i class="{{ $nav->class_name }}"></i> <span> {{ $nav->alias }} </span> </a>
                                 @if($nav->child)
-                                <ul class="list-unstyled">
+                                <ul class="list-unstyled" @if(in_array($module, explode('.', $nav->name))) style="display: block;" @endif>
                                     @foreach($nav->child as $val)
                                     <li class="@if($route === $val->name) active @endif"><a href="{{ route($val->name) }}">{{ $val->alias }}</a></li>
                                     @endforeach
