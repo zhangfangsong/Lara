@@ -18,6 +18,8 @@ use Illuminate\Support\Facades\Route;
 
 class BaseController extends Controller
 {
+	protected $action;
+
 	//构造函数
 	public function __construct()
 	{
@@ -31,7 +33,9 @@ class BaseController extends Controller
 		$route = Route::currentRouteName();
 		$routeArr = explode('.', $route);
 		$module = $routeArr[1];
-
+		
+		$this->action = $routeArr[2] ?? '';
+		
 		if($module != 'dashboard' && $module != 'setting'){
 			$module = 'manage';
 		}

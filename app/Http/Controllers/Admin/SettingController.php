@@ -16,8 +16,10 @@ use App\Http\Requests\Admin\SettingRequest;
 class SettingController extends BaseController
 {
 	//编辑配置界面
-	public function index($tab)
+	public function index()
 	{
+		$tab = $this->action;
+
 		$tabs = [
 			'main' => '全局设置',
 			'upload' => '上传设置',
@@ -30,8 +32,10 @@ class SettingController extends BaseController
 	}
 	
 	//编辑配置操作
-	public function store(SettingRequest $request, $tab)
+	public function store(SettingRequest $request)
 	{
+		$tab = $this->action;
+		
 		$data = $request->except('_token');
 		Setting::addOrUpdate($data, $tab);
 		

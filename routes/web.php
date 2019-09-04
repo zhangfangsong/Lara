@@ -47,8 +47,10 @@ Route::group([
 	Route::get('repass', 'IndexController@repass')->name('admin.dashboard.repass');
 	Route::post('repass', 'IndexController@repassUpdate')->name('admin.dashboard.repass');
 	
-	Route::get('setting/{tab}', 'SettingController@index')->name('admin.setting.index');
-	Route::post('setting/{tab}', 'SettingController@store')->name('admin.setting.update');
+	Route::get('setting/main', 'SettingController@index')->name('admin.setting.main');
+	Route::post('setting/main', 'SettingController@store')->name('admin.setting.main');
+	Route::get('setting/upload', 'SettingController@index')->name('admin.setting.upload');
+	Route::post('setting/upload', 'SettingController@store')->name('admin.setting.upload');
 	
 	// 分类
 	Route::get('category/index', 'CategoryController@index')->name('admin.category.index');
