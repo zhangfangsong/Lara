@@ -15,10 +15,17 @@ class App
 {
 	public function getAvatarByEmail($email)
 	{
-		$path = 'avatar/'.date('Ym').'/'.time().'.jpg';
-		$hash = md5(strtolower(trim($email)));
-		Storage::disk('upload')->put($path, file_get_contents("http://www.gravatar.com/avatar/$hash?s=400&d=monsterid"));
+		$path = '/avatar/'.date('Ym');
+		$dir  = public_path('uploads/images'.$path);
 
-		return url('/').'/uploads/images/'.$path;
+		if(!is_dir($dir)) {
+			mkdir($dir, 0777, true);
+		}
+		$file = $path.'/'.time().'.jpg';
+		
+		$hash = md5(strtolower(trim($email)));
+		Storage::disk('upload')->put($file, file_get_contents("http://www.gravatar.com/avatar/$hash?s=400&d=monsterid"));
+		
+		return url('/').'/uploads/images/'.$file;
 	}
 }
