@@ -36,9 +36,10 @@ class LinkController extends BaseController
 			'url' => $request->url,
 			'logo' => $request->logo,
 			'sort' => $request->sort,
-			'target' => $request->target
+			'status' => $request->status,
+			'target' => $request->target,
 		]);
-
+		
 		return redirect()->route('admin.link.index')->with('success', '创建成功');
 	}
 	
@@ -59,6 +60,6 @@ class LinkController extends BaseController
 	public function destroy(Link $link)
 	{
 		$link->delete();
-		return redirect()->route('admin.link.index')->width('success', '删除成功');
+		return redirect()->route('admin.link.index')->with('success', '删除成功');
 	}
 }
