@@ -190,7 +190,7 @@
 						@foreach($posts as $val)
 						<tr>
 							<td>{{ $val->id }}</td>
-							<td title="{{ $val->title }}">{{ str_limit($val->title, 25) }}</td>
+							<td title="{{ $val->title }}">{{ str_limit($val->title, 60) }}</td>
 							<td>{{ $val->category->name }}</td>
 							<td>{{ $val->keyword }}</td>
 							<td>{{ $val->views }}</td>
