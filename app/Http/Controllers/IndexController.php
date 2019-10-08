@@ -16,6 +16,7 @@ use App\Models\Category;
 use App\Models\Comment;
 use App\Handlers\Level;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Cache;
 
 class IndexController extends BaseController
 {
@@ -46,6 +47,13 @@ class IndexController extends BaseController
 	//评论
 	public function comment(Post $post, CommentRequest $request)
 	{
+		//防刷评论
+		$cache_key = $this->user()->id;
+
+		if(Cache::get($cache_key)) {
+			return redirect()->back()->with('danger', '评论的间隔时间太短');
+		}
+		
 		Comment::create([
 			'user_id' => Auth::user()->id,
 			'post_id' => $post->id,
@@ -55,7 +63,8 @@ class IndexController extends BaseController
 			'read' => 0,
 			'status' => 1
 		]);
-
+		Cache::put($cache_key, 'short', 1);
+		
 		return redirect()->back()->with('success', '评论成功');
 	}
 	
