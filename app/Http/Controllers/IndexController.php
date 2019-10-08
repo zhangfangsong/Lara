@@ -40,7 +40,7 @@ class IndexController extends BaseController
 	public function post(Post $post)
 	{
 		Post::where('id', $post->id)->increment('views');
-		return view('index.post', ['post'=> $post]);
+		return view('index.post', ['post'=> $post, 'comments' => $post->comments()->with('user')->where('status', 1)->get()]);
 	}
 	
 	//评论
