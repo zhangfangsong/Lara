@@ -47,15 +47,17 @@ class IndexController extends BaseController
 	//评论
 	public function comment(Post $post, CommentRequest $request)
 	{
+		$user = Auth::user();
+
 		//防刷评论
-		$cache_key = $this->user()->id;
+		$cache_key = $user->id;
 
 		if(Cache::get($cache_key)) {
 			return redirect()->back()->with('danger', '评论的间隔时间太短');
 		}
 		
 		Comment::create([
-			'user_id' => Auth::user()->id,
+			'user_id' => $user->id,
 			'post_id' => $post->id,
 			'content' => $request->content,
 			'at_id' => 0,
