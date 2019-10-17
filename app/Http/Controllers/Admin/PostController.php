@@ -47,8 +47,8 @@ class PostController extends BaseController
 			'description' => $request->description,
 			'status' => $request->status
 		];
-		$data['views'] = (int)$request->input('view', 0);
-
+		$data['views'] = (int)$request->input('views', 0);
+		
 		if($request->thumb){
 			$data['thumb'] = $request->thumb;
 		}
