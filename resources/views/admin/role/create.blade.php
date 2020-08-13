@@ -44,14 +44,14 @@
                             <div class="form-group m-b-20">
                                 <label class="col-md-2 control-label">名称</label>
                                 <div class="col-md-4">
-                                	<input type="text" class="form-control" name="name" placeholder="请输入角色名称" value="{{ $role->name or old('name') }}">
+                                	<input type="text" class="form-control" name="name" placeholder="请输入角色名称" value="{{ $role->name ?? old('name') }}">
                                 </div>
                             </div>
 
                             <div class="form-group m-b-20">
                                 <label class="col-md-2 control-label">描述</label>
                                 <div class="col-md-6">
-                                    <textarea name="description" class="form-control" rows="3" placeholder="请输入角色描述">{{ $role->description or old('description') }}</textarea>
+                                    <textarea name="description" class="form-control" rows="3" placeholder="请输入角色描述">{{ $role->description ?? old('description') }}</textarea>
                                 </div>
                             </div>
 

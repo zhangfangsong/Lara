@@ -42,7 +42,7 @@
                             <div class="form-group m-b-20">
                                 <label class="col-md-2 control-label">名称</label>
                                 <div class="col-md-4">
-                                	<input type="text" class="form-control" name="name" placeholder="请输入分类名称" value="{{ $category->name or old('name') }}">
+                                	<input type="text" class="form-control" name="name" placeholder="请输入分类名称" value="{{ $category->name ?? old('name') }}">
                                 </div>
                             </div>
 
@@ -63,21 +63,21 @@
                             <div class="form-group m-b-20">
                                 <label class="col-md-2 control-label">链接</label>
                                 <div class="col-md-2">
-                                    <input type="text" class="form-control" name="url" placeholder="请输入分类链接" value="{{ $category->url or old('url') }}">
+                                    <input type="text" class="form-control" name="url" placeholder="请输入分类链接" value="{{ $category->url ?? old('url') }}">
                                 </div>
                             </div>
 
                             <div class="form-group m-b-20">
                                 <label class="col-md-2 control-label">描述</label>
                                 <div class="col-md-6">
-                                	<textarea name="description" class="form-control" rows="3" placeholder="请输入分类描述">{{ $category->description or old('description') }}</textarea>
+                                	<textarea name="description" class="form-control" rows="3" placeholder="请输入分类描述">{{ $category->description ?? old('description') }}</textarea>
                                 </div>
                             </div>
 
                             <div class="form-group m-b-20">
                                 <label class="col-md-2 control-label">排序</label>
                                 <div class="col-md-2">
-                                	<input type="text" class="form-control" name="sort" placeholder="请输入分类排序" value="{{ $category->sort or old('sort') }}">
+                                	<input type="text" class="form-control" name="sort" placeholder="请输入分类排序" value="{{ $category->sort ?? old('sort') }}">
                                 </div>
                             </div>
 

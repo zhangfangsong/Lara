@@ -136,7 +136,7 @@
                             <div class="form-group m-b-20">
                                 <label class="col-md-2 control-label">标题</label>
                                 <div class="col-md-4">
-                                	<input type="text" class="form-control" name="title" placeholder="请输入标题" value="{{ $post->title or old('title') }}">
+                                	<input type="text" class="form-control" name="title" placeholder="请输入标题" value="{{ $post->title ?? old('title') }}">
                                 </div>
                             </div>
 
@@ -169,7 +169,7 @@
                             <div class="form-group m-b-20">
                                 <label class="col-md-2 control-label">标签</label>
                                 <div class="col-md-4">
-                                    <input type="text" class="form-control" name="keyword" placeholder="请输入标签" value="{{ $post->keyword or old('keyword') }}">
+                                    <input type="text" class="form-control" name="keyword" placeholder="请输入标签" value="{{ $post->keyword ?? old('keyword') }}">
                                 </div>
                             </div>
 
@@ -177,21 +177,21 @@
                                 <label class="col-md-2 control-label">内容</label>
                                 <div class="col-md-10">
                                     <input type="hidden" name="content" value="">
-                                    <div id="content" style="height: 400px;">{!! $post->content or '' !!}</div>
+                                    <div id="content" style="height: 400px;">{!! $post->content ?? '' !!}</div>
                                 </div>
                             </div>
 
                             <div class="form-group m-b-20">
                                 <label class="col-md-2 control-label">描述</label>
                                 <div class="col-md-6">
-                                    <textarea name="description" class="form-control" rows="3" placeholder="请输入描述">{{ $post->description or old('description') }}</textarea>
+                                    <textarea name="description" class="form-control" rows="3" placeholder="请输入描述">{{ $post->description ?? old('description') }}</textarea>
                                 </div>
                             </div>
 
                             <div class="form-group m-b-20">
                                 <label class="col-md-2 control-label">浏览量</label>
                                 <div class="col-md-2">
-                                    <input type="text" class="form-control" name="views" placeholder="浏览量" value="{{ $post->views or old('views') }}">
+                                    <input type="text" class="form-control" name="views" placeholder="浏览量" value="{{ $post->views ?? old('views') }}">
                                 </div>
                             </div>
 

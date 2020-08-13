@@ -42,7 +42,7 @@
                             <div class="form-group m-b-20">
                                 <label class="col-md-2 control-label">名称</label>
                                 <div class="col-md-4">
-                                	<input type="text" class="form-control" name="name" placeholder="请输入标签名称" value="{{ $tag->name or old('name') }}">
+                                	<input type="text" class="form-control" name="name" placeholder="请输入标签名称" value="{{ $tag->name ?? old('name') }}">
                                 </div>
                             </div>
 

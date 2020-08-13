@@ -42,21 +42,21 @@
                             <div class="form-group m-b-20">
                                 <label class="col-md-2 control-label">名称</label>
                                 <div class="col-md-4">
-                                    <input type="text" class="form-control" name="title" placeholder="请输入节点名称" value="{{ $node->title or old('title') }}">
+                                    <input type="text" class="form-control" name="title" placeholder="请输入节点名称" value="{{ $node->title ?? old('title') }}">
                                 </div>
                             </div>
                             
                             <div class="form-group m-b-20">
                                 <label class="col-md-2 control-label">别名</label>
                                 <div class="col-md-4">
-                                	<input type="text" class="form-control" name="alias" placeholder="请输入节点别名" value="{{ $node->alias or old('alias') }}">
+                                	<input type="text" class="form-control" name="alias" placeholder="请输入节点别名" value="{{ $node->alias ?? old('alias') }}">
                                 </div>
                             </div>
 
                             <div class="form-group m-b-20">
                                 <label class="col-md-2 control-label">路由</label>
                                 <div class="col-md-4">
-                                    <input type="text" class="form-control" name="name" placeholder="请输入节点路由" value="{{ $node->name or old('name') }}">
+                                    <input type="text" class="form-control" name="name" placeholder="请输入节点路由" value="{{ $node->name ?? old('name') }}">
                                 </div>
                             </div>
                             
@@ -77,7 +77,7 @@
                             <div class="form-group m-b-20">
                                 <label class="col-md-2 control-label">类名</label>
                                 <div class="col-md-2">
-                                    <input type="text" class="form-control" name="class_name" placeholder="请输入CSS样式类" value="{{ $node->class_name or old('class_name') }}">
+                                    <input type="text" class="form-control" name="class_name" placeholder="请输入CSS样式类" value="{{ $node->class_name ?? old('class_name') }}">
                                 </div>
                             </div>
 

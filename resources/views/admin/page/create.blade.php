@@ -144,14 +144,14 @@
                             <div class="form-group m-b-20">
                                 <label class="col-md-2 control-label">标题</label>
                                 <div class="col-md-4">
-                                	<input type="text" class="form-control" name="title" placeholder="请输入标题" value="{{ $page->title or old('title') }}">
+                                	<input type="text" class="form-control" name="title" placeholder="请输入标题" value="{{ $page->title ?? old('title') }}">
                                 </div>
                             </div>
 
                             <div class="form-group m-b-20">
                                 <label class="col-md-2 control-label">别名</label>
                                 <div class="col-md-2">
-                                    <input type="text" class="form-control" name="alias" placeholder="请输入别名" value="{{ $page->alias or old('alias') }}">
+                                    <input type="text" class="form-control" name="alias" placeholder="请输入别名" value="{{ $page->alias ?? old('alias') }}">
                                 </div>
                             </div>
 
@@ -159,21 +159,21 @@
                                 <label class="col-md-2 control-label">内容</label>
                                 <div class="col-md-10">
                                     <input type="hidden" name="content" value="">
-                                    <div id="content" style="height: 200px;">{!! $page->content or '' !!}</div>
+                                    <div id="content" style="height: 200px;">{!! $page->content ?? '' !!}</div>
                                 </div>
                             </div>
 
                             <div class="form-group m-b-20">
                                 <label class="col-md-2 control-label">关键词</label>
                                 <div class="col-md-4">
-                                    <input type="text" class="form-control" name="keyword" placeholder="请输入关键词" value="{{ $page->keyword or old('keyword') }}">
+                                    <input type="text" class="form-control" name="keyword" placeholder="请输入关键词" value="{{ $page->keyword ?? old('keyword') }}">
                                 </div>
                             </div>
 
                             <div class="form-group m-b-20">
                                 <label class="col-md-2 control-label">描述</label>
                                 <div class="col-md-6">
-                                    <textarea name="description" class="form-control" rows="3" placeholder="请输入描述">{{ $page->description or old('description') }}</textarea>
+                                    <textarea name="description" class="form-control" rows="3" placeholder="请输入描述">{{ $page->description ?? old('description') }}</textarea>
                                 </div>
                             </div>
                             

@@ -51,14 +51,14 @@
                             <div class="form-group m-b-20">
                                 <label class="col-md-2 control-label">用户名</label>
                                 <div class="col-md-4">
-                                	<input type="text" class="form-control" name="username" placeholder="请输入用户名" value="{{ $user->username or old('username') }}">
+                                	<input type="text" class="form-control" name="username" placeholder="请输入用户名" value="{{ $user->username ?? old('username') }}">
                                 </div>
                             </div>
 
                             <div class="form-group m-b-20">
                                 <label class="col-md-2 control-label">邮箱</label>
                                 <div class="col-md-4">
-                                    <input type="text" class="form-control" name="email" placeholder="请输入邮箱" value="{{ $user->email or old('email') }}">
+                                    <input type="text" class="form-control" name="email" placeholder="请输入邮箱" value="{{ $user->email ?? old('email') }}">
                                 </div>
                             </div>
 
@@ -84,7 +84,7 @@
                             <div class="form-group m-b-20">
                                 <label class="col-md-2 control-label">简介</label>
                                 <div class="col-md-6">
-                                    <textarea name="description" class="form-control" rows="3" placeholder="请输入个人简介">{{ $user->description or old('description') }}</textarea>
+                                    <textarea name="description" class="form-control" rows="3" placeholder="请输入个人简介">{{ $user->description ?? old('description') }}</textarea>
                                 </div>
                             </div>
 

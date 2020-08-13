@@ -64,7 +64,7 @@
 						@foreach($list as $val)
 						<tr>
 							<td>{{ $val->id }}</td>
-							<td title="{{ $val->title }}">{{ str_limit($val->title, 50) }}</td>
+							<td title="{{ $val->title }}">{{ Str::limit($val->title, 50) }}</td>
 							<td>{{ $val->category->name }}</td>
 							<td>{{ $val->keyword }}</td>
 							<td>{{ $val->views }}</td>

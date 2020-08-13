@@ -34,7 +34,7 @@ class LinkController extends BaseController
 		Link::create([
 			'name' => $request->name,
 			'url' => $request->url,
-			'logo' => $request->logo,
+			'logo' => $request->logo ?: '',
 			'sort' => $request->sort,
 			'status' => $request->status,
 			'target' => $request->target,
