@@ -37,28 +37,28 @@
                                 <div class="form-group m-b-20">
                                     <label class="col-md-2 control-label">名称</label>
                                     <div class="col-md-4">
-                                    	<input type="text" class="form-control" name="name" placeholder="站点名称" value="{{ $setting->name or '' }}">
+                                    	<input type="text" class="form-control" name="name" placeholder="站点名称" value="{{ $setting->name ?: '' }}">
                                     </div>
                                 </div>
 
                                 <div class="form-group m-b-20">
                                     <label class="col-md-2 control-label">标题</label>
                                     <div class="col-md-4">
-                                        <input type="text" class="form-control" name="title" placeholder="站点标题" value="{{ $setting->title or '' }}">
+                                        <input type="text" class="form-control" name="title" placeholder="站点标题" value="{{ $setting->title ?: '' }}">
                                     </div>
                                 </div>
 
                                 <div class="form-group m-b-20">
                                     <label class="col-md-2 control-label">关键词</label>
                                     <div class="col-md-4">
-                                        <input type="text" class="form-control" name="keyword" placeholder="关键词" value="{{ $setting->keyword or '' }}">
+                                        <input type="text" class="form-control" name="keyword" placeholder="关键词" value="{{ $setting->keyword ?: '' }}">
                                     </div>
                                 </div>
 
                                 <div class="form-group m-b-20">
                                     <label class="col-md-2 control-label">描述</label>
                                     <div class="col-md-6">
-                                        <textarea name="description" class="form-control" rows="3" placeholder="描述">{{ $setting->description or '' }}</textarea>
+                                        <textarea name="description" class="form-control" rows="3" placeholder="描述">{{ $setting->description ?: '' }}</textarea>
                                     </div>
                                 </div>
 
@@ -80,28 +80,28 @@
                                 <div class="form-group m-b-20">
                                     <label class="col-md-2 control-label">备案</label>
                                     <div class="col-md-4">
-                                        <input type="text" class="form-control" name="icp" placeholder="ICP备案号" value="{{ $setting->icp or '' }}">
+                                        <input type="text" class="form-control" name="icp" placeholder="ICP备案号" value="{{ $setting->icp ?: '' }}">
                                     </div>
                                 </div>
 
                                 <div class="form-group m-b-20">
                                     <label class="col-md-2 control-label">代码</label>
                                     <div class="col-md-6">
-                                        <textarea name="code" class="form-control" rows="3" placeholder="统计代码">{{ $setting->code or '' }}</textarea>
+                                        <textarea name="code" class="form-control" rows="3" placeholder="统计代码">{{ $setting->code ?: '' }}</textarea>
                                     </div>
                                 </div>
                             @elseif($tab == 'upload')
                                 <div class="form-group m-b-20">
                                     <label class="col-md-2 control-label">图片大小</label>
                                     <div class="col-md-4">
-                                        <input type="text" class="form-control" name="upload_size" placeholder="上传图片大小" value="{{ $setting->upload_size or '2M' }}">
+                                        <input type="text" class="form-control" name="upload_size" placeholder="上传图片大小" value="{{ $setting->upload_size ?: '2M' }}">
                                     </div>
                                 </div>
 
                                 <div class="form-group m-b-20">
                                     <label class="col-md-2 control-label">图片格式</label>
                                     <div class="col-md-4">
-                                        <input type="text" class="form-control" name="upload_type" placeholder="上传图片类型" value="{{ $setting->upload_type or '' }}">
+                                        <input type="text" class="form-control" name="upload_type" placeholder="上传图片类型" value="{{ $setting->upload_type ?: '' }}">
                                     </div>
                                 </div>
                             @endif

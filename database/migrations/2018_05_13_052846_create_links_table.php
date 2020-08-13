@@ -1,8 +1,8 @@
 <?php
 
-use Illuminate\Support\Facades\Schema;
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
 
 class CreateLinksTable extends Migration
 {
@@ -14,7 +14,7 @@ class CreateLinksTable extends Migration
     public function up()
     {
         Schema::create('links', function (Blueprint $table) {
-            $table->increments('id')->comment('主键');
+            $table->bigIncrements('id')->comment('主键');
             $table->string('name')->comment('名称');
             $table->string('url')->comment('链接地址');
             $table->string('logo')->default('')->comment('链接图片');
