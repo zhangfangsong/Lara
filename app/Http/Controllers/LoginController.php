@@ -11,6 +11,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Gregwar\Captcha\PhraseBuilder;
 
 class LoginController extends BaseController
 {
@@ -25,14 +26,22 @@ class LoginController extends BaseController
 	{
 		$data = $this->validate($request, [
 			'username' => 'required|max:255',
-			'password' => 'required'
-		]);
+			'password' => 'required',
+			'captcha'  => 'required',
+		], ['captcha.required' => '验证码 不能为空']);
 
 		$username = $data['username'];
+		$credients['password'] = $data['password'];
 		
-		filter_var($username, FILTER_VALIDATE_EMAIL) ? $data['email'] = $username : $data['username'] = $username;
-		
-		if(Auth::attempt($data, $request->has('remember'))){
+		$code = session('code');
+		if(!$code || (!PhraseBuilder::comparePhrases($code, $data['captcha']))) {
+			session()->flash('danger', '验证码不正确');
+			return redirect()->back();
+		}
+
+		filter_var($username, FILTER_VALIDATE_EMAIL) ? $credients['email'] = $username : $credients['username'] = $username;
+
+		if(Auth::attempt($credients, $request->has('remember'))){
 			session()->flash('success', Auth::user()->username.',欢迎回来');
 			
 			return redirect()->intended(route('admin.dashboard.index'));

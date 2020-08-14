@@ -30,6 +30,13 @@
                     </div>
                 </div>
 
+                <div class="form-group">
+                    <div class="col-xs-12">
+                        <input class="form-control" style="width: 100px;display: inline-block;" type="text" name="captcha" placeholder="验证码" value="">
+                        <img style="cursor: pointer;border-radius: 1px;height: 38px;" src="{{ route('captcha') }}" title="看不清?换一张" onclick="this.src='/captcha?' + Math.random()">
+                    </div>
+                </div>
+
                 <div class="form-group ">
                     <div class="col-xs-12">
                         <div class="checkbox checkbox-primary">

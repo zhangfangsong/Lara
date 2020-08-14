@@ -9,6 +9,9 @@ Route::get('tag/{tag}', 'IndexController@search')->name('tag');
 Route::get('time/{time}', 'IndexController@search')->name('time');
 Route::get('search/{keyword}', 'IndexController@search')->name('search');
 
+//验证码
+Route::get('captcha', 'CaptchaController@store')->name('captcha');
+
 //登录与注册
 Route::group([
 	'middleware' => 'guest',
