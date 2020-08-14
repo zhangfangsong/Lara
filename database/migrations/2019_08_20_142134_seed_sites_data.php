@@ -20,9 +20,7 @@ class SeedSitesData extends Migration
      */
     public function up()
     {
-        $app = new App;
-        
-        $this->seedUsers($app);
+        $this->seedUsers();
         $this->seedSettings();
         $this->seedRoles();
         $this->seedLinks();
@@ -44,15 +42,15 @@ class SeedSitesData extends Migration
     }
     
     //填充用户
-    public function seedUsers($app)
+    public function seedUsers()
     {
         $email = 'admin@admin.com';
-        
-        User::create([
+
+        User::add([
             'username' => 'admin',
             'email' => $email,
-            'password' => bcrypt('123456'),
-            'avatar' => $app->getAvatarByEmail($email),
+            'password' => '123456',
+            'activated' => 1,
             'status' => 1,
             'role_id' => 1
         ]);

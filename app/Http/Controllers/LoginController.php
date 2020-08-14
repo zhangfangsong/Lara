@@ -42,9 +42,15 @@ class LoginController extends BaseController
 		filter_var($username, FILTER_VALIDATE_EMAIL) ? $credients['email'] = $username : $credients['username'] = $username;
 
 		if(Auth::attempt($credients, $request->has('remember'))){
-			session()->flash('success', Auth::user()->username.',欢迎回来');
-			
-			return redirect()->intended(route('admin.dashboard.index'));
+
+			if(Auth::user()->activated) {
+				session()->flash('success', Auth::user()->username.',欢迎回来');
+				return redirect()->intended(route('admin.dashboard.index'));
+			} else {
+				Auth::logout();
+				session()->flash('danger', '账号未激活，请检查邮箱中的注册邮件进行激活');
+				return redirect()->back();
+			}
 		}else{
 			session()->flash('danger', '用户名或密码错误');
 

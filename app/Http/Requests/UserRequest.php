@@ -24,9 +24,10 @@ class UserRequest extends FormRequest
     public function rules()
     {
         return [
-            'username' => 'required|max:50',
+            'username' => 'required|between:2,25|unique:users,username',
             'email' => 'required|email|unique:users|max:255',
             'password' => 'required|confirmed|min:6',
+            'captcha' => 'required',
         ];
     }
 
@@ -34,6 +35,7 @@ class UserRequest extends FormRequest
     {
         return [
             'username' => '昵称',
+            'captcha'  => '验证码',
         ];
     }
 }

@@ -11,6 +11,8 @@ Route::get('search/{keyword}', 'IndexController@search')->name('search');
 
 //验证码
 Route::get('captcha', 'CaptchaController@store')->name('captcha');
+//激活账号
+Route::get('signup/confirm/{token}', 'UserController@confirmEmail')->name('confirm_email');
 
 //登录与注册
 Route::group([

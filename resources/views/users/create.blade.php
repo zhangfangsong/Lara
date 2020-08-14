@@ -1,6 +1,4 @@
-
 @extends('layouts.default')
-
 @section('title', '注册')
 
 @section('content')
@@ -9,7 +7,7 @@
 	<div class="wrapper-page">
 
 		@include('shared._errors')
-
+		
 		<div class=" card-box">
 			<div class="panel-heading">
 				<h3 class="text-center"> 注册 <strong class="text-custom">{{ $cfg->title }}</strong> </h3>
@@ -17,8 +15,9 @@
 
 			<div class="panel-body">
 				<form class="form-horizontal m-t-20" action="{{ route('signup') }}" method="POST">
+					
 					{{ csrf_field() }}
-
+					
 					<div class="form-group ">
 						<div class="col-xs-12">
 							<input class="form-control" type="text" name="username" placeholder="昵称" value="{{ old('username') }}">
@@ -36,11 +35,18 @@
 							<input class="form-control" type="password" name="password" placeholder="密码" value="{{ old('password') }}">
 						</div>
 					</div>
-
+					
 					<div class="form-group">
 						<div class="col-xs-12">
-							<input class="form-control" type="password" name="password_confirmation" placeholder="确认密码">
+							<input class="form-control" type="password" name="password_confirmation" placeholder="确认密码" value="{{ old('password_confirmation') }}">
 						</div>
+					</div>
+					
+					<div class="form-group">
+					    <div class="col-xs-12">
+					        <input class="form-control" style="width: 100px;display: inline-block;" type="text" name="captcha" placeholder="验证码" value="">
+					        <img style="cursor: pointer;border-radius: 1px;height: 38px;" src="{{ route('captcha') }}" title="看不清?换一张" onclick="this.src='/captcha?' + Math.random()">
+					    </div>
 					</div>
 
 					<div class="form-group text-center m-t-40">

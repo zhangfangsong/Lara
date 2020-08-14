@@ -21,6 +21,8 @@ use Illuminate\Support\Facades\View;
 
 class BaseController extends Controller
 {
+	protected $cfg = null;
+
 	//构造函数
 	public function __construct()
 	{
@@ -32,7 +34,8 @@ class BaseController extends Controller
 	{
 		//系统配置
 		$cfg = (object)Setting::getAll();
-
+		$this->cfg = $cfg;
+		
 		//导航
 		$navs = Category::where('status', 1)->orderBy('sort', 'desc')->get();
 		$level = new Level;

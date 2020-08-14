@@ -20,6 +20,8 @@ class CreateUsersTable extends Migration
             $table->string('password')->comment('密码');
             $table->string('avatar')->default('')->comment('头像');
             $table->string('description')->default('')->comment('用户简介');
+            $table->string('activation_token')->default('')->comment('激活Token');
+            $table->tinyInteger('activated')->unsigned()->index()->default(0)->comment('激活状态');
             $table->rememberToken()->comment('记住密码');
             $table->tinyInteger('status')->unsigned()->index()->default(1)->comment('显示状态');
             $table->tinyInteger('role_id')->unsigned()->index()->default(2)->comment('角色id');
