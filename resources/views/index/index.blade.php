@@ -1,4 +1,3 @@
-
 @extends('layouts.main')
 @section('title', '首页')
 

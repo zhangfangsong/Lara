@@ -44,7 +44,7 @@
 					<textarea id="body" name="content" cols="45" rows="4" aria-required="true">{{ old('content') or ''}}</textarea>
 				</p>
 				<p class="form-submit">
-					<input type="submit" id="submit" value="发表评论" />
+					<input type="submit" class="btn-default" id="submit" value="发表评论" />
 				</p>
 			</form>
 			@endif

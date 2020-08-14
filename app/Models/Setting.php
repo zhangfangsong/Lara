@@ -17,18 +17,18 @@ class Setting extends Model
 	protected $fillable = [
 		'name', 'value', 'type'
 	];
-
+	
 	protected static $cache_key = 'lara:settings';
-
-	protected static $expire_at = 120;
-
+	
+	protected static $expire_at = 3600;
+	
 	//获取系统配置
 	public static function getAll($type = '')
 	{
 		$list = Cache::remember(self::$cache_key, self::$expire_at, function (){
 			return self::all();
 		});
-
+		
 		if(empty($list)){
 			return [];
 		}

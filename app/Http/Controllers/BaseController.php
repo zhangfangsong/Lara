@@ -44,16 +44,16 @@ class BaseController extends Controller
 		//热门文章和最新文章
 		$hot_posts = Post::getHot();
 		$recent_posts = Post::getRecent();
-
+		
 		//归档
 		$files = Post::getFile();
-
+		
 		//标签
 		$tags = Tag::getHot(80)->shuffle();
-
+		
 		//友链
 		$links = Link::getAll();
 		
-		View()->share(['cfg'=> $cfg, 'navs'=> $navs, 'hot_posts'=> $hot_posts, 'recent_posts'=> $recent_posts, 'files'=> $files, 'tags'=> $tags, 'links'=> $links]);
+		View()->share(compact('cfg', 'navs', 'hot_posts', 'recent_posts', 'files', 'tags', 'links'));
 	}
 }
