@@ -299,7 +299,7 @@ class SeedSitesData extends Migration
         Setting::create(['name' => 'name', 'value' => 'Lara博客系统']);
         Setting::create(['name' => 'title', 'value' => 'Lara博客系统']);
         Setting::create(['name' => 'keyword', 'value' => 'Lara,博客,Laravel,Laravel博客']);
-        Setting::create(['name' => 'description', 'value' => '一款基于Laravel 5.5 开发的博客系统']);
+        Setting::create(['name' => 'description', 'value' => '一款基于Laravel 6.x 开发的博客系统']);
         Setting::create(['name' => 'status', 'value' => '1']);
         Setting::create(['name' => 'icp', 'value' => '浙ICP备16000810号-2']);
         Setting::create(['name' => 'code', 'value' => '']);

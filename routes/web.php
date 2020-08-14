@@ -1,6 +1,6 @@
 <?php
 
-//前台
+//网站前台
 Route::get('/', 'IndexController@index')->name('home');
 Route::get('cate/{category}', 'IndexController@category')->name('category');
 Route::get('post/{post}', 'IndexController@post')->name('post');
@@ -9,6 +9,7 @@ Route::get('tag/{tag}', 'IndexController@search')->name('tag');
 Route::get('time/{time}', 'IndexController@search')->name('time');
 Route::get('search/{keyword}', 'IndexController@search')->name('search');
 
+//登录与注册
 Route::group([
 	'middleware' => 'guest',
 ], function (){
@@ -25,7 +26,7 @@ Route::group([
 	Route::post('{post}/comment', 'IndexController@comment')->name('comment');
 });
 
-//后台
+//网站后台
 Route::group([
 	'prefix' => 'admin',
 	'namespace' => 'Admin',

@@ -3,15 +3,12 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta name="description" content="A fully featured admin theme which can be used to build CRM, CMS, etc.">
-        <meta name="author" content="Coderthemes">
-
+        <meta name="description" content="Lara后台管理系统">
         <link rel="shortcut icon" href="{{ asset('assets/images/favicon_1.ico') }}">
-
         <title>@yield('title') - Lara后台管理</title>
-
+		
         @yield('stylesheet')
-
+		
         <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/bootstrap.min.css') }}" />
         <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/core.css') }}" />
         <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/components.css') }}" />
@@ -56,13 +53,11 @@
                                 </button>
                                 <span class="clearfix"></span>
                             </div>
-
-                            <form role="search" class="navbar-left app-search pull-left hidden-xs">
-			                     <input type="text" placeholder="Search..." class="form-control">
-			                     <a href=""><i class="fa fa-search"></i></a>
-			                </form>
-
+							
                             <ul class="nav navbar-nav navbar-right pull-right">
+								<li class="hidden-xs">
+								    <a href="{{ route('home') }}" class="waves-effect waves-light"><b class="fa fa-home" style="font-size: 16px;position: relative;right: 3px;top: 1px;"></b>网站首页</a>
+								</li>
                                 <li class="hidden-xs">
                                     <a href="{{ route('admin.dashboard.profile') }}" class="waves-effect waves-light">{{ Auth::user()->username }}</a>
                                 </li>
@@ -124,7 +119,7 @@
                 </div> <!-- content -->
                 
                 <footer class="footer text-right">
-                    <span class="">2019 © Lara</span>
+                    <span class="">2020 © Lara</span>
                 </footer>
                 
             </div>
@@ -165,4 +160,3 @@
 
     </body>
 </html>
-
