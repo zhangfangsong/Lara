@@ -48,11 +48,11 @@ class Post extends Model
 	{
 		return route('time', $this->created_at->toDateString());
 	}
-
+	
 	//最新文章
 	public static function getRecent($limit = 10)
 	{
-		return self::where('status', 1)->orderBy('id', 'desc')->limit($limit)->get();
+		return self::where('status', 1)->with('category')->orderBy('id', 'desc')->limit($limit)->get();
 	}
 	
 	//热门文章

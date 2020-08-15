@@ -22,6 +22,8 @@ use Illuminate\Support\Facades\View;
 class BaseController extends Controller
 {
 	protected $cfg = null;
+	
+	protected $recent_posts = null;
 
 	//构造函数
 	public function __construct()
@@ -44,6 +46,7 @@ class BaseController extends Controller
 		//热门文章和最新文章
 		$hot_posts = Post::getHot();
 		$recent_posts = Post::getRecent();
+		$this->recent_posts = $recent_posts;
 		
 		//归档
 		$files = Post::getFile();

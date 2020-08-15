@@ -23,7 +23,7 @@ class IndexController extends BaseController
 	//首页
 	public function index()
 	{
-		$list = Post::getRecent();
+		$list = $this->recent_posts;
 		return view('index.index', ['list'=> $list]);
 	}
 	

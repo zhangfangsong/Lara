@@ -14,7 +14,7 @@ return [
      |
      */
     
-    'enabled' => false,
+    'enabled' => true,
     'except' => [
         'telescope*',
         'horizon*'
