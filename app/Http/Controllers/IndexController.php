@@ -32,7 +32,7 @@ class IndexController extends BaseController
 	{
 		$categorys = Category::all();
 		$childs_id_arr = $level->formatChild($categorys, $category->id);
-		$list = Post::where('status', 1)->whereIn('category_id', $childs_id_arr)->orderBy('id', 'desc')->paginate(10);
+		$list = Post::where('status', 1)->whereIn('category_id', $childs_id_arr)->with('category')->orderBy('id', 'desc')->paginate(10);
 
 		return view('index.category', ['list'=>$list, 'category'=>$category]);
 	}
@@ -40,6 +40,7 @@ class IndexController extends BaseController
 	//详情
 	public function post(Post $post)
 	{
+		$post->load('category');
 		Post::where('id', $post->id)->increment('views');
 		return view('index.post', ['post'=> $post, 'comments' => $post->comments()->with('user')->where('status', 1)->get()]);
 	}
@@ -48,10 +49,10 @@ class IndexController extends BaseController
 	public function comment(Post $post, CommentRequest $request)
 	{
 		$user = Auth::user();
-
+		
 		//防刷评论
-		$cache_key = $user->id;
-
+		$cache_key = $user->id . ':' . $post->id;
+		
 		if(Cache::get($cache_key)) {
 			return redirect()->back()->with('danger', '评论的间隔时间太短');
 		}
@@ -60,12 +61,12 @@ class IndexController extends BaseController
 			'user_id' => $user->id,
 			'post_id' => $post->id,
 			'content' => $request->content,
-			'at_id' => 0,
-			'ip' => $request->getClientIp(),
-			'read' => 0,
-			'status' => 1
+			'at_id'   => 0,
+			'ip'      => $request->getClientIp(),
+			'read'    => 0,
+			'status'  => 1
 		]);
-		Cache::put($cache_key, 'short', 1);
+		Cache::put($cache_key, true, 5);
 		
 		return redirect()->back()->with('success', '评论成功');
 	}

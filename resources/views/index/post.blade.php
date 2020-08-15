@@ -1,4 +1,3 @@
-
 @extends('layouts.main')
 @section('title', $post->title.' - '.$post->category->name)
 
@@ -7,7 +6,7 @@
 		<header class="entry-header">
 			<h1 class="entry-title"><a href="{{ $post->getLinkUrl() }}" title="{{ $post->title }}" rel="bookmark">{{ $post->title }}</a></h1>
 		</header>
-
+		
 		<div class="entry-content ql-editor">{!! $post->content !!}</div>
 		
 		@include('index._tag', ['val'=> $post])
@@ -17,7 +16,7 @@
 		<div class="prev">上一篇：{!! $post->getPrev() !!}</div>
 		<div class="prev">下一篇：{!! $post->getNext() !!}</div>
 	</nav>
-
+	
 	<div id="comments" class="comments-area">
 		@if(!$comments->count())
 			<h2 class="comments-title">《<span>{{ $post->title }}</span>》上暂无评论!</h2>
@@ -38,10 +37,10 @@
 		<div id="respond">
 			<h3 id="reply-title">发表评论 @if(!Auth::check()) <input type="submit" value="登录" onclick="location.href = '{{ route("login") }}';">@endif</h3>
 			@if(Auth::check())
-			<form action="{{ route('comment', $post->id) }}" method="post" id="commentform">
+			<form action="{{ route('comment', $post->id) }}" method="POST" id="commentform">
 				{{ csrf_field() }}
 				<p class="comment-form-comment">
-					<textarea id="body" name="content" cols="45" rows="4" aria-required="true">{{ old('content') or ''}}</textarea>
+					<textarea id="body" name="content" cols="45" rows="4" aria-required="true">{{ old('content') ?? ''}}</textarea>
 				</p>
 				<p class="form-submit">
 					<input type="submit" class="btn-default" id="submit" value="发表评论" />

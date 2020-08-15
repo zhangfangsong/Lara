@@ -86,11 +86,11 @@
                 imageDeal(this, dealChange);
             }).trigger('click');
         });
-
-        $('form').eq(1).on('submit', function (){
+		
+        $('form').eq(0).on('submit', function (){
             var content = document.querySelector('input[name=content]');
             content.value = quill.container.firstChild.innerHTML;
-
+			
             return true;
         });
 

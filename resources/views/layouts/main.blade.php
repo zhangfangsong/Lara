@@ -9,7 +9,7 @@
 	<style type="text/css">.recentcomments a{display:inline !important;padding:0 !important;margin:0 !important;}</style>
 	<style type="text/css" id="custom-background-css">
 		body.custom-background {background-color: #e6e6e6; }
-		input.btn-default:focus {outline: none;}
+		input.btn-default:focus,input.no-border:focus {outline: none;}
 	</style>
 	<script type="text/javascript" src="{{ asset('front/js/jquery.js') }}"></script>
 	<script type="text/javascript" src="{{ asset('front/js/nav.js') }}"></script>
@@ -64,7 +64,7 @@
 				<form role="search" id="searchform" action="" method="POST">
 					<div>
 						<label class="screen-reader-text" for="s">搜索：</label>
-						<input placeholder="搜索" type="text" name="keywords" id="s"/>
+						<input placeholder="搜索" type="text" class="no-border" name="keywords" id="s"/>
 						<input type="submit" class="btn btn-default" id="searchsubmit" value="搜索" />
 					</div>
 				</form>

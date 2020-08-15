@@ -77,7 +77,7 @@ class Post extends Model
 		if($article){
 			return '<a href="'.$article->getLinkUrl().'">'.e($article->title).'</a>';
 		}
-
+		
 		return '没有了';
 	}
 
@@ -129,9 +129,8 @@ class Post extends Model
 			$map[] = ['created_at', 'like', "$time%"];
 			$search = $time;
 		}
-
-		$list = self::where($map)->orderBy('id', 'desc')->paginate(10);
-
+		$list = self::where($map)->with('category')->orderBy('id', 'desc')->paginate(10);
+		
 		return ['list'=> $list, 'search'=> $search];
 	}
 	
