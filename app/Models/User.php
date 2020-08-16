@@ -112,15 +112,14 @@ class User extends Authenticatable implements JWTSubject
         if(in_array(Route::currentRouteName(), $this->role->getNodes())){
             return true;
         }
-        
         return false;
     }
-    
+	
     public function getJWTIdentifier()
     {
         return $this->getKey();
     }
-
+	
     public function getJWTCustomClaims()
     {
         return [];

@@ -56,7 +56,7 @@
 		@endif
 		
 		<div id="respond">
-			<h3 id="reply-title">发表评论 @if(!Auth::check()) <input type="submit" value="登录" onclick="location.href = '{{ route("login") }}';">@endif</h3>
+			<h3 id="reply-title">发表评论 @if(!Auth::check()) <input type="submit" class="no-border" value="登录" onclick="location.href = '{{ route("login") }}';">@endif</h3>
 			@if(Auth::check())
 			<form action="{{ route('comment', $post->id) }}" method="POST" id="commentform">
 				{{ csrf_field() }}

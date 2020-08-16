@@ -7,8 +7,6 @@
 @stop
 
 @section('script')
-	<!-- <script src="{{ asset('assets/plugins/morris/morris.min.js') }}"></script>
-	<script src="{{ asset('assets/pages/jquery.dashboard.js') }}"></script> -->
 	<script src="{{ asset('assets/plugins/bootstrap-table/dist/bootstrap-table.min.js') }}"></script>
 	<script src="{{ asset('assets/pages/jquery.bs-table.js') }}"></script>
 	
@@ -85,8 +83,8 @@
 	                <i class="md md-remove-red-eye text-success"></i>
 	            </div>
 	            <div class="text-right">
-	                <h3 class="text-dark"><b class="counter">{{ $pageCount }}</b></h3>
-	                <p class="text-muted">单页数</p>
+	                <h3 class="text-dark"><b class="counter">{{ $linkCount }}</b></h3>
+	                <p class="text-muted">友链数</p>
 	            </div>
 	            <div class="clearfix"></div>
 	        </div>
@@ -207,5 +205,4 @@
 			</div>
 		</div>
 	</div>
-
 @stop

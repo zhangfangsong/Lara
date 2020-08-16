@@ -16,7 +16,7 @@ use App\Http\Requests\Admin\ProfileRequest;
 use App\Models\Post;
 use App\Models\User;
 use App\Models\Comment;
-use App\Models\Page;
+use App\Models\Link;
 
 class IndexController extends BaseController
 {
@@ -27,8 +27,9 @@ class IndexController extends BaseController
 			'postCount' => Post::count(),
 			'userCount' => User::count(),
 			'commentCount' => Comment::count(),
-			'pageCount' => Page::count(),
+			'linkCount' => Link::count(),
 		];
+		//仅限类Unix系统
 		$data['load'] = system_load();
 		
 		$data['comments'] = Comment::where('read', 0)->orderBy('id', 'desc')->limit(6)->get();

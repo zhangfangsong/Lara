@@ -33,7 +33,6 @@ class BaseController extends Controller
 		$route = Route::currentRouteName();
 		$routeArr = explode('.', $route);
 		$module = $routeArr[1];
-		
 		$this->action = $routeArr[2] ?? '';
 		
 		if($module != 'dashboard' && $module != 'setting'){
@@ -44,7 +43,7 @@ class BaseController extends Controller
 		$navs = Node::where('sidebar', 1)->get();
 		$level = new Level;
 		$navs = $level->formatMulti($navs);
-
+		
 		View()->share(['route' => $route, 'module' => $module,'navs' => $navs]);
 	}
 }
