@@ -43,7 +43,7 @@ Route::group([
 Route::group([
 	'prefix' => 'admin',
 	'namespace' => 'Admin',
-	'middleware' => ['auth', 'privilege'],
+	'middleware' => ['auth', 'privilege', 'getnav'],
 ], function (){
 	Route::get('/', 'IndexController@index')->name('admin.dashboard.index');
 	Route::post('upload', 'IndexController@upload')->name('admin.upload');

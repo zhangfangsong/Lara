@@ -1,18 +1,13 @@
 <?php
 
-/**
- * 权限检测中间件
- * User: zfs
- * Date: 2019/8/17
- * Time: 22:34
- */
-
 namespace App\Http\Middleware\Admin;
 
 use Closure;
+use App\Handlers\Level;
+use Illuminate\Support\Facades\View;
 use Illuminate\Support\Facades\Auth;
 
-class checkPrivilege
+class GetNav
 {
     /**
      * Handle an incoming request.
@@ -23,10 +18,12 @@ class checkPrivilege
      */
     public function handle($request, Closure $next)
     {
-        if(!Auth::user()->hasRight()){
-            session()->flash('danger', '你的权限不足');
-            return redirect()->back();
-        }
+        //导航(获取角色对应的菜单)
+        $navs = Auth::user()->getNavs();
+        $level = new Level;
+        $navs = $level->formatMulti($navs);
+        View()->share(['navs' => $navs]);
+        
         return $next($request);
     }
 }

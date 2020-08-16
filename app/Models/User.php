@@ -115,6 +115,17 @@ class User extends Authenticatable implements JWTSubject
         return false;
     }
 	
+	// 获取用户菜单
+	public function getNavs()
+	{
+		if($this->role_id == 1) {
+			$navs = Node::where('sidebar', 1)->get();
+		} else {
+			$navs = $this->role->nodes()->where('sidebar', 1)->get();
+		}
+		return $navs;
+	}
+	
     public function getJWTIdentifier()
     {
         return $this->getKey();

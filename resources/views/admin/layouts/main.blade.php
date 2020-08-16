@@ -77,10 +77,8 @@
                 </div>
             </div>
             <!-- Top Bar End -->
-
-
+			
             <!-- ========== Left Sidebar Start ========== -->
-
             <div class="left side-menu">
                 <div class="sidebar-inner slimscrollleft">
                     <!--- Divider -->
