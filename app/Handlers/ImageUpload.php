@@ -23,17 +23,17 @@ class ImageUpload
 
 		if(!in_array($extension, $this->allow_ext)){
 			return [
-				'status' => 1,
-				'msg' => '图片上传类型不正确',
+				'success' => 0,
+				'message' => '图片上传类型不正确',
 			];
 		}
 
 		$file->move($upload_path, $filename);
 
 		return [
-			'status' => 0,
+			'success' => 1,
 			'url' => url('/').'/'.$folder.$filename,
-			'msg' => '上传成功'
+			'message' => '上传成功'
 		];
 	}
 }

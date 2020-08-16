@@ -21,13 +21,13 @@ $(function (){
 
 	        accept: {
 	            title: 'Images',
-	            extensions: 'gif,jpg,jpeg,bmp,png',
+	            extensions: 'gif,jpg,jpeg,png',
 	            mimeTypes: 'image/*'
 	        }
 	    });
 
 		uploader.on('uploadSuccess', function (file, data){
-            if(data.status == 0){
+            if(data.success == 1){
                 if(num == 'one'){
                 	var html = '<li><img src="'+data.url+'" alt=""><input name="'+ id +'" type="hidden" value="'+data.url+'"/></li>';
                 	$('.upload-wraper').html(html);
@@ -44,4 +44,3 @@ $(function (){
     });
 
 });
-

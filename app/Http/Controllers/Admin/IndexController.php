@@ -79,9 +79,15 @@ class IndexController extends BaseController
 	//图片上传
 	public function upload(Request $request, ImageUpload $upload)
 	{
-		if($request->file){
-			$result = $upload->upload($request->file, 'link');
-			return $result;
+		if($request->file) {
+			$file = $request->file;
+			$fold = 'thumb';
+		} else {
+			$file = $request->file('editormd-image-file');
+			$fold = 'editor';
 		}
+		
+		$result = $upload->upload($file, $fold);
+		return $result;
 	}
 }
