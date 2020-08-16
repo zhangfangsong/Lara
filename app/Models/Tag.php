@@ -59,7 +59,7 @@ class Tag extends Model
 	//标签字体大小
 	public function getFontSize()
 	{
-		$size = (1200 + $this->views)/100;
+		$size = (1500 + $this->views)/100;
 		return $size > 30 ? 30 : $size;
 	}
 }

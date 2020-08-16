@@ -3,7 +3,6 @@
 
 @section('stylesheet')
     <link href="{{ asset('uploader/webuploader.css') }}" rel="stylesheet" type="text/css" />
-	<!-- <link href="{{ asset('editor/css/style.css') }}" rel="stylesheet" type="text/css" /> -->
 	<link href="{{ asset('editor/css/editormd.css') }}" rel="stylesheet" type="text/css" />
 @stop
 

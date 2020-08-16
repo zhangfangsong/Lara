@@ -189,7 +189,7 @@ input[type="button"],
 input[type="reset"],
 article.post-password-required input[type=submit],
 li.bypostauthor cite span {
-	padding: 8px 12px;
+	padding: 5px 12px;
 	font-size: 12px;
 	font-weight: normal;
 	color: #fff;
@@ -198,7 +198,7 @@ li.bypostauthor cite span {
 	border-radius: 3px;
 }
 #searchsubmit {
-	padding: 8px 15px;
+	padding: 5px 12px;
 }
 .menu-toggle,
 button,
@@ -206,6 +206,7 @@ input[type="submit"],
 input[type="button"],
 input[type="reset"] {
 	cursor: pointer;
+	font-size: 15px;
 }
 button[disabled],
 input[disabled] {
@@ -297,8 +298,6 @@ img.header-image,
 img.wp-post-image {
 	/* Add fancy borders to all WordPress-added images but not things like badges and icons and the like */
 	border-radius: 2px;
-	box-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
-	border-top: 1px solid #efefef;
 }
 .wp-caption {
 	max-width: 100%; /* Keep wide captions from overflowing their container. */
@@ -353,6 +352,10 @@ img.wp-smiley,
 	clear: both;
 	line-height: 2;
 	overflow: hidden;
+	
+}
+nav.nav-single {
+	font-size: 15px;
 }
 #nav-above {
 	padding: 24px 0;
@@ -519,9 +522,9 @@ a:hover {
 }
 .site-header h1 input {
 	position: absolute;
-	right: 4.35%;
+	right: 5.93%;
 	top: 10px;
-	padding: 8px 15px;
+	padding: 5px 12px;
 }
 
 .site-header h1 a:hover,
@@ -537,7 +540,7 @@ a:hover {
 }
 .site-header h2 {
 	font-weight: normal;
-	font-size: 14px;
+	font-size: 16px;
 	line-height: 1.846153846;
 	color: #757575;
 }
@@ -595,9 +598,8 @@ section[role="banner"] {
 .widget-area .widget p,
 .widget-area .widget li,
 .widget-area .widget .textwidget {
-	font-size: 13px;
-	font-size: 0.928571429rem;
-	line-height: 1.846153846;
+	font-size: 15px;
+	line-height: 1.946153846;
 }
 .widget-area .widget p {
 	margin-bottom: 24px;
@@ -624,7 +626,7 @@ section[role="banner"] {
 	color: #565656;
 	padding: 6.5px 12px;
 	height: 18px;
-	font-size: 13px;
+	font-size: 15px;
 }
 
 /* Footer */
@@ -710,6 +712,8 @@ article.sticky .featured-post {
 .entry-summary,
 .mu_register {
 	line-height: 1.714285714;
+	font-size: 15px;
+	letter-spacing: 1px;
 }
 .entry-content h1,
 .comment-content h1,
@@ -769,8 +773,9 @@ article.sticky .featured-post {
 .comment-content p,
 .mu_register p {
 	margin: 0px;
-	line-height: 1.714285714;
-	font-size:14px;
+	line-height: 1.814285714;
+	font-size:15px;
+	letter-spacing: 1px;
 }
 .entry-content ol,
 .comment-content ol,
@@ -821,7 +826,7 @@ article.sticky .featured-post {
 
 .ql-editor code,
 .ql-editor pre {
-	background-color: #f0f0f0;
+	background-color: #EEEEEE !important;
 	border-radius: 3px;
 }
 
@@ -834,8 +839,6 @@ article.sticky .featured-post {
 .ql-editor code {
 	font-size: 14px;
 	padding: 1px 4px;
-	background: #fff !important;
-	color: #333 !important;
 }
 
 .ql-editor pre.ql-syntax {
@@ -945,9 +948,8 @@ img.aligncenter {
 footer.entry-meta {
 	margin-top: 14px;
 	margin-bottom:10px;
-	font-size: 13px;
-	font-size: 0.928571429rem;
-	line-height: 1.846153846;
+	font-size: 15px;
+	line-height: 1.946153846;
 	color: #757575;
 }
 .single-author .entry-meta .by-author {
@@ -1140,8 +1142,7 @@ article.format-quote .entry-content blockquote {
 .comments-title {
 	margin-bottom: 48px;
 	margin-bottom: 3.428571429rem;
-	font-size: 1.142857143rem;
-	font-size: 14px;
+	font-size: 15px;
 	line-height: 1.5;
 	font-weight: normal;
 }
@@ -1467,6 +1468,7 @@ img#wpstats {
 		line-height: 3.692307692;
 		white-space: nowrap;
 		padding:0 20px;
+		font-size: 15px;
 	}
 	.main-navigation li a:hover {
 		color: #000;
@@ -1714,3 +1716,7 @@ img#wpstats {
 .depth-2 {padding-left: 60px;}
 .depth-3 {padding-left: 120px;}
 .depth-4 {padding-left: 180px;}
+
+.site-info {
+	font-size: 14px;
+}

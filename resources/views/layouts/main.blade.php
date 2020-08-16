@@ -10,7 +10,11 @@
 	<style type="text/css" id="custom-background-css">
 		body.custom-background {background-color: #e6e6e6; }
 		input.btn-default:focus,input.no-border:focus {outline: none;}
+		input.no-border {font-size: 15px;}
 	</style>
+	
+	@yield('stylesheet')
+	
 	<script type="text/javascript" src="{{ asset('front/js/jquery.js') }}"></script>
 	<script type="text/javascript" src="{{ asset('front/js/nav.js') }}"></script>
 </head>
@@ -147,6 +151,8 @@
 	</footer>
 
 </div>
-
+	
+	@yield('script')
+	
 </body>
 </html>

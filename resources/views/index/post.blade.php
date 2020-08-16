@@ -1,13 +1,34 @@
 @extends('layouts.main')
 @section('title', $post->title.' - '.$post->category->name)
 
+@section('stylesheet')
+	<link href="{{ asset('editor/css/editormd.preview.css') }}" rel="stylesheet" type="text/css" />
+@stop
+
+@section('script')
+	<script src="{{ asset('editor/lib/marked.min.js') }}"></script>
+	<script src="{{ asset('editor/lib/prettify.min.js') }}"></script>
+	<script src="{{ asset('editor/js/editormd.js') }}"></script>
+	
+	<script type="text/javascript">
+		$(function() {
+			editormd.markdownToHTML("md-editor", {
+				emoji: true,
+				taskList: true
+			})
+		})
+	</script>
+@stop
+
 @section('content')
 	<article>
 		<header class="entry-header">
 			<h1 class="entry-title"><a href="{{ $post->getLinkUrl() }}" title="{{ $post->title }}" rel="bookmark">{{ $post->title }}</a></h1>
 		</header>
 		
-		<div class="entry-content ql-editor">{!! $post->content !!}</div>
+		<div class="entry-content ql-editor" id="md-editor" style="padding: 0;">
+			<textarea style="display: none;">{{ $post->content }}</textarea>
+		</div>
 		
 		@include('index._tag', ['val'=> $post])
 	</article>
