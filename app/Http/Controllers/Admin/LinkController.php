@@ -52,7 +52,9 @@ class LinkController extends BaseController
 	//编辑链接操作
 	public function update(LinkRequest $request, Link $link)
 	{
-		$link->update($request->all());
+		$data = $request->all();
+		$data['logo'] = $request->logo ?: '';
+		$link->update($data);
 		return redirect()->back()->with('success', '编辑成功');
 	}
 	

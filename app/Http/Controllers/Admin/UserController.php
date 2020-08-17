@@ -33,7 +33,9 @@ class UserController extends BaseController
 	//新增用户操作
 	public function store(UserRequest $request)
 	{
-		User::add($request->all());
+		$data = $request->all();
+		$data['activated'] = 1;
+		User::add($data);
 		return redirect()->route('admin.user.index')->with('success', '创建成功');
 	}
 	
@@ -52,8 +54,10 @@ class UserController extends BaseController
 		if($request->password){
 			$data['password'] = bcrypt($request->password);
 		}
+		$data['avatar'] = $request->avatar ?: '';
+		
 		$user->update($data);
-
+		
 		return redirect()->back()->with('success', '编辑成功');
 	}
 	

@@ -5,12 +5,15 @@
 		</header>
 		
 		@if($val->thumb)
-			<div class="entry-content">
-				<img src="{{ $val->thumb }}" alt="{{ $val->title }}" width="700">
+			<div class="flex">
+				<div class="flex-img mr-20">
+					<img src="{{ $val->thumb }}" alt="{{ $val->title }}" class="flex-img flex-rounded">
+				</div>
+				<div class="entry-content">{{ $val->description }}</div>
 			</div>
+		@else
+			<div class="entry-content">{{ $val->description }}</div>
 		@endif
-		
-		<div class="entry-content">{{ $val->description }}</div>
 		
 		@include('index._tag', ['val'=> $val])
 	</article>

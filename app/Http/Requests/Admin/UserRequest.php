@@ -24,10 +24,10 @@ class UserRequest extends FormRequest
             
             case 'PATCH':
                 $user_id = request()->user->id;
-                
+				
                 return [
-                    'username' => 'required|max:50|unique:users,'.$user_id.',id',
-                    'email' => 'required|email|unique:users,'.$user_id.',id|max:255',
+                    'username' => 'required|max:50|unique:users,username,'.$user_id,
+                    'email' => 'required|max:255|email|unique:users,email,'.$user_id,
                     'password' => 'min:6',
                 ];
                 break;

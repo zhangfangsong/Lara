@@ -1,10 +1,9 @@
-
 $(function (){
 	// 图片上传
 	$('.J-ajax-upload').each(function (index,element){
 
-		var id = $(element).data('id');
-		var num = $(element).data('num');
+		var id = $(element).data('id')
+		var num = $(element).data('num')
 
 		var uploader = WebUploader.create({
 	        // 选完文件后，是否自动上传。
@@ -24,8 +23,8 @@ $(function (){
 	            extensions: 'gif,jpg,jpeg,png',
 	            mimeTypes: 'image/*'
 	        }
-	    });
-
+	    })
+		
 		uploader.on('uploadSuccess', function (file, data){
             if(data.success == 1){
                 if(num == 'one'){
@@ -36,11 +35,11 @@ $(function (){
                 	$('.upload-wraper').append(html);
                 }
             }
-        });
-	});
-
+        })
+	})
+	
 	$('.upload-wraper').on('click', 'li', function (){
         $(this).remove();
-    });
+    })
 
-});
+})

@@ -83,9 +83,10 @@ class PostController extends BaseController
 	{
 		$data = $request->all();
 		$data['views'] = (int)$data['views'];
-
+		$data['thumb'] = $request->thumb ?: '';
+		
 		$post->update($data);
-
+		
 		if($request->keyword){
 			$tags = explode(',', $request->keyword);
 

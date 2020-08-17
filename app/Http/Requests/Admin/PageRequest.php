@@ -27,7 +27,7 @@ class PageRequest extends FormRequest
                 
                 return [
                     'title' => 'required|max:60',
-                    'alias' => 'required|max:30|unique:pages,alias,'.$id.',id',
+                    'alias' => 'required|max:30|unique:pages,alias,'.$id,
                     'content' => 'required',
                 ];
                 break;
