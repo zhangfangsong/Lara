@@ -90,7 +90,7 @@
                                 @if($nav->child)
                                 <ul class="list-unstyled" @if(in_array($module, explode('.', $nav->name))) style="display: block;" @endif>
                                     @foreach($nav->child as $val)
-                                    <li class="@if($route === $val->name) active @endif"><a href="{{ route($val->name) }}">{{ $val->alias }}</a></li>
+										<li @if(in_array($model, explode('.', $val->name))) class="active" @endif><a href="{{ route($val->name) }}">{{ $val->alias }}</a></li>
                                     @endforeach
                                 </ul>
                                 @endif

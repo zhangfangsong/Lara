@@ -36,8 +36,11 @@ class BaseController extends Controller
 		
 		if($module != 'dashboard' && $module != 'setting'){
 			$module = 'manage';
+			$model = $routeArr[1];
+		} else {
+			$model = $this->action;
 		}
 		
-		View()->share(['route' => $route, 'module' => $module]);
+		View()->share(['route' => $route, 'module' => $module, 'model' => $model]);
 	}
 }

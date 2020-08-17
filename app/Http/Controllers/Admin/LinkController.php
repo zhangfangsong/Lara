@@ -55,6 +55,7 @@ class LinkController extends BaseController
 		$data = $request->all();
 		$data['logo'] = $request->logo ?: '';
 		$link->update($data);
+		
 		return redirect()->back()->with('success', '编辑成功');
 	}
 	

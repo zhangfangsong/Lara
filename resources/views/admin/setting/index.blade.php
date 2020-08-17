@@ -1,6 +1,4 @@
-
 @extends('admin.layouts.main')
-
 @section('title', $title)
 
 @section('content')

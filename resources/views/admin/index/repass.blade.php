@@ -1,6 +1,4 @@
-
 @extends('admin.layouts.main')
-
 @section('title', '修改密码')
 
 @section('content')

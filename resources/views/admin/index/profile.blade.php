@@ -1,6 +1,4 @@
-
 @extends('admin.layouts.main')
-
 @section('title', '我的资料')
 
 @section('stylesheet')
