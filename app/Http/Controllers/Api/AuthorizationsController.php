@@ -24,6 +24,20 @@ class AuthorizationsController extends BaseController
 		return $this->respondWithToken($token)->setStatusCode(201);
 	}
 
+	//刷新token
+	public function update()
+	{
+		$token = auth('api')->refresh();
+		return $this->respondWithToken($token);
+	}
+
+	//退出登录
+	public function destroy()
+	{
+		auth('api')->logout();
+		return response(null, 204);
+	}
+	
 	protected function respondWithToken($token)
 	{
 		return response()->json([
