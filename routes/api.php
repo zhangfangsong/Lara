@@ -22,8 +22,13 @@ Route::prefix('v1')->namespace('Api')->name('api.')->middleware('throttle:100,1'
 
 	//需要认证
 	Route::middleware('auth:api')->group(function() {
+		
+		//上传图片
+		Route::post('images', 'ImagesController@store')->name('images.store');
 
 		//个人信息
 		Route::get('user', 'UsersController@me')->name('user.show');
+		//编辑信息
+		Route::patch('user', 'UsersController@update')->name('user.update');
 	});
 });

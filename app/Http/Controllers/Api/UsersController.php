@@ -39,10 +39,20 @@ class UsersController extends BaseController
 	{
 		return new UserResource($user);
 	}
-	
+
 	//我的信息
 	public function me(Request $request)
 	{
 		return (new UserResource($request->user()))->showSensitiveFields();
+	}
+
+	//编辑信息
+	public function update(UserRequest $request)
+	{
+		$user = $request->user();
+		$data = $request->only(['username', 'email', 'description', 'avatar']);
+		$user->update($data);
+
+		return (new UserResource($user))->showSensitiveFields();
 	}
 }
