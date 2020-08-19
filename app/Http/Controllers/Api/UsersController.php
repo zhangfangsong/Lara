@@ -6,12 +6,24 @@ use Illuminate\Http\Request;
 use App\Http\Requests\Api\UserRequest;
 use App\Http\Resources\UserResource;
 use App\Models\User;
+use Illuminate\Support\Facades\Cache;
+use Illuminate\Auth\AuthenticationException;
 
 class UsersController extends BaseController
 {
 	//注册
 	public function store(UserRequest $request)
 	{
+		$data = Cache::get($request->captcha_key);
+
+		if(!$data) {
+			abort(403, '验证码已失效');
+		}
+		if(!hash_equals($data['code'], $request->captcha_code)) {
+			Cache::forget($request->captcha_key);
+			throw new AuthenticationException('验证码错误');
+		}
+		
 		$user = User::add([
 			'username' => $request->username,
 			'email' => $request->email,
