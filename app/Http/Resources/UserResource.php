@@ -6,14 +6,22 @@ use Illuminate\Http\Resources\Json\JsonResource;
 
 class UserResource extends JsonResource
 {
-    /**
-     * Transform the resource into an array.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return array
-     */
+    //是否显示敏感字段
+    protected $showSensitiveFields = false;
+
     public function toArray($request)
     {
-        return parent::toArray($request);
+        if(!$this->showSensitiveFields) {
+            $this->resource->addHidden(['email']);
+        }
+        $data = parent::toArray($request);
+
+        return $data;
+    }
+    
+    public function showSensitiveFields()
+    {
+        $this->showSensitiveFields = true;
+        return $this;
     }
 }
