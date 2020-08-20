@@ -100,5 +100,12 @@ return [
             'path' => storage_path('logs/laravel.log'),
         ],
     ],
-
+    //SQL查询日志
+    'query' => [
+        'enabled' => env('LOG_QUERY', false),
+         
+        // Only record queries that are slower than the following time
+        // Unit: milliseconds
+        'slower_than' => 0,
+    ],
 ];
