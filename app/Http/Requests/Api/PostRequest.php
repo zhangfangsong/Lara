@@ -11,11 +11,22 @@ class PostRequest extends FormRequest
      */
     public function rules()
     {
-        return [
-            'title' => 'required|max:80',
-            'category_id' => 'required|numeric|exists:categories,id',
-            'content' => 'required',
-        ];
+        switch ($this->method()) {
+            case 'POST':
+                return [
+                    'title' => 'required|max:80',
+                    'category_id' => 'required|numeric|exists:categories,id',
+                    'content' => 'required',
+                ];
+                break;
+
+            case 'PATCH':
+                return [
+                    'title' => 'max:80',
+                    'category_id' => 'numeric|exists:categories,id',
+                ];
+                break;
+        }
     }
 
     public function attributes()
