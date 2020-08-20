@@ -17,6 +17,9 @@ Route::prefix('v1')->namespace('Api')->name('api.')->middleware('throttle:10,1')
 
 Route::prefix('v1')->namespace('Api')->name('api.')->middleware('throttle:100,1')->group(function() {
 
+	//分类列表
+	Route::get('categories', 'CategoriesController@index')->name('categories.index');
+	
 	//用户详情
 	Route::get('users/{user}', 'UsersController@show')->name('users.show');
 
