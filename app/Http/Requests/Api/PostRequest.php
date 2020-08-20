@@ -1,33 +1,29 @@
 <?php
 
-/**
- * 文章表单请求
- * User: zfs
- * Date: 2019/8/17
- * Time: 22:34
- */
-
-namespace App\Http\Requests\Admin;
+namespace App\Http\Requests\Api;
 
 class PostRequest extends FormRequest
 {
+    /**
+     * Get the validation rules that apply to the request.
+     *
+     * @return array
+     */
     public function rules()
     {
         return [
             'title' => 'required|max:80',
             'category_id' => 'required|numeric|exists:categories,id',
             'content' => 'required',
-            'views' => 'nullable|numeric',
         ];
     }
-    
+
     public function attributes()
     {
         return [
             'title' => '标题',
             'category_id' => '分类',
-            'content' => '内容',
-            'views' => '浏览量',
+            'content' => '内容'
         ];
     }
 }
