@@ -18,7 +18,7 @@ class Post extends Model
 	protected $fillable = [
 		'title', 'content', 'user_id' ,'category_id', 'keyword', 'description', 'thumb', 'status', 'views'
 	];
-	
+
 	//所属分类
 	public function category()
 	{
@@ -35,6 +35,16 @@ class Post extends Model
 	public function comments()
 	{
 		return $this->hasMany(Comment::class);
+	}
+
+	public function scopeWithOrder($query, $order)
+	{
+		switch($order) {
+			case 'lastReply':
+				return $query->orderBy('updated_at', 'desc');
+			default :
+				return $query->orderBy('created_at', 'desc');
+		}
 	}
 	
 	//文章链接

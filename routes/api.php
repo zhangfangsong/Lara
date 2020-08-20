@@ -23,6 +23,7 @@ Route::prefix('v1')->namespace('Api')->name('api.')->middleware('throttle:100,1'
 	//文章
 	Route::get('posts', 'PostsController@index')->name('posts.index');
 	Route::get('posts/{post}', 'PostsController@show')->name('posts.show');
+	Route::get('users/{user}/posts', 'PostsController@userIndex')->name('users.posts');
 
 	//用户详情
 	Route::get('users/{user}', 'UsersController@show')->name('users.show');

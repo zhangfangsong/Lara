@@ -1280,11 +1280,9 @@ a.comment-edit-link:hover {
 #respond form textarea {
 	-moz-box-sizing: border-box;
 	box-sizing: border-box;
-	font-size: 12px;
-	font-size: 0.857142857rem;
+	font-size: 14px;
 	line-height: 1.714285714;
-	padding: 10px;
-	padding: 0.714285714rem;
+	padding: 8px;
 	width: 100%;
 	outline: none;
 }
