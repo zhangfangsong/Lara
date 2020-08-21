@@ -19,7 +19,19 @@ class CommentsController extends BaseController
 		$comment->ip = $request->getClientIp();
 		$comment->status = 1;
 		$comment->save();
-		
+
 		return new CommentResource($comment);
+	}
+
+	//删除评论
+	public function destroy(Post $post, Comment $comment)
+	{
+		if($comment->post_id != $post->id) {
+			abort(404);
+		}
+		$this->authorize('destroy', $comment);
+		$comment->delete();
+		
+		return response(null, 204);
 	}
 }

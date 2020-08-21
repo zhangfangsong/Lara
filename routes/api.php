@@ -38,7 +38,8 @@ Route::prefix('v1')->namespace('Api')->name('api.')->middleware('throttle:100,1'
 
 		//评论
 		Route::post('posts/{post}/comments', 'CommentsController@store')->name('comments.store');
-		
+		Route::delete('posts/{post}/comments/{comment}', 'CommentsController@destroy')->name('comments.destroy');
+
 		//上传图片
 		Route::post('images', 'ImagesController@store')->name('images.store');
 

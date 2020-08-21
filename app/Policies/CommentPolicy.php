@@ -12,6 +12,6 @@ class CommentPolicy
 
     public function destroy(User $user, Comment $comment)
     {
-        return $user->isAuthorOf($comment) || $user->isAuthorOf($comment->article);
+        return $user->isAuthorOf($comment) || $user->isAuthorOf($comment->post);
     }
 }
