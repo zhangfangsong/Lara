@@ -7,39 +7,29 @@ use App\Http\Requests\Api\PostRequest;
 use App\Models\Post;
 use App\Models\User;
 use App\Http\Resources\PostResource;
-use Spatie\QueryBuilder\QueryBuilder;
-use Spatie\QueryBuilder\AllowedFilter;
+use App\Http\Queries\PostQuery;
 
 class PostsController extends BaseController
 {
 	//文章列表
-	public function index(Request $request, Post $post)
+	public function index(Request $request, PostQuery $query)
 	{
-		$posts = QueryBuilder::for(Post::class)
-			->allowedIncludes('user', 'category')
-			->allowedFilters([
-				'title',
-				AllowedFilter::exact('category_id'),
-				AllowedFilter::scope('withOrder')->default('recent')
-			])->paginate($request->page_size ?: 10);
-
+		$posts = $query->paginate($request->page_size ?: 10);
 		return PostResource::collection($posts);
 	}
 
 	//用户发布的文章
-	public function userIndex(Request $request, User $user)
-	{
-		$query = $user->posts()->getQuery();
-		
-		$posts = QueryBuilder::for($query)
-			->allowedIncludes('user', 'category')
-			->allowedFilters([
-				'title',
-				AllowedFilter::exact('category_id'),
-				AllowedFilter::scope('withOrder')->default('recent')
-			])->paginate($request->page_size ?: 10);
-
+	public function userIndex(Request $request, User $user, PostQuery $query)
+	{		
+		$posts = $query->where('user_id', $user->id)->paginate($request->page_size ?: 10);
 		return PostResource::collection($posts);
+	}
+
+	//文章详情
+	public function show($post_id, PostQuery $query)
+	{
+		$post = $query->findOrFail($post_id);
+		return (new PostResource($post))->showContent();
 	}
 
 	//发布文章
