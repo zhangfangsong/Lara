@@ -35,6 +35,9 @@ Route::prefix('v1')->namespace('Api')->name('api.')->middleware('throttle:100,1'
 		Route::post('posts', 'PostsController@store')->name('posts.store');
 		Route::patch('posts/{post}', 'PostsController@update')->name('posts.update');
 		Route::delete('posts/{post}', 'PostsController@destroy')->name('posts.destroy');
+
+		//评论
+		Route::post('posts/{post}/comments', 'CommentsController@store')->name('comments.store');
 		
 		//上传图片
 		Route::post('images', 'ImagesController@store')->name('images.store');
