@@ -19,8 +19,6 @@ class AppServiceProvider extends ServiceProvider
     {
 		\Carbon\Carbon::setLocale('zh');
 		Schema::defaultStringLength(191);
-		
-		Comment::observe(CommentObserver::class);
     }
 
     /**
@@ -30,6 +28,9 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+		Comment::observe(CommentObserver::class);
+		
+		//去掉返回json格式时data包裹层
         Resource::withoutWrapping();
     }
 }

@@ -46,6 +46,13 @@ class Post extends Model
 				return $query->orderBy('created_at', 'desc');
 		}
 	}
+
+	//更新评论数
+	public function updateReplyCount()
+	{
+		$this->replies = $this->replies->count();
+		$this->save();
+	}
 	
 	//文章链接
 	public function getLinkUrl()

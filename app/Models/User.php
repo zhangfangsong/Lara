@@ -14,10 +14,13 @@ use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Support\Facades\Route;
 use App\Handlers\App;
+use Illuminate\Support\Facades\Auth;
 
 class User extends Authenticatable implements JWTSubject
 {
-    use Notifiable;
+    use Notifiable {
+        notify as protected laraNotify;
+    }
 
     /**
      * The attributes that are mass assignable.
@@ -36,6 +39,18 @@ class User extends Authenticatable implements JWTSubject
     protected $hidden = [
         'password', 'remember_token', 'activation_token',
     ];
+
+    public function notify($instance)
+    {
+        if($this->id == Auth::id()) {
+            return ;
+        }
+        if(method_exists($instance, 'toDatabase')) {
+            $this->increment('notification_count');
+        }
+        
+        $this->laraNotify($instance);
+    }
 
     //用户评论
     public function comments()

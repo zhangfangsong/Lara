@@ -44,6 +44,9 @@ Route::prefix('v1')->namespace('Api')->name('api.')->middleware('throttle:100,1'
 		Route::post('posts/{post}/comments', 'CommentsController@store')->name('comments.store');
 		Route::delete('posts/{post}/comments/{comment}', 'CommentsController@destroy')->name('comments.destroy');
 
+		//通知列表
+		Route::get('notifications', 'NotificationsController@index')->name('notifications.index');
+		
 		//上传图片
 		Route::post('images', 'ImagesController@store')->name('images.store');
 
