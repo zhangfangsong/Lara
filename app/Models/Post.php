@@ -50,7 +50,7 @@ class Post extends Model
 	//更新评论数
 	public function updateReplyCount()
 	{
-		$this->replies = $this->replies->count();
+		$this->replies = $this->comments->count();
 		$this->save();
 	}
 	

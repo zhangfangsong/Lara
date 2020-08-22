@@ -52,6 +52,13 @@ class User extends Authenticatable implements JWTSubject
         $this->laraNotify($instance);
     }
 
+    public function markAsRead()
+    {
+        $this->notification_count = 0;
+        $this->save();
+        $this->unreadNotifications->markAsRead();
+    }
+    
     //用户评论
     public function comments()
     {

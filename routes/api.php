@@ -46,7 +46,11 @@ Route::prefix('v1')->namespace('Api')->name('api.')->middleware('throttle:100,1'
 
 		//通知列表
 		Route::get('notifications', 'NotificationsController@index')->name('notifications.index');
-		
+		//通知统计
+		Route::get('notifications/stats', 'NotificationsController@stats')->name('notifications.stats');
+		//标为已读
+		Route::put('user/read/notifications', 'NotificationsController@read')->name('user.read.notifications');
+
 		//上传图片
 		Route::post('images', 'ImagesController@store')->name('images.store');
 
