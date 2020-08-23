@@ -12,7 +12,7 @@ class PostQuery extends QueryBuilder
 	{
 		parent::__construct(Post::query());
 
-		$this->allowedIncludes('user', 'category')
+		$this->allowedIncludes('user', 'category', 'user.role')
 			->allowedFilters([
 				'title',
 				AllowedFilter::exact('category_id'),

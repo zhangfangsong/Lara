@@ -22,7 +22,7 @@ class Role extends Model
 	{
 		return $this->belongsToMany(Node::class)->withTimestamps();
 	}
-	
+
 	//角色节点名称
 	public function getNodes()
 	{

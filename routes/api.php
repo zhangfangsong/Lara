@@ -58,5 +58,8 @@ Route::prefix('v1')->namespace('Api')->name('api.')->middleware('throttle:100,1'
 		Route::get('user', 'UsersController@me')->name('user.show');
 		//编辑信息
 		Route::patch('user', 'UsersController@update')->name('user.update');
+
+		//我的权限
+		Route::get('user/permissions', 'PermissionsController@index')->name('user.permissions');
 	});
 });

@@ -37,13 +37,16 @@ class UsersController extends BaseController
 	//用户详情
 	public function show(User $user, Request $request)
 	{
+		$user->load('role');
 		return new UserResource($user);
 	}
 
 	//我的信息
 	public function me(Request $request)
 	{
-		return (new UserResource($request->user()))->showSensitiveFields();
+		$user = $request->user();
+		$user->load('role');
+		return (new UserResource($user))->showSensitiveFields();
 	}
 
 	//编辑信息

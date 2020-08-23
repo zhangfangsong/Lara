@@ -15,7 +15,8 @@ class UserResource extends JsonResource
             $this->resource->addHidden(['email']);
         }
         $data = parent::toArray($request);
-
+        $data['role'] = new RoleResource($this->whenLoaded('role'));
+        
         return $data;
     }
     

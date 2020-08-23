@@ -124,7 +124,14 @@ class User extends Authenticatable implements JWTSubject
         
         return self::create($data);
     }
-    
+
+    //获取权限
+    public function getAllPermissions()
+    {
+        if($this->id === 1) return Node::all();
+        return $this->role->nodes;
+    }
+
     //用户权限检测
     public function hasRight()
     {
