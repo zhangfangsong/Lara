@@ -32,6 +32,9 @@ Route::prefix('v1')->namespace('Api')->name('api.')->middleware('throttle:100,1'
 	//用户详情
 	Route::get('users/{user}', 'UsersController@show')->name('users.show');
 
+	//友链列表
+	Route::get('links', 'LinksController@index')->name('links.index');
+	
 	//需要认证
 	Route::middleware('auth:api')->group(function() {
 
