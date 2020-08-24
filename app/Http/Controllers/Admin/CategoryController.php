@@ -39,13 +39,13 @@ class CategoryController extends BaseController
 	{
 		$category = Category::create([
 			'name' => $request->name,
-			'url' => $request->url,
+			'url' => $request->url ?: '',
 			'pid' => $request->pid,
 			'description' => $request->description,
 			'status' => $request->status,
-			'sort' => $request->sort
+			'sort' => $request->sort ?: 0
 		]);
-
+		
 		return redirect()->route('admin.category.index')->with('success', '创建成功');
 	}
 
