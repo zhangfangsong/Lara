@@ -826,7 +826,7 @@ article.sticky .featured-post {
 
 .ql-editor code,
 .ql-editor pre {
-	background-color: #EEEEEE !important;
+	/*background-color: #EEEEEE !important;*/
 	border-radius: 3px;
 }
 

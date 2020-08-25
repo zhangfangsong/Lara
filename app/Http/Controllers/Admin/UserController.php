@@ -53,9 +53,11 @@ class UserController extends BaseController
 
 		if($request->password){
 			$data['password'] = bcrypt($request->password);
+		} else {
+			unset($data['password']);
 		}
 		$data['avatar'] = $request->avatar ?: '';
-		
+
 		$user->update($data);
 		
 		return redirect()->back()->with('success', '编辑成功');

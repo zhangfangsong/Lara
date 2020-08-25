@@ -3141,7 +3141,7 @@
   background: none;
 }
 .editormd-preview-container code, .editormd-html-preview code {
-  border: 1px solid #ddd;
+  border: 1px solid #e6e6e6;
   background: #f6f6f6;
   padding: 3px;
   border-radius: 3px;
@@ -3327,12 +3327,12 @@ li.L3,
 li.L5,
 li.L7,
 li.L9 {
-  background: #eee;
+  /*background: #eee;*/
 }
 
 .editormd-preview-container pre.prettyprint, .editormd-html-preview pre.prettyprint {
   padding: 10px;
-  border: 1px solid #ddd;
+  border: 1px solid #e6e6e6;
   white-space: pre-wrap;
   word-wrap: break-word;
 }

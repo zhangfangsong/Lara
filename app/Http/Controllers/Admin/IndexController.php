@@ -48,8 +48,10 @@ class IndexController extends BaseController
 	public function profileUpdate(ProfileRequest $request)
 	{
 		$data = $request->all();
-		$user = Auth::user();
+		$data['avatar'] = $request->avatar ?: '';
 
+		$user = Auth::user();
+		
 		$user->update($data);
 		return redirect()->back()->with('success', '编辑成功');
 	}
