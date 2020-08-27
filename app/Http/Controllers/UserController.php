@@ -14,8 +14,8 @@ use App\Http\Requests\UserRequest;
 use App\Models\User;
 use Gregwar\Captcha\PhraseBuilder;
 use Illuminate\Support\Str;
-use Mail;
 use Illuminate\Support\Facades\Auth;
+use App\Jobs\SendRegisterEmail;
 
 class UserController extends BaseController
 {
@@ -40,23 +40,12 @@ class UserController extends BaseController
 			'password' => $request->password,
 			'activation_token' => Str::random(80)
 		]);
+		
+		//发送激活邮件(任务队列)
+		dispatch(new SendRegisterEmail($user));
 
-		//发送激活邮件
-		$this->sendConfirmEmail($user);
 		session()->flash('success', '激活邮件已发送到你的注册邮箱上，请注意查收');
 		return redirect()->route('login');
-	}
-
-	protected function sendConfirmEmail($user)
-	{
-		$cfg = $this->cfg;
-		$to = $user->email;
-		$data = compact('user', 'cfg');
-		$subject = "感谢注册 ".$cfg->title."！请确认你的邮箱";
-
-		Mail::send('emails.confirm', $data, function ($msg) use ($to, $subject) {
-			$msg->to($to)->subject($subject);
-		});
 	}
 
 	//激活邮箱
