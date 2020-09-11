@@ -16,7 +16,7 @@ use Illuminate\Support\Facades\DB;
 class Post extends Model
 {
 	protected $fillable = [
-		'title', 'content', 'user_id' ,'category_id', 'keyword', 'description', 'thumb', 'status', 'views'
+		'title', 'content', 'user_id' ,'category_id', 'keyword', 'description', 'thumb', 'status', 'views', 'created_at',
 	];
 
 	//所属分类

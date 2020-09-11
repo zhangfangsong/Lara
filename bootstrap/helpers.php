@@ -15,3 +15,10 @@ function system_load()
 
 	return explode(' ', $load);
 }
+
+function p($value)
+{
+	echo '<pre>';
+	print_r($value);
+	exit;
+}

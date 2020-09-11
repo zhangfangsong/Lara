@@ -16,6 +16,7 @@ use App\Models\Post;
 use App\Models\Category;
 use App\Handlers\Level;
 use Illuminate\Support\Facades\Auth;
+use Carbon\Carbon;
 
 class PostController extends BaseController
 {
@@ -82,8 +83,10 @@ class PostController extends BaseController
 	public function update(PostRequest $request, Post $post)
 	{
 		$data = $request->all();
+
 		$data['views'] = (int)$data['views'];
 		$data['thumb'] = $request->thumb ?: '';
+		$data['created_at'] = Carbon::createFromTimeString($data['created_at']);
 		
 		$post->update($data);
 		

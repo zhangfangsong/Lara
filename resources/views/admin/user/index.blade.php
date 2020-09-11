@@ -68,7 +68,9 @@
 							<td>{{ $val->email }}</td>
 							<td><span class="label label-table label-default">{{ $val->role->name }}</span></td>
 							<td>{{ $val->created_at->diffForHumans() }}</td>
-							<td><span class="label label-table {{ $val->status == 1 ? 'label-default' : 'label-warning' }}">{{ $val->status == 1 ? '正常' : '禁用' }}</span></td>
+							<td>
+								<span class="label label-table {{ $val->activated == 1 ? 'label-default' : 'label-warning' }}">{{ $val->activated == 1 ? '已激活' : '未激活' }}</span>
+							</td>
 							<td>
 								<a href="{{ route('admin.user.edit', $val->id) }}" class="btn btn-default waves-effect waves-light btn-xs m-l-5"><i class="fa fa-pencil"></i></a>
 								<a href="{{ route('admin.user.destroy', $val->id) }}" class="btn btn-danger waves-effect waves-light btn-xs m-l-5"><i class="fa fa-remove"></i></a>

@@ -10,7 +10,7 @@
     <script src="{{ asset('uploader/webuploader.js') }}"></script>
     <script src="{{ asset('backend/js/main.js') }}"></script>
 	<script src="{{ asset('editor/js/editormd.js') }}"></script>
-	
+    
     <script type="text/javascript">
 		$(function() {
 			var editor = editormd('content', {
@@ -125,6 +125,15 @@
                                     <input type="text" class="form-control" name="views" placeholder="浏览量" value="{{ $post->views ?? old('views') }}">
                                 </div>
                             </div>
+
+                            @if(isset($post))
+                                <div class="form-group m-b-20">
+                                    <label class="col-md-2 control-label">发布时间</label>
+                                    <div class="col-md-2">
+                                        <input type="text" id="created_at" class="form-control" name="created_at" placeholder="发布时间" value="{{ isset($post->created_at) ? $post->created_at->toDateTimeString('minute') : date('Y-m-d H:i') }}">
+                                    </div>
+                                </div>
+                            @endif
 
                             <div class="form-group m-b-20">
                                 <label class="m-b-15 col-md-2 control-label">状态</label>
