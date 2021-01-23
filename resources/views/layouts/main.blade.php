@@ -145,7 +145,7 @@
 	
 	<footer role="contentinfo" style="margin-top:0;">
 		<div class="site-info" style="text-align:center;">
-			<span>{{ $cfg->icp }}</span>
+			<span><a href="https://beian.miit.gov.cn">{{ $cfg->icp }}</a></span>
 			<span style="position:relative;top:2px;">{!! $cfg->code !!}</span>
 		</div>
 	</footer>
